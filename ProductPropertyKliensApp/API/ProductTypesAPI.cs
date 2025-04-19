@@ -44,14 +44,14 @@ namespace ProductPropertyKliensApp.API
             }
         }
 
-        public Boolean createProductType(Api proxy, ProductTypeDTO newType)
+        public ProductTypeDTO createProductType(Api proxy, ProductTypeDTO newType)
         {
             try
             {
+                newType.StoreId = 1;
                 ApiResponse<ProductTypeDTO> response = proxy.ProductTypesCreate(newType);
                 if (response.Errors.Any())
                 {
-                    newType.StoreId = 1;
                     var msg = string.Join(Environment.NewLine, response.Errors.Select(e => e.Description));
                     MessageBox.Show(
                         msg,
@@ -59,9 +59,9 @@ namespace ProductPropertyKliensApp.API
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error
                     );
-                    return false;
+                    return null;
                 }
-                return true;
+                return response.Content;
             }
             catch (Exception ex)
             {
@@ -71,7 +71,7 @@ namespace ProductPropertyKliensApp.API
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
-                return false;
+                return null;
             }
         }
 

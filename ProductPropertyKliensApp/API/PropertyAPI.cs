@@ -131,11 +131,6 @@ namespace ProductPropertyKliensApp.API
             }
         }
 
-        public List<ProductPropertyDTO> GetPropertiesForType(string typeId)
-        {
-            return null;
-        }
-
         public Boolean createPropertyValueForProduct(Api proxy, long propertyId, String productId, String defaultValue)
         {
             try

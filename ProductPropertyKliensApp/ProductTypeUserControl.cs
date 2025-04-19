@@ -1,4 +1,5 @@
-﻿using Hotcakes.CommerceDTO.v1.Catalog;
+﻿using Hotcakes.Commerce.Catalog;
+using Hotcakes.CommerceDTO.v1.Catalog;
 using Hotcakes.CommerceDTO.v1.Client;
 using ProductPropertyKliensApp.API;
 using System;
@@ -23,11 +24,11 @@ namespace ProductPropertyKliensApp
             proxy = proxyLocal;
         }
 
-        private async void ProductTypeUserControl_Load(object sender, EventArgs e)
+        private void ProductTypeUserControl_Load(object sender, EventArgs e)
         {
             loadProductTypes();
             loadProductTypeProperties();
-            await loadPropertyListOfTypeAsync();
+            loadTypeLinkedProperties();
         }
 
         private async void loadProductTypes()
@@ -86,8 +87,18 @@ namespace ProductPropertyKliensApp
                     ProductTypesAPI typeApi = new ProductTypesAPI();
                     ProductTypeDTO newType = new ProductTypeDTO();
                     newType.ProductTypeName = NewTypeBox.Text;
-                    typeApi.createProductType(proxy, newType);
+                    ProductTypeDTO createdType = typeApi.createProductType(proxy, newType);
+                    ProductAPI productApi = new ProductAPI();
+                    ProductDTO newProduct = new ProductDTO();
+                    newProduct.ProductTypeId = createdType.Bvin;
+                    newProduct.ProductName = $"{createdType.ProductTypeName}-Link";
+                    newProduct.Sku = createdType.ProductTypeName;
+                    newProduct.StoreId = 0;
+                    newProduct.ImageFileMedium = "nothing.img";
+                    newProduct.ImageFileSmall = "nothing.img";
+                    productApi.createProduct(proxy, newProduct);
                     loadProductTypes();
+                    loadTypeLinkedProperties();
                 }
                 else {
                     MessageBox.Show($"Nem lehet üres a típus neve", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -99,15 +110,42 @@ namespace ProductPropertyKliensApp
             }
         }
 
+        private async void loadTypeLinkedProperties() {
+            if (ProductTypeBox.SelectedItem is ProductTypeDTO selectedType) 
+            {
+                List<ProductDTO> products = await Task.Run(() => new ProductAPI().getAllProduct(proxy));
+                ProductDTO linkedProducts = products.Where(p => p.ProductTypeId == selectedType.Bvin).FirstOrDefault();
+                if (linkedProducts != null)
+                {
+                    List<ProductPropertyDTO> linkedProperties = await Task.Run(() => new PropertyAPI().GetPropertiesForProduct(proxy, linkedProducts.Bvin));
+                    PropertyListOfTheTypeListBox.DataSource = linkedProperties;
+                    PropertyListOfTheTypeListBox.DisplayMember = nameof(ProductPropertyDTO.PropertyName);
+                    PropertyListOfTheTypeListBox.ValueMember = nameof(ProductPropertyDTO.Id);
+                    PropertyListOfTheTypeListBox.Enabled = false;
+                    PropertyListOfTheTypeListBox.SelectedItem = null;
+                }
+                else {
+                    PropertyListOfTheTypeListBox.DataSource = null;
+                }
+            }
+        }
+
         private void DeleteType_Click(object sender, EventArgs e)
         {
             try
             {
                 if (ProductTypeBox.SelectedItem is ProductTypeDTO selectedType)
                 {
+                    ProductAPI productApi = new ProductAPI();
+                    ProductDTO linkProduct = productApi.getProductBySku(proxy, selectedType.ProductTypeName);
+                    if (linkProduct != null)
+                    {
+                        productApi.deleteProduct(proxy, linkProduct.Bvin);
+                    }
                     ProductTypesAPI typeApi = new ProductTypesAPI();
                     typeApi.deleteProductType(proxy, selectedType.Bvin);
                     loadProductTypes();
+                    loadTypeLinkedProperties();
                 }
                 else
                 {
@@ -129,6 +167,7 @@ namespace ProductPropertyKliensApp
                     ProductTypesAPI typeApi = new ProductTypesAPI();
                     typeApi.linkProductTypeToProperty(proxy, selectedType.Bvin, selectedProperty.Id);
                     loadProductTypes();
+                    loadTypeLinkedProperties();
                 }
                 else
                 {
@@ -151,6 +190,7 @@ namespace ProductPropertyKliensApp
                     ProductTypesAPI typeApi = new ProductTypesAPI();
                     typeApi.deleteLinkProductTypeToProperty(proxy, selectedType.Bvin, selectedProperty.Id);
                     loadProductTypes();
+                    loadTypeLinkedProperties();
                 }
                 else
                 {
@@ -212,26 +252,9 @@ namespace ProductPropertyKliensApp
             }
         }
 
-        private async Task loadPropertyListOfTypeAsync() {
-            try
-            {
-                if (ProductTypeBox.SelectedItem is ProductTypeDTO selectedType) {
-                    var propertiesApi = new PropertyAPI();
-                    List<ProductPropertyDTO> properties = await Task.Run(() => propertiesApi.GetPropertiesForType(selectedType.Bvin));
-                    PropertyListOfTheTypeListBox.DataSource = properties;
-                    PropertyListOfTheTypeListBox.DisplayMember = nameof(ProductPropertyDTO.PropertyName);
-                    PropertyListOfTheTypeListBox.ValueMember = nameof(ProductPropertyDTO.Id);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Hiba történt a tulajdonságok betöltésekor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private async void ProductTypeBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ProductTypeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            await loadPropertyListOfTypeAsync();
+            loadTypeLinkedProperties();
         }
     }
 }

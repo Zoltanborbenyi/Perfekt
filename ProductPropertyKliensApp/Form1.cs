@@ -56,5 +56,17 @@ namespace ProductPropertyKliensApp
 
             panelMain.Controls.Add(gridControl);
         }
+
+        private void ProductTypeButton_Click(object sender, EventArgs e)
+        {
+            panelMain.Controls.Clear();
+            var gridControl = new ProductTypeLinkUserControl(proxy)
+            {
+                Dock = DockStyle.Fill
+            };
+
+
+            panelMain.Controls.Add(gridControl);
+        }
     }
 }

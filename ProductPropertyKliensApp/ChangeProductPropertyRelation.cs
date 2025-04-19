@@ -22,6 +22,7 @@ namespace ProductPropertyKliensApp
         private readonly Dictionary<string, string> propertyTranslations;
         private Api proxy;
         private List<long> propertyIds;
+        private bool isTypeHomogen;
 
         public ChangeProductPropertyRelation(Api proxy, List<ProductDTO> productesProductLocal, List<String> displayedColumnsLocal, Dictionary<string, string> propertyTranslationsLocal)
         {
@@ -29,11 +30,20 @@ namespace ProductPropertyKliensApp
             this.selectedProduct = productesProductLocal;
             this.displayedColumns = displayedColumnsLocal;
             this.propertyTranslations = propertyTranslationsLocal;
+            this.isTypeHomogen = selectedProduct
+                .Select(p => p.ProductTypeId)
+                .Distinct()
+                .Count() == 1;
             InitializeComponent();
         }
 
         private async void ChangeProductPropertyRelation_Load(object sender, EventArgs e)
         {
+            if (!isTypeHomogen) {
+                textBox2.Text = "A kiválasztott termékek nem azonos típusúak, így a tulajdonságok nem azonosak. Kérjük válasszon ki azonos típussal rendelkező termékeket a listából!";
+                textBox2.Enabled = false;
+                button1.Enabled = false;
+            }
             loadPropertyIds();
             loadProducts();
             await loadProperties();
@@ -138,7 +148,8 @@ namespace ProductPropertyKliensApp
 
         private async void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (!(listBox2.SelectedItem is ProductPropertyDTO selectedProperty))
+            ProductPropertyDTO selectedProperty = listBox2.SelectedItem as ProductPropertyDTO;
+            if (selectedProperty == null)
             {
                 MessageBox.Show("Nincs kiválasztva tulajdonság",
                                 "Hiba",
@@ -201,5 +212,65 @@ namespace ProductPropertyKliensApp
             }
         }
 
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            ProductPropertyDTO selectedProperty = listBox2.SelectedItem as ProductPropertyDTO;
+            if (selectedProperty == null && textBox2.Text.Equals(""))
+            {
+                MessageBox.Show("Nincs kiválasztva tulajdonság vagy nincs megadva érték",
+                                "Hiba",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                return;
+            }
+
+            var dlg = MessageBox.Show(
+                "Biztos végbe akarja vinni a múdosításokat?",
+                "Megerősítés",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question
+            );
+            if (dlg != DialogResult.OK)
+                return;
+
+            int totalCount = 0;
+            int successCount = 0;
+
+            try
+            {
+                PropertyAPI propertiesApi = new PropertyAPI();
+
+                var uniqueTypeIds = selectedProduct
+                    .Select(p => p.ProductTypeId)
+                    .Distinct();
+
+                foreach (ProductDTO product in selectedProduct)
+                {
+                    totalCount++;
+                    bool properties = await Task.Run(() => propertiesApi.createPropertyValueForProduct(proxy, selectedProperty.Id, product.Bvin, textBox2.Text));
+                    if (properties)
+                        successCount++;
+                }
+
+
+
+                MessageBox.Show(
+                    $"Siker aránya: {successCount}/{totalCount}",
+                    "Válasz",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Hiba történt a link(ek) törlése közben: {ex.Message}",
+                    "Hiba",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
     }
 }
