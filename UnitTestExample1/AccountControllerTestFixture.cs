@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace UnitTestExample.Test
 {
-    [TestFixture]
+    [TestFixture] 
     public class AccountControllerTestFixture
     {
         [TestCase("abcd1234", false)]
