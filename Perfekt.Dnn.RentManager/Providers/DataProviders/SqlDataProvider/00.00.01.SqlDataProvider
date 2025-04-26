@@ -1,0 +1,30 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}RentManager_Items]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}RentManager_Items]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Items
+    (
+    Id int NOT NULL IDENTITY (1, 1),
+    ProductId nvarchar(255) NOT NULL,
+    KezdoDatum date NOT NULL,
+    VegDatum date NOT NULL,
+    ModuleId int
+    )  ON [PRIMARY]
+GO
+
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

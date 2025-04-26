@@ -1,0 +1,32 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.HCCProductProduct>>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+<div id="dnnModule-@Dnn.ModuleContext.ModuleId">
+    <h2>Elérhető termékek</h2>
+
+    <div class="row">
+        @foreach (var m in Model)
+        {
+            if (m == null)
+            {
+                <div class="alert alert-info">Nincs elérhető termék</div>
+                break;
+            }
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@m.HCC.RewriteURL</h5>
+                        <p class="text-muted">Napi bérleti díj: @m.Product.RentPrice.ToString("C")</p>
+
+                        <a href="@Url.Action("Rent", new { productId = m.Product.Id })"
+                           class="btn btn-primary">
+                            Bérlések kezelése
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
