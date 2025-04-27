@@ -31,6 +31,8 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Models
 		public string ProductId { get; set; }
 		public DateTime KezdoDatum { get; set; }
 		public DateTime VegDatum { get; set; }
+		public int NapokSzama { get; set; }
+		public int Osszeg { get; set; }
 		public int ModuleId { get; set; }
 	}
 }

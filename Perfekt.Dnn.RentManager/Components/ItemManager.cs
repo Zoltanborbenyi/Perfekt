@@ -22,9 +22,9 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 		void CreateItem(Item t);
 		//void DeleteItem(int itemId, int moduleId);
 		//void DeleteItem(Item t);
-		IEnumerable<Item> GetItems(string productId);
-		//Item GetItem(int itemId, int moduleId);
-		//void UpdateItem(Item t);
+		IEnumerable<Item> GetItems();
+		Item GetItem(int Id);
+		void UpdateItem(Item t);
 	}
 
 	internal class ItemManager : ServiceLocator<IItemManager, ItemManager>, IItemManager
@@ -53,36 +53,36 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 		//	}
 		//}
 
-		public IEnumerable<Item> GetItems(string productId)
+		public IEnumerable<Item> GetItems()
 		{
 			IEnumerable<Item> t;
 			using (IDataContext ctx = DataContext.Instance())
 			{
 				var rep = ctx.GetRepository<Item>();
-				t = rep.Get(productId);
+				t = rep.Get();
 			}
 			return t;
 		}
 
-		//public Item GetItem(int itemId, int moduleId)
-		//{
-		//	Item t;
-		//	using (IDataContext ctx = DataContext.Instance())
-		//	{
-		//		var rep = ctx.GetRepository<Item>();
-		//		t = rep.GetById(itemId, moduleId);
-		//	}
-		//	return t;
-		//}
+		public Item GetItem(int Id)
+		{
+			Item t;
+			using (IDataContext ctx = DataContext.Instance())
+			{
+				var rep = ctx.GetRepository<Item>();
+				t = rep.GetById(Id);
+			}
+			return t;
+		}
 
-		//public void UpdateItem(Item t)
-		//{
-		//	using (IDataContext ctx = DataContext.Instance())
-		//	{
-		//		var rep = ctx.GetRepository<Item>();
-		//		rep.Update(t);
-		//	}
-		//}
+		public void UpdateItem(Item t)
+		{
+			using (IDataContext ctx = DataContext.Instance())
+			{
+				var rep = ctx.GetRepository<Item>();
+				rep.Update(t);
+			}
+		}
 
 		protected override System.Func<IItemManager> GetFactory()
 		{

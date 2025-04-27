@@ -33,69 +33,41 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 		//	return RedirectToDefaultRoute();
 		//}
 
-		//public ActionResult Edit(int Id = -1)
-		//{
-		//	var item = (Id == -1)
-		//		 ? new Item { }
-		//		 : ItemManager.Instance.GetItem(Id);
+		public ActionResult Edit(int Id = -1)
+		{
+			var item = (Id == -1)
+				 ? new Item { }
+				 : ItemManager.Instance.GetItem(Id);
 
-		//	return View(item);
-		//}
-
+			return View(item);
+		}
 
 		[HttpPost]
 		[DotNetNuke.Web.Mvc.Framework.ActionFilters.ValidateAntiForgeryToken]
-		public ActionResult Edit(Item item, string id, DateTime kezdet, DateTime veg)
+		public ActionResult Edit(Item item)
 		{
 			if (item.Id == -1)
 			{
-				item.ProductId = id;
-				item.KezdoDatum = kezdet;
-				item.VegDatum = veg;
-
 				ItemManager.Instance.CreateItem(item);
 			}
 
 			return RedirectToDefaultRoute();
-
-			//if (item.ItemId == -1)
-			//{
-			//	item.CreatedByUserId = User.UserID;
-			//	item.CreatedOnDate = DateTime.UtcNow;
-			//	item.LastModifiedByUserId = User.UserID;
-			//	item.LastModifiedOnDate = DateTime.UtcNow;
-
-			//	ItemManager.Instance.CreateItem(item);
-			//}
-			//else
-			//{
-			//	var existingItem = ItemManager.Instance.GetItem(item.ItemId, item.ModuleId);
-			//	existingItem.LastModifiedByUserId = User.UserID;
-			//	existingItem.LastModifiedOnDate = DateTime.UtcNow;
-			//	existingItem.ItemName = item.ItemName;
-			//	existingItem.ItemDescription = item.ItemDescription;
-			//	existingItem.AssignedUserId = item.AssignedUserId;
-
-			//	ItemManager.Instance.UpdateItem(existingItem);
-			//}
 		}
 
 		//[ModuleAction(ControlKey = "Edit", TitleKey = "AddItem")]
-
 		public ActionResult Index()
 		{
 			// Retrieve the DefaultView setting
-			var defaultView = ModuleContext.Configuration.ModuleSettings.GetValueOrDefault("Perfekt.Dnn.Perfekt.Dnn.RentManager", "Index");
+			var defaultView = ModuleContext.Configuration.ModuleSettings.GetValueOrDefault("Perfekt.Dnn.RentManager_DefaultView", "Index");
 
 			// Redirect to the appropriate action based on the setting
-			if (defaultView == "Additem")
+			if(defaultView.Equals("Additem", StringComparison.OrdinalIgnoreCase))
 			{
 				return RedirectToAction("Additem");
 			}
-			else
+			else 
 			{
-				Product p = new Product();
-				var items = ItemManager.Instance.GetItems(p.Id);
+				var items = ItemManager.Instance.GetItems();
 				return View(items);
 			}
 		}
@@ -103,61 +75,18 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 		{
 			return View(new Item());
 		}
-
 		[HttpPost]
-		public ActionResult AddItem(Item t)
+		public ActionResult AddItem(Item model)
 		{
-			ItemManager.Instance.CreateItem(t);
+
+			model.ProductId = "teszt";
+			model.KezdoDatum = DateTime.Parse(Request.Form["KezdoDatum"]);
+			model.VegDatum = DateTime.Parse(Request.Form["VegDatum"]);
+			model.NapokSzama = int.Parse(Request.Form["NapokSzama"]);
+			model.Osszeg = int.Parse(Request.Form["Osszeg"]);
+
+			ItemManager.Instance.CreateItem(model);
 			return RedirectToDefaultRoute();
 		}
 	}
-	//public class ItemController : DnnController
-	//{
-
-	//	public ActionResult Delete(int itemId)
-	//	{
-	//		ItemManager.Instance.DeleteItem(itemId, ModuleContext.ModuleId);
-	//		return RedirectToDefaultRoute();
-	//	}
-
-	//	public ActionResult Edit(int itemId = -1)
-	//	{
-	//		DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(CommonJs.DnnPlugins);
-
-	//		var userlist = UserController.GetUsers(PortalSettings.PortalId);
-	//		var users = from user in userlist.Cast<UserInfo>().ToList()
-	//					select new SelectListItem { Text = user.DisplayName, Value = user.UserID.ToString() };
-
-	//		ViewBag.Users = users;
-
-	//		var item = (itemId == -1)
-	//			 ? new Item { ModuleId = ModuleContext.ModuleId }
-	//			 : ItemManager.Instance.GetItem(itemId, ModuleContext.ModuleId);
-
-	//		return View(item);
-	//	}
-
-	//	[HttpPost]
-	//	[DotNetNuke.Web.Mvc.Framework.ActionFilters.ValidateAntiForgeryToken]
-	//	public ActionResult Edit(Item item,string id, DateTime kezd, DateTime veg)
-	//	{
-	//		if (item.Id == -1)
-	//		{
-	//			item.ProductId = id;
-	//			item.KezdoDatum = kezd;
-	//			item.VegDatum = veg;
-
-	//			ItemManager.Instance.CreateItem(item);
-	//		}
-
-	//		return RedirectToDefaultRoute();
-	//	}
-
-	//	[ModuleAction(ControlKey = "Edit", TitleKey = "AddItem")]
-	//	public ActionResult Index()
-	//	{
-	//		var items = ItemManager.Instance.GetItems(ModuleContext.ModuleId);
-	//		return View(items);
-	//	}
-	//}
 }

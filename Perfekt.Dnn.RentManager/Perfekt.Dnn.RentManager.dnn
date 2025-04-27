@@ -43,7 +43,7 @@
           <desktopModule>
             <moduleName>Perfekt.Dnn.RentManager</moduleName>
             <foldername>Perfekt.Dnn.RentManager</foldername>
-            <businessControllerClass>Perfekt.Dnn.RentManager.Components.FeatureController</businessControllerClass>
+            <businessControllerClass>Perfekt.Dnn.Perfekt.Dnn.RentManager.Components.FeatureController</businessControllerClass>
             <supportedFeatures />
             <moduleDefinitions>
               <moduleDefinition>
