@@ -44,12 +44,12 @@ namespace ProductPropertyKliensApp
                 textBox2.Enabled = false;
                 button1.Enabled = false;
             }
-            loadPropertyIds();
             loadProducts();
+            await loadSetProperties();
             await loadProperties();
         }
 
-        private async void loadPropertyIds()
+        private async Task loadPropertyIds()
         {
             try
             {
@@ -65,6 +65,7 @@ namespace ProductPropertyKliensApp
         private async Task loadProperties() {
             try
             {
+                await loadPropertyIds();
                 PropertyAPI propertiesApi = new PropertyAPI();
                 List<ProductPropertyDTO> properties = await Task.Run(() => propertiesApi.getAllProductProperty(proxy));
                 bindingSource1.DataSource = properties.Where(p =>
@@ -73,11 +74,6 @@ namespace ProductPropertyKliensApp
                 listBox1.DisplayMember = nameof(ProductPropertyDTO.PropertyName);
                 listBox1.ValueMember = nameof(ProductPropertyDTO.Id);
                 listBox1.DataSource = bindingSource1;
-
-                bindingSource2.DataSource = properties.Where(p => propertyIds.Contains(p.Id)).ToList();
-                listBox2.DisplayMember = nameof(ProductPropertyDTO.PropertyName);
-                listBox2.ValueMember = nameof(ProductPropertyDTO.Id);
-                listBox2.DataSource = bindingSource2;
             }
             catch (Exception ex)
             {
@@ -85,7 +81,30 @@ namespace ProductPropertyKliensApp
             }
         }
 
-        private void loadProducts()
+        private async Task loadSetProperties()
+        {
+            try {
+                await loadPropertyIds();
+                PropertyAPI propertiesApi = new PropertyAPI();
+                List<ProductPropertyDTO> properties = await Task.Run(() => propertiesApi.getAllProductProperty(proxy));
+                
+                this.Enabled = false;
+
+                await Task.Delay(TimeSpan.FromSeconds(1));
+
+                this.Enabled = true;
+                var propertySet = properties.Where(p => propertyIds.Contains(p.Id)).ToList();
+                listBox2.DataSource =propertySet;
+                listBox2.DisplayMember = nameof(ProductPropertyDTO.PropertyName);
+                listBox2.ValueMember = nameof(ProductPropertyDTO.Id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt a tulajdonságok betöltésekor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+            private void loadProducts()
         {
             try
             {
@@ -111,7 +130,6 @@ namespace ProductPropertyKliensApp
 
         private async void TypePropertySearchBox_TextChanged(object sender, EventArgs e)
         {
-            loadProducts();
             await loadProperties();
         }
 
@@ -136,8 +154,9 @@ namespace ProductPropertyKliensApp
                 {
                     MessageBox.Show($"Hiba történt az Érték felvétele közben: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                loadPropertyIds();
+
                 loadProducts();
+                await loadSetProperties();
                 await loadProperties();
             }
             else{
@@ -197,9 +216,7 @@ namespace ProductPropertyKliensApp
                     MessageBoxIcon.Information
                 );
 
-                loadPropertyIds();
-                loadProducts();
-                await loadProperties();
+               
             }
             catch (Exception ex)
             {
@@ -208,8 +225,14 @@ namespace ProductPropertyKliensApp
                     "Hiba",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
+
                 );
+
             }
+            await loadSetProperties();
+
+            
+            await loadProperties();
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -271,6 +294,15 @@ namespace ProductPropertyKliensApp
                     MessageBoxIcon.Error
                 );
             }
+            await loadSetProperties();
+
+
+            await loadProperties();
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
