@@ -19,15 +19,20 @@ namespace ProductPropertyKliensApp
         public Api proxy;
         public Form1()
         {
-            string apiUrl = ConfigurationManager.AppSettings["apiurl"];
-            string apiKey = ConfigurationManager.AppSettings["apikulcs"];
-            proxy = new Api(apiUrl, apiKey);
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            Login loginForm = new Login();
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                this.proxy = loginForm.proxy;
+                loginForm.Close();
+            }
+            else { 
+                this.Close();
+            }
         }
 
         private void ProductButton_Click(object sender, EventArgs e)

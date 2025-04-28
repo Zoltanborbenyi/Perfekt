@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\CategoryAPI.cs" />
     <Compile Include="API\ProductTypesAPI.cs" />
     <Compile Include="API\PropertyAPI.cs" />
     <Compile Include="ChangeProductPropertyRelation.cs">
@@ -88,6 +89,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="API\ProductAPI.cs" />
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductTypeLinkUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -118,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductTypeLinkUserControl.resx">
       <DependentUpon>ProductTypeLinkUserControl.cs</DependentUpon>
