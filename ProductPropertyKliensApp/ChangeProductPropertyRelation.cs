@@ -248,7 +248,7 @@ namespace ProductPropertyKliensApp
             }
 
             var dlg = MessageBox.Show(
-                "Biztos végbe akarja vinni a múdosításokat?",
+                "Biztos végbe akarja vinni a módosításokat?",
                 "Megerősítés",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Question
