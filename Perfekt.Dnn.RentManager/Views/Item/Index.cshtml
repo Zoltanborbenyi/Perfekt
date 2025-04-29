@@ -1,0 +1,39 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.Item>>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+<div id="Items-@Dnn.ModuleContext.ModuleId">
+    <h2>Bérlés</h2>
+
+    <a href="@Url.Action("Additem", "Item", new { ProductId = Request.QueryString["ProductId"] })">
+        Bérlés indítása
+    </a>
+
+    <!-- Bérlések listája -->
+    <h4>Aktuális bérlések</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Termék</th>
+                <th>Kezdés</th>
+                <th>Végzés</th>
+                <th>Napok</th>
+                <th>Összeg</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductId</td>
+                    <td>@item.KezdoDatum.ToShortDateString()</td>
+                    <td>@item.VegDatum.ToShortDateString()</td>
+                    <td>@item.NapokSzama</td>
+                    <td>@item.Osszeg.ToString("N0") Ft</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

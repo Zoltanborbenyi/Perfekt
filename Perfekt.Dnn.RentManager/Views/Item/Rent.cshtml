@@ -1,0 +1,104 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.ProductItem>>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css" />
+
+<div id="dnnModule-@Dnn.ModuleContext.ModuleId">
+    <h2>@Model bérlései</h2>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>Új bérlés</h5>
+        </div>
+        <form class="card-body">
+            <div class="form-group">
+                <label for="fromDate">Kezdő dátum:</label>
+                <input type="text" name="fromDate" id="fromDate" class="datePicker form-control"
+                       autocomplete="off" value="@Request["fromDate"]" />
+            </div>
+
+            <div class="form-group">
+                <label for="toDate">Záró dátum:</label>
+                <input type="text" name="toDate" id="toDate" class="datePicker form-control"
+                       autocomplete="off" value="@Request["toDate"]" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Számol</button>
+        </form>
+    </div>
+
+    @* Napok kiszámítása *@
+    @{
+        int napokSzama = 0;
+        DateTime fromDate, toDate;
+        int osszeg = 1000;
+
+        if (DateTime.TryParse(Request["fromDate"], out fromDate) &&
+            DateTime.TryParse(Request["toDate"], out toDate))
+        {
+            napokSzama = (toDate - fromDate).Days + 1;
+
+            if (napokSzama < 0)
+            {
+                napokSzama = 0;
+            }
+        }
+
+        osszeg = osszeg * napokSzama;
+    }
+
+    <p><strong>Napok száma:</strong> @napokSzama</p>
+    <p><strong>Teljes összeg:</strong> @osszeg</p>
+
+    @if (napokSzama > 0)
+    {
+        <a href="/HotcakesStore/cart?AddSku=01&AddSkuQty=1" class="btn btn-primary">
+            KOSÁRBA
+        </a>
+        <a href="@Url.Action("Additem", "Item")">Hozzáadás</a>
+    }
+    else
+    {
+        <button href="#" class="btn btn-secondary">
+            KOSÁRBA
+        </button>
+    }
+
+    <!-- Bérlések listája -->
+    <h4>Aktuális bérlések</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Kezdés</th>
+                <th>Végzés</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.Items.ProductId == "")
+                {
+                    <tr>
+                        <td>@item.Items.KezdoDatum</td>
+                        <td>@item.Items.VegDatum</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <a href="@Url.Action("Index")" class="btn btn-secondary">
+        Vissza a terméklistához
+    </a>
+</div>
+<script>
+    $(function () {
+        // Initialize datepicker
+        $('.datePicker').datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
+    });
+</script>

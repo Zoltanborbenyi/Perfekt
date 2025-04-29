@@ -1,0 +1,36 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.Product>>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+@using Perfekt.Dnn.Perfekt.Dnn.RentManager.Models
+
+<div id="Products-@Dnn.ModuleContext.ModuleId">
+    <h2>Bérlés</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Termék</th>
+                @*<th>Kép</th>
+                <th>Bérlés Díja</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>
+                        <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId })">
+                            @product.ProductId
+                        </a>
+                    </td>
+                    @*<td>
+                        <img id="productImage" src="#" alt="Termék képe" style="max-width:100%;" />
+                    </td>
+                    <td>
+                        @product.BerlesDij
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
