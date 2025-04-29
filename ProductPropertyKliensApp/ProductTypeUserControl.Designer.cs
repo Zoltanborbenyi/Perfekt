@@ -62,7 +62,7 @@
             // SearchBoxForTypes
             // 
             this.SearchBoxForTypes.Location = new System.Drawing.Point(45, 57);
-            this.SearchBoxForTypes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SearchBoxForTypes.Margin = new System.Windows.Forms.Padding(4);
             this.SearchBoxForTypes.Name = "SearchBoxForTypes";
             this.SearchBoxForTypes.Size = new System.Drawing.Size(240, 22);
             this.SearchBoxForTypes.TabIndex = 0;
@@ -75,7 +75,7 @@
             this.ProductTypeBox.FormattingEnabled = true;
             this.ProductTypeBox.ItemHeight = 16;
             this.ProductTypeBox.Location = new System.Drawing.Point(47, 107);
-            this.ProductTypeBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ProductTypeBox.Margin = new System.Windows.Forms.Padding(4);
             this.ProductTypeBox.Name = "ProductTypeBox";
             this.ProductTypeBox.Size = new System.Drawing.Size(237, 532);
             this.ProductTypeBox.TabIndex = 1;
@@ -107,7 +107,7 @@
             this.TypePropertyListBox.FormattingEnabled = true;
             this.TypePropertyListBox.ItemHeight = 16;
             this.TypePropertyListBox.Location = new System.Drawing.Point(497, 107);
-            this.TypePropertyListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TypePropertyListBox.Margin = new System.Windows.Forms.Padding(4);
             this.TypePropertyListBox.Name = "TypePropertyListBox";
             this.TypePropertyListBox.Size = new System.Drawing.Size(237, 532);
             this.TypePropertyListBox.TabIndex = 4;
@@ -115,7 +115,7 @@
             // TypePropertySearchBox
             // 
             this.TypePropertySearchBox.Location = new System.Drawing.Point(497, 57);
-            this.TypePropertySearchBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TypePropertySearchBox.Margin = new System.Windows.Forms.Padding(4);
             this.TypePropertySearchBox.Name = "TypePropertySearchBox";
             this.TypePropertySearchBox.Size = new System.Drawing.Size(240, 22);
             this.TypePropertySearchBox.TabIndex = 3;
@@ -124,7 +124,7 @@
             // NewTypeBox
             // 
             this.NewTypeBox.Location = new System.Drawing.Point(292, 127);
-            this.NewTypeBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NewTypeBox.Margin = new System.Windows.Forms.Padding(4);
             this.NewTypeBox.Name = "NewTypeBox";
             this.NewTypeBox.Size = new System.Drawing.Size(195, 22);
             this.NewTypeBox.TabIndex = 6;
@@ -132,7 +132,7 @@
             // CreateNewType
             // 
             this.CreateNewType.Location = new System.Drawing.Point(293, 164);
-            this.CreateNewType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CreateNewType.Margin = new System.Windows.Forms.Padding(4);
             this.CreateNewType.Name = "CreateNewType";
             this.CreateNewType.Size = new System.Drawing.Size(195, 39);
             this.CreateNewType.TabIndex = 7;
@@ -143,7 +143,7 @@
             // DeleteType
             // 
             this.DeleteType.Location = new System.Drawing.Point(293, 210);
-            this.DeleteType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DeleteType.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteType.Name = "DeleteType";
             this.DeleteType.Size = new System.Drawing.Size(195, 39);
             this.DeleteType.TabIndex = 8;
@@ -154,7 +154,7 @@
             // LinkBetweenTypeAndProperty
             // 
             this.LinkBetweenTypeAndProperty.Location = new System.Drawing.Point(293, 257);
-            this.LinkBetweenTypeAndProperty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LinkBetweenTypeAndProperty.Margin = new System.Windows.Forms.Padding(4);
             this.LinkBetweenTypeAndProperty.Name = "LinkBetweenTypeAndProperty";
             this.LinkBetweenTypeAndProperty.Size = new System.Drawing.Size(195, 55);
             this.LinkBetweenTypeAndProperty.TabIndex = 9;
@@ -165,7 +165,7 @@
             // DeleteLinkBetweenTypeAndProperty
             // 
             this.DeleteLinkBetweenTypeAndProperty.Location = new System.Drawing.Point(293, 320);
-            this.DeleteLinkBetweenTypeAndProperty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DeleteLinkBetweenTypeAndProperty.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteLinkBetweenTypeAndProperty.Name = "DeleteLinkBetweenTypeAndProperty";
             this.DeleteLinkBetweenTypeAndProperty.Size = new System.Drawing.Size(195, 55);
             this.DeleteLinkBetweenTypeAndProperty.TabIndex = 10;
@@ -176,7 +176,7 @@
             // PropertyNameBox
             // 
             this.PropertyNameBox.Location = new System.Drawing.Point(789, 177);
-            this.PropertyNameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PropertyNameBox.Margin = new System.Windows.Forms.Padding(4);
             this.PropertyNameBox.Name = "PropertyNameBox";
             this.PropertyNameBox.Size = new System.Drawing.Size(247, 22);
             this.PropertyNameBox.TabIndex = 11;
@@ -190,7 +190,7 @@
             // PropertyDefaultValueBox
             // 
             this.PropertyDefaultValueBox.Location = new System.Drawing.Point(789, 295);
-            this.PropertyDefaultValueBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PropertyDefaultValueBox.Margin = new System.Windows.Forms.Padding(4);
             this.PropertyDefaultValueBox.Multiline = true;
             this.PropertyDefaultValueBox.Name = "PropertyDefaultValueBox";
             this.PropertyDefaultValueBox.Size = new System.Drawing.Size(247, 75);
@@ -199,7 +199,7 @@
             // PropertyDisplayNameBox
             // 
             this.PropertyDisplayNameBox.Location = new System.Drawing.Point(789, 239);
-            this.PropertyDisplayNameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PropertyDisplayNameBox.Margin = new System.Windows.Forms.Padding(4);
             this.PropertyDisplayNameBox.Name = "PropertyDisplayNameBox";
             this.PropertyDisplayNameBox.Size = new System.Drawing.Size(247, 22);
             this.PropertyDisplayNameBox.TabIndex = 14;
@@ -237,7 +237,7 @@
             // PropertyCreateButton
             // 
             this.PropertyCreateButton.Location = new System.Drawing.Point(819, 393);
-            this.PropertyCreateButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PropertyCreateButton.Margin = new System.Windows.Forms.Padding(4);
             this.PropertyCreateButton.Name = "PropertyCreateButton";
             this.PropertyCreateButton.Size = new System.Drawing.Size(192, 43);
             this.PropertyCreateButton.TabIndex = 18;
@@ -258,7 +258,7 @@
             // DeletePropertyBotton
             // 
             this.DeletePropertyBotton.Location = new System.Drawing.Point(819, 444);
-            this.DeletePropertyBotton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DeletePropertyBotton.Margin = new System.Windows.Forms.Padding(4);
             this.DeletePropertyBotton.Name = "DeletePropertyBotton";
             this.DeletePropertyBotton.Size = new System.Drawing.Size(192, 43);
             this.DeletePropertyBotton.TabIndex = 20;
@@ -271,11 +271,11 @@
             this.PropertyListOfTheTypeListBox.FormattingEnabled = true;
             this.PropertyListOfTheTypeListBox.ItemHeight = 16;
             this.PropertyListOfTheTypeListBox.Location = new System.Drawing.Point(293, 411);
-            this.PropertyListOfTheTypeListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PropertyListOfTheTypeListBox.Margin = new System.Windows.Forms.Padding(4);
             this.PropertyListOfTheTypeListBox.Name = "PropertyListOfTheTypeListBox";
             this.PropertyListOfTheTypeListBox.Size = new System.Drawing.Size(193, 228);
             this.PropertyListOfTheTypeListBox.TabIndex = 21;
-            // 
+            //
             // label2
             // 
             this.label2.AutoSize = true;
@@ -311,7 +311,7 @@
             this.Controls.Add(this.PropertyTypeLable);
             this.Controls.Add(this.ProductTypeBox);
             this.Controls.Add(this.SearchBoxForTypes);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ProductTypeUserControl";
             this.Size = new System.Drawing.Size(1092, 650);
             this.Load += new System.EventHandler(this.ProductTypeUserControl_Load);

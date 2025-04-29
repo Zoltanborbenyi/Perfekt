@@ -121,8 +121,9 @@ namespace ProductPropertyKliensApp
                     PropertyListOfTheTypeListBox.DataSource = linkedProperties;
                     PropertyListOfTheTypeListBox.DisplayMember = nameof(ProductPropertyDTO.PropertyName);
                     PropertyListOfTheTypeListBox.ValueMember = nameof(ProductPropertyDTO.Id);
-                    PropertyListOfTheTypeListBox.Enabled = false;
-                    PropertyListOfTheTypeListBox.SelectedItem = null;
+                    PropertyListOfTheTypeListBox.SelectionMode = SelectionMode.None;  
+                    PropertyListOfTheTypeListBox.IntegralHeight = false;             
+                    PropertyListOfTheTypeListBox.HorizontalScrollbar = true;
                 }
                 else {
                     PropertyListOfTheTypeListBox.DataSource = null;
@@ -256,5 +257,6 @@ namespace ProductPropertyKliensApp
         {
             loadTypeLinkedProperties();
         }
+
     }
 }
