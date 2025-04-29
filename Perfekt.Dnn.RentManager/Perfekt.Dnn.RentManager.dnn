@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <dotnetnuke type="Package" version="5.0">
   <packages>
     <package name="Perfekt.Dnn.RentManager" type="Module" version="00.00.01">
@@ -97,4 +98,105 @@
       </components>
     </package>
   </packages>
+=======
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="Perfekt.Dnn.RentManager" type="Module" version="00.00.01">
+      <friendlyName>Perfekt.Dnn.RentManager</friendlyName>
+      <description>Perfekt.Dnn.RentManager</description>
+      <iconFile>~/Icons/Sigma/Software_32X32_Standard.png</iconFile>
+      <owner>
+        <name>Perfekt</name>
+        <organization>Perfekt</organization>
+        <url>http://rendfejl2000.northeurope.cloudapp.azure.com:8080/</url>
+        <email>matyas.tulok@stud.uni-corvinus.hu</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <dependencies>
+        <dependency type="CoreVersion">09.08.00</dependency>
+      </dependencies>
+      <components>
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules\MVC\Perfekt.Dnn.RentManager</basePath>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>00.00.01.SqlDataProvider</name>
+              <version>00.00.01</version>
+            </script>
+            <script type="UnInstall">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>Uninstall.SqlDataProvider</name>
+              <version>00.00.01</version>
+            </script>
+          </scripts>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/MVC/Perfekt.Dnn.RentManager</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>Perfekt.Dnn.RentManager</moduleName>
+            <foldername>Perfekt.Dnn.RentManager</foldername>
+            <businessControllerClass>Perfekt.Dnn.Perfekt.Dnn.RentManager.Components.FeatureController</businessControllerClass>
+            <supportedFeatures />
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>Perfekt.Dnn.RentManager</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers/Item/Index.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Edit</controlKey>
+                    <controlSrc>Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers/Item/Edit.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Edit Content</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                    <supportsPopUps>True</supportsPopUps>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Settings</controlKey>
+                    <controlSrc>Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers/Settings/Settings.mvc</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Perfekt.Dnn.RentManager Settings</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <name>Perfekt.Dnn.RentManager.dll</name>
+              <path>bin</path>
+            </assembly>
+          </assemblies>
+        </component>
+      </components>
+    </package>
+  </packages>
+>>>>>>> 31121639048c6006417ddf5cbecf01d93a108438
 </dotnetnuke>

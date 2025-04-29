@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt.Dnn.RentManager.csproj.AssemblyReference.cache
 C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt.Dnn.Perfekt.Dnn.RentManager.App_LocalResources.Settings.resources
 C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt.Dnn.RentManager.csproj.GenerateResource.cache
@@ -8,3 +9,15 @@ C:\Users\DNN_DEV\DesktopModules\bin\Perfekt.Dnn.RentManager.pdb
 C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt..3DAAD005.Up2Date
 C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt.Dnn.RentManager.dll
 C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt.Dnn.RentManager.pdb
+=======
+C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt.Dnn.RentManager.csproj.AssemblyReference.cache
+C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt.Dnn.Perfekt.Dnn.RentManager.App_LocalResources.Settings.resources
+C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt.Dnn.RentManager.csproj.GenerateResource.cache
+C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt.Dnn.RentManager.csproj.CoreCompileInputs.cache
+C:\Users\DNN_DEV\DesktopModules\bin\Perfekt.Dnn.RentManager.dll.config
+C:\Users\DNN_DEV\DesktopModules\bin\Perfekt.Dnn.RentManager.dll
+C:\Users\DNN_DEV\DesktopModules\bin\Perfekt.Dnn.RentManager.pdb
+C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt..3DAAD005.Up2Date
+C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt.Dnn.RentManager.dll
+C:\Users\DNN_DEV\DesktopModules\Perfekt\module-rentmanager\Perfekt.Dnn.RentManager\obj\Release\Perfekt.Dnn.RentManager.pdb
+>>>>>>> 31121639048c6006417ddf5cbecf01d93a108438
