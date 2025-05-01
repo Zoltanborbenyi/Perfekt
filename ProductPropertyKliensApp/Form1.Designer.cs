@@ -36,12 +36,16 @@
             // 
             // ProductButton
             // 
+            this.ProductButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
+            this.ProductButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProductButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
             this.ProductButton.Location = new System.Drawing.Point(3, 19);
-            this.ProductButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ProductButton.Margin = new System.Windows.Forms.Padding(0);
             this.ProductButton.Name = "ProductButton";
             this.ProductButton.Size = new System.Drawing.Size(402, 48);
             this.ProductButton.TabIndex = 0;
             this.ProductButton.Text = "Termékek";
+            this.ProductButton.UseVisualStyleBackColor = false;
             this.ProductButton.Click += new System.EventHandler(this.ProductButton_Click);
             // 
             // panelMain
@@ -57,22 +61,33 @@
             // 
             // Property
             // 
+            this.Property.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Property.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
+            this.Property.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Property.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
             this.Property.Location = new System.Drawing.Point(838, 19);
-            this.Property.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Property.Margin = new System.Windows.Forms.Padding(0);
             this.Property.Name = "Property";
             this.Property.Size = new System.Drawing.Size(402, 48);
             this.Property.TabIndex = 2;
             this.Property.Text = "Termék Tulajdonságok";
+            this.Property.UseVisualStyleBackColor = false;
             this.Property.Click += new System.EventHandler(this.Property_Click);
             // 
             // ProductTypeButton
             // 
+            this.ProductTypeButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProductTypeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
+            this.ProductTypeButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProductTypeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
             this.ProductTypeButton.Location = new System.Drawing.Point(421, 19);
-            this.ProductTypeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ProductTypeButton.Margin = new System.Windows.Forms.Padding(0);
             this.ProductTypeButton.Name = "ProductTypeButton";
             this.ProductTypeButton.Size = new System.Drawing.Size(402, 48);
             this.ProductTypeButton.TabIndex = 3;
             this.ProductTypeButton.Text = "Termék Típusok";
+            this.ProductTypeButton.UseVisualStyleBackColor = false;
             this.ProductTypeButton.Click += new System.EventHandler(this.ProductTypeButton_Click);
             // 
             // Form1
