@@ -38,10 +38,11 @@
             this.LoginText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LoginText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LoginText.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginText.Location = new System.Drawing.Point(52, 67);
             this.LoginText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LoginText.Name = "LoginText";
-            this.LoginText.Size = new System.Drawing.Size(563, 26);
+            this.LoginText.Size = new System.Drawing.Size(563, 30);
             this.LoginText.TabIndex = 0;
             // 
             // label1
@@ -49,10 +50,10 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(48, 41);
+            this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(49, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 19);
+            this.label1.Size = new System.Drawing.Size(196, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "KULCS MEGADÁSA";
             // 
@@ -62,7 +63,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LoginButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.LoginButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
-            this.LoginButton.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginButton.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
             this.LoginButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
             this.LoginButton.Location = new System.Drawing.Point(227, 105);
             this.LoginButton.Margin = new System.Windows.Forms.Padding(0);
