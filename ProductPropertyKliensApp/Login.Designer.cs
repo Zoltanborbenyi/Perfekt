@@ -35,38 +35,57 @@
             // 
             // LoginText
             // 
-            this.LoginText.Location = new System.Drawing.Point(46, 37);
+            this.LoginText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoginText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LoginText.Location = new System.Drawing.Point(52, 67);
+            this.LoginText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LoginText.Name = "LoginText";
-            this.LoginText.Size = new System.Drawing.Size(543, 22);
+            this.LoginText.Size = new System.Drawing.Size(563, 26);
             this.LoginText.TabIndex = 0;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 18);
+            this.label1.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(48, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 16);
+            this.label1.Size = new System.Drawing.Size(162, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Kulcs megadása";
+            this.label1.Text = "KULCS MEGADÁSA";
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(202, 67);
+            this.LoginButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoginButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.LoginButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
+            this.LoginButton.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
+            this.LoginButton.Location = new System.Drawing.Point(227, 105);
+            this.LoginButton.Margin = new System.Windows.Forms.Padding(0);
+            this.LoginButton.MinimumSize = new System.Drawing.Size(150, 50);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(228, 30);
+            this.LoginButton.Size = new System.Drawing.Size(209, 67);
             this.LoginButton.TabIndex = 2;
-            this.LoginButton.Text = "Login";
-            this.LoginButton.UseVisualStyleBackColor = true;
+            this.LoginButton.Text = "LOGIN";
+            this.LoginButton.UseVisualStyleBackColor = false;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 109);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(247)))), ((int)(((byte)(238)))));
+            this.ClientSize = new System.Drawing.Size(678, 194);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LoginText);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximumSize = new System.Drawing.Size(1000, 250);
+            this.MinimumSize = new System.Drawing.Size(700, 250);
             this.Name = "Login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);

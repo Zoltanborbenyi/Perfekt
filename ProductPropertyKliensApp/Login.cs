@@ -19,6 +19,7 @@ namespace ProductPropertyKliensApp
     public partial class Login : Form
     {
         public Api proxy;
+
         public Login()
         {
             InitializeComponent();
