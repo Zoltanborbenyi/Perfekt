@@ -88,22 +88,22 @@
             // PropertyTypeLable
             // 
             this.PropertyTypeLable.AutoSize = true;
-            this.PropertyTypeLable.Font = new System.Drawing.Font("Arial", 10F);
-            this.PropertyTypeLable.Location = new System.Drawing.Point(4, 15);
+            this.PropertyTypeLable.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PropertyTypeLable.Location = new System.Drawing.Point(4, 13);
             this.PropertyTypeLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PropertyTypeLable.Name = "PropertyTypeLable";
-            this.PropertyTypeLable.Size = new System.Drawing.Size(211, 23);
+            this.PropertyTypeLable.Size = new System.Drawing.Size(225, 24);
             this.PropertyTypeLable.TabIndex = 2;
             this.PropertyTypeLable.Text = "Termék típus keresése";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1.Location = new System.Drawing.Point(571, 15);
+            this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(571, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(267, 23);
+            this.label1.Size = new System.Drawing.Size(287, 24);
             this.label1.TabIndex = 5;
             this.label1.Text = "Termék tulajdonság keresése";
             // 
@@ -248,11 +248,11 @@
             this.PropertyNameLib.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyNameLib.AutoSize = true;
-            this.PropertyNameLib.Font = new System.Drawing.Font("Arial", 10F);
-            this.PropertyNameLib.Location = new System.Drawing.Point(907, 178);
+            this.PropertyNameLib.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PropertyNameLib.Location = new System.Drawing.Point(907, 176);
             this.PropertyNameLib.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PropertyNameLib.Name = "PropertyNameLib";
-            this.PropertyNameLib.Size = new System.Drawing.Size(243, 23);
+            this.PropertyNameLib.Size = new System.Drawing.Size(267, 24);
             this.PropertyNameLib.TabIndex = 15;
             this.PropertyNameLib.Text = "Tulajdonság technikai neve";
             // 
@@ -261,11 +261,11 @@
             this.PropertyDispalyNameLib.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyDispalyNameLib.AutoSize = true;
-            this.PropertyDispalyNameLib.Font = new System.Drawing.Font("Arial", 10F);
-            this.PropertyDispalyNameLib.Location = new System.Drawing.Point(908, 255);
+            this.PropertyDispalyNameLib.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PropertyDispalyNameLib.Location = new System.Drawing.Point(908, 253);
             this.PropertyDispalyNameLib.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PropertyDispalyNameLib.Name = "PropertyDispalyNameLib";
-            this.PropertyDispalyNameLib.Size = new System.Drawing.Size(161, 23);
+            this.PropertyDispalyNameLib.Size = new System.Drawing.Size(176, 24);
             this.PropertyDispalyNameLib.TabIndex = 16;
             this.PropertyDispalyNameLib.Text = "Tulajdonság neve";
             // 
@@ -274,11 +274,11 @@
             this.PropertyDefaultValueLib.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyDefaultValueLib.AutoSize = true;
-            this.PropertyDefaultValueLib.Font = new System.Drawing.Font("Arial", 10F);
+            this.PropertyDefaultValueLib.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PropertyDefaultValueLib.Location = new System.Drawing.Point(908, 325);
             this.PropertyDefaultValueLib.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PropertyDefaultValueLib.Name = "PropertyDefaultValueLib";
-            this.PropertyDefaultValueLib.Size = new System.Drawing.Size(100, 23);
+            this.PropertyDefaultValueLib.Size = new System.Drawing.Size(105, 24);
             this.PropertyDefaultValueLib.TabIndex = 17;
             this.PropertyDefaultValueLib.Text = "Alap érték";
             // 
@@ -300,11 +300,11 @@
             // NewTypeNameLib
             // 
             this.NewTypeNameLib.AutoSize = true;
-            this.NewTypeNameLib.Font = new System.Drawing.Font("Arial", 10F);
-            this.NewTypeNameLib.Location = new System.Drawing.Point(328, 17);
+            this.NewTypeNameLib.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewTypeNameLib.Location = new System.Drawing.Point(328, 15);
             this.NewTypeNameLib.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NewTypeNameLib.Name = "NewTypeNameLib";
-            this.NewTypeNameLib.Size = new System.Drawing.Size(113, 23);
+            this.NewTypeNameLib.Size = new System.Drawing.Size(123, 24);
             this.NewTypeNameLib.TabIndex = 19;
             this.NewTypeNameLib.Text = "Új típus név";
             // 
@@ -339,10 +339,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 10F);
-            this.label2.Location = new System.Drawing.Point(327, 86);
+            this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(327, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(189, 23);
+            this.label2.Size = new System.Drawing.Size(205, 24);
             this.label2.TabIndex = 22;
             this.label2.Text = "Jelenleg összekötött";
             this.label2.Click += new System.EventHandler(this.label2_Click);
