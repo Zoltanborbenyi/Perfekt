@@ -39,7 +39,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LoginText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LoginText.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginText.Location = new System.Drawing.Point(52, 67);
+            this.LoginText.Location = new System.Drawing.Point(52, 61);
             this.LoginText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LoginText.Name = "LoginText";
             this.LoginText.Size = new System.Drawing.Size(563, 30);
@@ -51,7 +51,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(49, 41);
+            this.label1.Location = new System.Drawing.Point(49, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(196, 24);
             this.label1.TabIndex = 1;
