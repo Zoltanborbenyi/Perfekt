@@ -50,6 +50,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -64,7 +67,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(449, 688);
+            this.dataGridView1.Size = new System.Drawing.Size(270, 653);
             this.dataGridView1.TabIndex = 0;
             // 
             // label1
@@ -80,20 +83,23 @@
             // 
             // listBox1
             // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox1.DataSource = this.bindingSource1;
             this.listBox1.Font = new System.Drawing.Font("Arial", 10F);
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 23;
-            this.listBox1.Location = new System.Drawing.Point(496, 99);
+            this.listBox1.Location = new System.Drawing.Point(317, 99);
             this.listBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(275, 648);
+            this.listBox1.Size = new System.Drawing.Size(275, 602);
             this.listBox1.TabIndex = 2;
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Font = new System.Drawing.Font("Arial", 10F);
-            this.textBox1.Location = new System.Drawing.Point(819, 59);
+            this.textBox1.Location = new System.Drawing.Point(640, 59);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -102,9 +108,10 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10F);
-            this.label2.Location = new System.Drawing.Point(817, 34);
+            this.label2.Location = new System.Drawing.Point(638, 34);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(178, 23);
@@ -113,19 +120,24 @@
             // 
             // UpdateProductPropertyBox
             // 
-            this.UpdateProductPropertyBox.Location = new System.Drawing.Point(820, 160);
-            this.UpdateProductPropertyBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.UpdateProductPropertyBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UpdateProductPropertyBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
+            this.UpdateProductPropertyBox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateProductPropertyBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(247)))), ((int)(((byte)(238)))));
+            this.UpdateProductPropertyBox.Location = new System.Drawing.Point(640, 149);
+            this.UpdateProductPropertyBox.Margin = new System.Windows.Forms.Padding(0);
             this.UpdateProductPropertyBox.Name = "UpdateProductPropertyBox";
             this.UpdateProductPropertyBox.Size = new System.Drawing.Size(176, 46);
             this.UpdateProductPropertyBox.TabIndex = 5;
             this.UpdateProductPropertyBox.Text = "Mentés";
-            this.UpdateProductPropertyBox.UseVisualStyleBackColor = true;
+            this.UpdateProductPropertyBox.UseVisualStyleBackColor = false;
             this.UpdateProductPropertyBox.Click += new System.EventHandler(this.UpdateProductPropertyBox_Click);
             // 
             // TypePropertySearchBox
             // 
+            this.TypePropertySearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TypePropertySearchBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.TypePropertySearchBox.Location = new System.Drawing.Point(496, 59);
+            this.TypePropertySearchBox.Location = new System.Drawing.Point(317, 59);
             this.TypePropertySearchBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TypePropertySearchBox.Name = "TypePropertySearchBox";
             this.TypePropertySearchBox.Size = new System.Drawing.Size(275, 30);
@@ -134,9 +146,10 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10F);
-            this.label3.Location = new System.Drawing.Point(817, 319);
+            this.label3.Location = new System.Drawing.Point(638, 299);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(208, 23);
@@ -145,10 +158,11 @@
             // 
             // listBox2
             // 
+            this.listBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox2.Font = new System.Drawing.Font("Arial", 10F);
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 23;
-            this.listBox2.Location = new System.Drawing.Point(819, 345);
+            this.listBox2.Location = new System.Drawing.Point(640, 325);
             this.listBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(349, 303);
@@ -157,20 +171,25 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(996, 160);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
+            this.DeleteButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(247)))), ((int)(((byte)(238)))));
+            this.DeleteButton.Location = new System.Drawing.Point(816, 149);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(0);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(176, 46);
             this.DeleteButton.TabIndex = 10;
             this.DeleteButton.Text = "Törlés";
-            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 6F);
-            this.label4.Location = new System.Drawing.Point(818, 653);
+            this.label4.Location = new System.Drawing.Point(639, 633);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(271, 15);
@@ -180,23 +199,29 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(913, 701);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
+            this.button1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(247)))), ((int)(((byte)(238)))));
+            this.button1.Location = new System.Drawing.Point(734, 666);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(176, 46);
             this.button1.TabIndex = 12;
             this.button1.Text = "Mentés";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox2
             // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Font = new System.Drawing.Font("Arial", 10F);
-            this.textBox2.Location = new System.Drawing.Point(819, 220);
+            this.textBox2.Location = new System.Drawing.Point(640, 225);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(350, 85);
+            this.textBox2.Size = new System.Drawing.Size(350, 50);
             this.textBox2.TabIndex = 13;
             // 
             // ChangeProductPropertyRelation
@@ -204,7 +229,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1200, 759);
+            this.ClientSize = new System.Drawing.Size(1021, 724);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -219,6 +244,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MinimumSize = new System.Drawing.Size(1043, 780);
             this.Name = "ChangeProductPropertyRelation";
             this.Text = "ChangeProductPropertyRelation";
             this.Load += new System.EventHandler(this.ChangeProductPropertyRelation_Load);
