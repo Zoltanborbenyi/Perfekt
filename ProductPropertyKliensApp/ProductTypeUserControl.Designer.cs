@@ -62,24 +62,26 @@
             // SearchBoxForTypes
             // 
             this.SearchBoxForTypes.Font = new System.Drawing.Font("Arial", 10F);
-            this.SearchBoxForTypes.Location = new System.Drawing.Point(51, 71);
+            this.SearchBoxForTypes.Location = new System.Drawing.Point(8, 39);
             this.SearchBoxForTypes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SearchBoxForTypes.Name = "SearchBoxForTypes";
-            this.SearchBoxForTypes.Size = new System.Drawing.Size(270, 30);
+            this.SearchBoxForTypes.Size = new System.Drawing.Size(296, 30);
             this.SearchBoxForTypes.TabIndex = 0;
             this.SearchBoxForTypes.TextChanged += new System.EventHandler(this.SearchBoxForTypes_TextChanged_1);
             // 
             // ProductTypeBox
             // 
+            this.ProductTypeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.ProductTypeBox.DataSource = this.productTypeBinding;
             this.ProductTypeBox.DisplayMember = "ProductTypeName";
             this.ProductTypeBox.Font = new System.Drawing.Font("Arial", 10F);
             this.ProductTypeBox.FormattingEnabled = true;
             this.ProductTypeBox.ItemHeight = 23;
-            this.ProductTypeBox.Location = new System.Drawing.Point(53, 111);
+            this.ProductTypeBox.Location = new System.Drawing.Point(8, 89);
             this.ProductTypeBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ProductTypeBox.Name = "ProductTypeBox";
-            this.ProductTypeBox.Size = new System.Drawing.Size(266, 671);
+            this.ProductTypeBox.Size = new System.Drawing.Size(296, 717);
             this.ProductTypeBox.TabIndex = 1;
             this.ProductTypeBox.SelectedIndexChanged += new System.EventHandler(this.ProductTypeBox_SelectedIndexChanged);
             // 
@@ -87,7 +89,7 @@
             // 
             this.PropertyTypeLable.AutoSize = true;
             this.PropertyTypeLable.Font = new System.Drawing.Font("Arial", 10F);
-            this.PropertyTypeLable.Location = new System.Drawing.Point(53, 47);
+            this.PropertyTypeLable.Location = new System.Drawing.Point(4, 15);
             this.PropertyTypeLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PropertyTypeLable.Name = "PropertyTypeLable";
             this.PropertyTypeLable.Size = new System.Drawing.Size(211, 23);
@@ -98,7 +100,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1.Location = new System.Drawing.Point(558, 47);
+            this.label1.Location = new System.Drawing.Point(571, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(267, 23);
@@ -107,30 +109,35 @@
             // 
             // TypePropertyListBox
             // 
+            this.TypePropertyListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TypePropertyListBox.DataSource = this.PropertyBinding;
             this.TypePropertyListBox.Font = new System.Drawing.Font("Arial", 10F);
             this.TypePropertyListBox.FormattingEnabled = true;
             this.TypePropertyListBox.ItemHeight = 23;
-            this.TypePropertyListBox.Location = new System.Drawing.Point(559, 123);
+            this.TypePropertyListBox.Location = new System.Drawing.Point(575, 89);
             this.TypePropertyListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TypePropertyListBox.Name = "TypePropertyListBox";
-            this.TypePropertyListBox.Size = new System.Drawing.Size(266, 671);
+            this.TypePropertyListBox.Size = new System.Drawing.Size(296, 717);
             this.TypePropertyListBox.TabIndex = 4;
             // 
             // TypePropertySearchBox
             // 
+            this.TypePropertySearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TypePropertySearchBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.TypePropertySearchBox.Location = new System.Drawing.Point(559, 71);
+            this.TypePropertySearchBox.Location = new System.Drawing.Point(572, 39);
             this.TypePropertySearchBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TypePropertySearchBox.Name = "TypePropertySearchBox";
-            this.TypePropertySearchBox.Size = new System.Drawing.Size(270, 30);
+            this.TypePropertySearchBox.Size = new System.Drawing.Size(299, 30);
             this.TypePropertySearchBox.TabIndex = 3;
             this.TypePropertySearchBox.TextChanged += new System.EventHandler(this.TypePropertySearchBox_TextChanged);
             // 
             // NewTypeBox
             // 
             this.NewTypeBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.NewTypeBox.Location = new System.Drawing.Point(331, 71);
+            this.NewTypeBox.Location = new System.Drawing.Point(328, 39);
             this.NewTypeBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NewTypeBox.Name = "NewTypeBox";
             this.NewTypeBox.Size = new System.Drawing.Size(219, 30);
@@ -138,6 +145,7 @@
             // 
             // CreateNewType
             // 
+            this.CreateNewType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CreateNewType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
             this.CreateNewType.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateNewType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
@@ -152,6 +160,7 @@
             // 
             // DeleteType
             // 
+            this.DeleteType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DeleteType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
             this.DeleteType.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
@@ -166,6 +175,7 @@
             // 
             // LinkBetweenTypeAndProperty
             // 
+            this.LinkBetweenTypeAndProperty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LinkBetweenTypeAndProperty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
             this.LinkBetweenTypeAndProperty.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LinkBetweenTypeAndProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
@@ -180,6 +190,7 @@
             // 
             // DeleteLinkBetweenTypeAndProperty
             // 
+            this.DeleteLinkBetweenTypeAndProperty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DeleteLinkBetweenTypeAndProperty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
             this.DeleteLinkBetweenTypeAndProperty.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteLinkBetweenTypeAndProperty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
@@ -194,8 +205,10 @@
             // 
             // PropertyNameBox
             // 
+            this.PropertyNameBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyNameBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.PropertyNameBox.Location = new System.Drawing.Point(888, 221);
+            this.PropertyNameBox.Location = new System.Drawing.Point(908, 201);
             this.PropertyNameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PropertyNameBox.Name = "PropertyNameBox";
             this.PropertyNameBox.Size = new System.Drawing.Size(277, 30);
@@ -209,8 +222,10 @@
             // 
             // PropertyDefaultValueBox
             // 
+            this.PropertyDefaultValueBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyDefaultValueBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.PropertyDefaultValueBox.Location = new System.Drawing.Point(888, 369);
+            this.PropertyDefaultValueBox.Location = new System.Drawing.Point(908, 349);
             this.PropertyDefaultValueBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PropertyDefaultValueBox.Multiline = true;
             this.PropertyDefaultValueBox.Name = "PropertyDefaultValueBox";
@@ -219,8 +234,10 @@
             // 
             // PropertyDisplayNameBox
             // 
+            this.PropertyDisplayNameBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyDisplayNameBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.PropertyDisplayNameBox.Location = new System.Drawing.Point(888, 299);
+            this.PropertyDisplayNameBox.Location = new System.Drawing.Point(908, 279);
             this.PropertyDisplayNameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PropertyDisplayNameBox.Name = "PropertyDisplayNameBox";
             this.PropertyDisplayNameBox.Size = new System.Drawing.Size(277, 30);
@@ -228,9 +245,11 @@
             // 
             // PropertyNameLib
             // 
+            this.PropertyNameLib.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyNameLib.AutoSize = true;
             this.PropertyNameLib.Font = new System.Drawing.Font("Arial", 10F);
-            this.PropertyNameLib.Location = new System.Drawing.Point(887, 198);
+            this.PropertyNameLib.Location = new System.Drawing.Point(907, 178);
             this.PropertyNameLib.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PropertyNameLib.Name = "PropertyNameLib";
             this.PropertyNameLib.Size = new System.Drawing.Size(243, 23);
@@ -239,9 +258,11 @@
             // 
             // PropertyDispalyNameLib
             // 
+            this.PropertyDispalyNameLib.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyDispalyNameLib.AutoSize = true;
             this.PropertyDispalyNameLib.Font = new System.Drawing.Font("Arial", 10F);
-            this.PropertyDispalyNameLib.Location = new System.Drawing.Point(888, 275);
+            this.PropertyDispalyNameLib.Location = new System.Drawing.Point(908, 255);
             this.PropertyDispalyNameLib.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PropertyDispalyNameLib.Name = "PropertyDispalyNameLib";
             this.PropertyDispalyNameLib.Size = new System.Drawing.Size(161, 23);
@@ -250,9 +271,11 @@
             // 
             // PropertyDefaultValueLib
             // 
+            this.PropertyDefaultValueLib.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyDefaultValueLib.AutoSize = true;
             this.PropertyDefaultValueLib.Font = new System.Drawing.Font("Arial", 10F);
-            this.PropertyDefaultValueLib.Location = new System.Drawing.Point(888, 345);
+            this.PropertyDefaultValueLib.Location = new System.Drawing.Point(908, 325);
             this.PropertyDefaultValueLib.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PropertyDefaultValueLib.Name = "PropertyDefaultValueLib";
             this.PropertyDefaultValueLib.Size = new System.Drawing.Size(100, 23);
@@ -261,10 +284,11 @@
             // 
             // PropertyCreateButton
             // 
+            this.PropertyCreateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyCreateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
             this.PropertyCreateButton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PropertyCreateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
-            this.PropertyCreateButton.Location = new System.Drawing.Point(888, 473);
+            this.PropertyCreateButton.Location = new System.Drawing.Point(908, 453);
             this.PropertyCreateButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PropertyCreateButton.Name = "PropertyCreateButton";
             this.PropertyCreateButton.Size = new System.Drawing.Size(277, 70);
@@ -277,7 +301,7 @@
             // 
             this.NewTypeNameLib.AutoSize = true;
             this.NewTypeNameLib.Font = new System.Drawing.Font("Arial", 10F);
-            this.NewTypeNameLib.Location = new System.Drawing.Point(331, 49);
+            this.NewTypeNameLib.Location = new System.Drawing.Point(328, 17);
             this.NewTypeNameLib.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NewTypeNameLib.Name = "NewTypeNameLib";
             this.NewTypeNameLib.Size = new System.Drawing.Size(113, 23);
@@ -286,10 +310,11 @@
             // 
             // DeletePropertyBotton
             // 
+            this.DeletePropertyBotton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.DeletePropertyBotton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(9)))), ((int)(((byte)(9)))));
             this.DeletePropertyBotton.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeletePropertyBotton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(237)))));
-            this.DeletePropertyBotton.Location = new System.Drawing.Point(888, 552);
+            this.DeletePropertyBotton.Location = new System.Drawing.Point(908, 532);
             this.DeletePropertyBotton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DeletePropertyBotton.Name = "DeletePropertyBotton";
             this.DeletePropertyBotton.Size = new System.Drawing.Size(277, 70);
@@ -300,24 +325,27 @@
             // 
             // PropertyListOfTheTypeListBox
             // 
+            this.PropertyListOfTheTypeListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.PropertyListOfTheTypeListBox.Font = new System.Drawing.Font("Arial", 10F);
             this.PropertyListOfTheTypeListBox.FormattingEnabled = true;
             this.PropertyListOfTheTypeListBox.ItemHeight = 23;
-            this.PropertyListOfTheTypeListBox.Location = new System.Drawing.Point(331, 154);
+            this.PropertyListOfTheTypeListBox.Location = new System.Drawing.Point(331, 111);
             this.PropertyListOfTheTypeListBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PropertyListOfTheTypeListBox.Name = "PropertyListOfTheTypeListBox";
-            this.PropertyListOfTheTypeListBox.Size = new System.Drawing.Size(217, 303);
+            this.PropertyListOfTheTypeListBox.Size = new System.Drawing.Size(219, 349);
             this.PropertyListOfTheTypeListBox.TabIndex = 21;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10F);
-            this.label2.Location = new System.Drawing.Point(327, 127);
+            this.label2.Location = new System.Drawing.Point(327, 86);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(179, 23);
+            this.label2.Size = new System.Drawing.Size(189, 23);
             this.label2.TabIndex = 22;
-            this.label2.Text = "Jelenleg öszekötött";
+            this.label2.Text = "Jelenleg összekötött";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // ProductTypeUserControl
             // 
@@ -347,6 +375,7 @@
             this.Controls.Add(this.ProductTypeBox);
             this.Controls.Add(this.SearchBoxForTypes);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MinimumSize = new System.Drawing.Size(1200, 800);
             this.Name = "ProductTypeUserControl";
             this.Size = new System.Drawing.Size(1228, 812);
             this.Load += new System.EventHandler(this.ProductTypeUserControl_Load);
