@@ -91,6 +91,7 @@ namespace ProductPropertyKliensApp
 
         private async void loadProducts()
         {
+            this.Cursor = Cursors.WaitCursor;
             try
             {
                 var productAPI = new ProductAPI();
@@ -105,6 +106,10 @@ namespace ProductPropertyKliensApp
             catch (Exception ex)
             {
                 MessageBox.Show($"Hiba történt a termékek betöltésekor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
             }
         }
 

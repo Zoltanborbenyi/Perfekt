@@ -33,6 +33,7 @@ namespace ProductPropertyKliensApp
 
         private async void loadProductTypes()
         {
+            this.Cursor = Cursors.WaitCursor;
             try
             {
                 var typesApi = new ProductTypesAPI();
@@ -48,10 +49,15 @@ namespace ProductPropertyKliensApp
             {
                 MessageBox.Show($"Hiba történt a típusok betöltésekor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
         private async void loadProductTypeProperties()
         {
+            this.Cursor = Cursors.WaitCursor;
             try
             {
                 var propertiesApi = new PropertyAPI();
@@ -66,6 +72,10 @@ namespace ProductPropertyKliensApp
             catch (Exception ex)
             {
                 MessageBox.Show($"Hiba történt a tulajdonságok betöltésekor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
             }
         }
 
@@ -111,6 +121,7 @@ namespace ProductPropertyKliensApp
         }
 
         private async void loadTypeLinkedProperties() {
+            this.Cursor = Cursors.WaitCursor;
             if (ProductTypeBox.SelectedItem is ProductTypeDTO selectedType) 
             {
                 List<ProductDTO> products = await Task.Run(() => new ProductAPI().getAllProduct(proxy));
@@ -129,6 +140,7 @@ namespace ProductPropertyKliensApp
                     PropertyListOfTheTypeListBox.DataSource = null;
                 }
             }
+            this.Cursor = Cursors.Default;
         }
 
         private void DeleteType_Click(object sender, EventArgs e)
