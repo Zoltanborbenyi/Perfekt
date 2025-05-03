@@ -22,7 +22,6 @@ D:\2022\IT_Rendszerfejlesztes\III_fazis\ProductPropertyKliensApp\ProductProperty
 D:\2022\IT_Rendszerfejlesztes\III_fazis\ProductPropertyKliensApp\ProductPropertyKliensApp\obj\Debug\ProductPropertyKliensApp.ChangeProductPropertyRelation.resources
 D:\2022\IT_Rendszerfejlesztes\III_fazis\ProductPropertyKliensApp\ProductPropertyKliensApp\bin\Debug\Hotcakes.Modules.dll
 D:\2022\IT_Rendszerfejlesztes\III_fazis\ProductPropertyKliensApp\ProductPropertyKliensApp\obj\Debug\ProductPropertyKliensApp.ProductTypeLinkUserControl.resources
-D:\2022\IT_Rendszerfejlesztes\III_fazis\ProductPropertyKliensApp\ProductPropertyKliensApp\obj\Debug\ProductPropertyKliensApp.Login.resources
 C:\Users\gabic\Source\Repos\Perfekt\ProductPropertyKliensApp\bin\Debug\ProductPropertyKliensApp.exe.config
 C:\Users\gabic\Source\Repos\Perfekt\ProductPropertyKliensApp\bin\Debug\ProductPropertyKliensApp.exe
 C:\Users\gabic\Source\Repos\Perfekt\ProductPropertyKliensApp\bin\Debug\ProductPropertyKliensApp.pdb
