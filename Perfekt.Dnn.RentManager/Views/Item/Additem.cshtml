@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.Item>
 
 @using System.Text.RegularExpressions
@@ -81,7 +80,7 @@
         var occupiedRanges = [];
         var today = new Date();
         var productId = $('#ProductId').val();
-        var getOccupiedDatesUrl = '@Url.Action("GetOccupiedDates", "Item", new { ProductId = Request.QueryString["ProductId"] })';
+        @*var getOccupiedDatesUrl = '@Url.Action("GetOccupiedDates", "Item", new { ProductId = Request.QueryString["ProductId"] })';*@
         today.setHours(0, 0, 0, 0);
 
         // Dátumválasztó inicializálása
@@ -95,11 +94,11 @@
                 }
 
                 // Foglalt dátumok ellenőrzése
-                for (var i = 0; i < occupiedRanges.length; i++) {
-                    if (date >= occupiedRanges[i].start && date <= occupiedRanges[i].end) {
-                        return [false, 'occupied-date', occupiedRanges[i].title];
-                    }
-                }
+                //for (var i = 0; i < occupiedRanges.length; i++) {
+                //    if (date >= occupiedRanges[i].start && date <= occupiedRanges[i].end) {
+                //        return [false, 'occupied-date', occupiedRanges[i].title];
+                //    }
+                //}
 
                 return [true, '', ''];
             },
@@ -117,7 +116,7 @@
             }
         });
 
-        $.getJSON('@Url.Action("GetOccupiedDates", "Item")', { productId: productId }, function (data) {
+        @*$.getJSON('@Url.Action("GetOccupiedDates", "Item")', { productId: productId }, function (data) {
             occupiedRanges = data.map(function (range) {
                 return {
                     start: new Date(range.start),
@@ -128,7 +127,7 @@
             $('.datePicker').datepicker('refresh');
         }).fail(function (jqXHR, textStatus, errorThrown) {
             console.error("Hiba a foglalt dátumok betöltésekor:", textStatus, errorThrown);
-        });
+        });*@
 
         // Calculate days and sum
         function szamolNapokat() {
@@ -207,141 +206,6 @@
         // Initial calculation
         szamolNapokat();
 
-        loadOccupiedDates();
+        /*loadOccupiedDates();*/
     });
 </script>
-=======
-﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.Item>
-
-@using System.Text.RegularExpressions
-@using DotNetNuke.Web.Mvc.Helpers
-
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css" />
-
-<form action="@Url.Action("Additem", "Item")" method="post">
-    <div class="card mb-4">
-        <div class="card-header">
-            <h5>Új bérlés</h5>
-        </div>
-
-        <div class="card-body">
-            <div class="form-group">
-                <label for="KezdoDatum">Kezdő dátum:</label>
-                <input type="text" name="KezdoDatum" id="KezdoDatum" class="datePicker form-control"
-                       autocomplete="off" />
-            </div>
-
-            <div class="form-group">
-                <label for="VegDatum">Záró dátum:</label>
-                <input type="text" name="VegDatum" id="VegDatum" class="datePicker form-control"
-                       autocomplete="off" />
-            </div>
-        </div>
-    </div>
-
-    <div class="calculation-results">
-        <div>
-            Napok száma:
-            <input type="text" id="NapokSzama" name="NapokSzama" value="0" readonly class="form-control-sm">
-        </div>
-        <div>
-            Összeg:
-            <input type="text" id="Osszeg" name="Osszeg" value="0" readonly class="form-control-sm">
-            Ft
-        </div>
-    </div>
-
-    <button id="kosarGomb" type="submit" href="#" class="btn btn-primary">
-        KOSÁRBA
-    </button>
-
-</form>
-<script>
-    $(function () {
-        // Initialize datepicker
-        $('.datePicker').datepicker({
-            dateFormat: 'yy-mm-dd',
-            onSelect: function () {
-                szamolNapokat(); // Recalculate when date is selected
-            }
-        });
-
-        // Calculate days and sum
-        function szamolNapokat() {
-            const kezdoDatumStr = $('#KezdoDatum').val();
-            const vegDatumStr = $('#VegDatum').val();
-            const napiAr = 1000;
-            const gomb = $('#KosarGomb');
-
-            // Reset if empty
-            if (!kezdoDatumStr || !vegDatumStr) {
-                resetCalculations();
-
-                gomb.attr('href', '#'); // HREF beállítása #
-                gomb.prop('disabled', true); // Gomb letiltása
-                return;
-            }
-
-            // Convert to Date objects
-            const kezdoDatum = new Date(kezdoDatumStr);
-            const vegDatum = new Date(vegDatumStr);
-
-            // Validate dates
-            if (isNaN(kezdoDatum.getTime()) || isNaN(vegDatum.getTime())) {
-                resetCalculations();
-
-                gomb.attr('href', '#'); // HREF beállítása #
-                gomb.prop('disabled', true); // Gomb letiltása
-                return;
-            }
-
-            // Check date order
-            if (vegDatum < kezdoDatum) {
-                resetCalculations();
-
-                gomb.attr('href', '#'); // HREF beállítása #
-                gomb.prop('disabled', true); // Gomb letiltása
-                return;
-            } else {
-                // Calculate days difference
-                const napokSzama = Math.floor((vegDatum - kezdoDatum) / (1000 * 60 * 60 * 24)) + 1;
-                $('#NapokSzama').val(napokSzama);
-                $('#Osszeg').val(napokSzama * napiAr);
-
-                gomb.attr('href', '/HotcakesStore/cart?AddSku=01&AddSkuQty=1'); // HREF beállítása #
-                gomb.prop('disabled', false); // Gomb feloldása
-            }
-        }
-
-        function resetCalculations() {
-            $('#NapokSzama').val('0');
-            $('#Osszeg').val('0');
-        }
-
-        // Form submission handler
-        $('form').on('submit', function (e) {
-            const kezdoDatum = $('#KezdoDatum').val();
-            const vegDatum = $('#VegDatum').val();
-
-            // Validate empty fields
-            if (!kezdoDatum || !vegDatum) {
-                alert('Kérjük, töltse ki mindkét dátummezőt!');
-                e.preventDefault();
-                return false;
-            }
-
-            // Validate date order
-            if (new Date(kezdoDatum) > new Date(vegDatum)) {
-                alert('A végdátum nem lehet korábbi, mint a kezdődátum!');
-                e.preventDefault();
-                return false;
-            }
-
-            return true;
-        });
-
-        // Initial calculation
-        szamolNapokat();
-    });
-</script>
->>>>>>> 31121639048c6006417ddf5cbecf01d93a108438

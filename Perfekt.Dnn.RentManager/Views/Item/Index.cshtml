@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.Item>>
 
 @using System.Text.RegularExpressions
@@ -38,55 +37,3 @@
     </table>
 </div>
 
-=======
-﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.Item>>
-
-@using System.Text.RegularExpressions
-@using DotNetNuke.Web.Mvc.Helpers
-@using Perfekt.Dnn.Perfekt.Dnn.RentManager.Models
-
-<div id="Items-@Dnn.ModuleContext.ModuleId">
-    <h2>Bérlés</h2>
-
-    @{
-        var productController = new Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers.ProductController();
-        var products = productController.GetProducts() as IEnumerable<Product>;
-    }
-
-    @foreach (var product in products)
-    {
-        <div class="product-link">
-            <a href="@Url.Action("AddItem", "Item")">
-                @product.ProductId
-            </a>
-        </div>
-    }
-
-    <!-- Bérlések listája -->
-    <h4>Aktuális bérlések</h4>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Termék</th>
-                <th>Kezdés</th>
-                <th>Végzés</th>
-                <th>Napok</th>
-                <th>Összeg</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.ProductId</td>
-                    <td>@item.KezdoDatum.ToShortDateString()</td>
-                    <td>@item.VegDatum.ToShortDateString()</td>
-                    <td>@item.NapokSzama</td>
-                    <td>@item.Osszeg.ToString("N0") Ft</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
-
->>>>>>> 31121639048c6006417ddf5cbecf01d93a108438

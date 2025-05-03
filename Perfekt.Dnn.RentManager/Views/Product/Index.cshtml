@@ -10,8 +10,8 @@
         <thead>
             <tr>
                 <th>Termék</th>
-                @*<th>Kép</th>
-                <th>Bérlés Díja</th>*@
+                <th>Kép</th>
+                <th>Bérlés Díja</th>
             </tr>
         </thead>
         <tbody>
@@ -20,15 +20,16 @@
                 <tr>
                     <td>
                         <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId })">
+                            @*@product.ProductName*@
                             @product.ProductId
                         </a>
                     </td>
-                    @*<td>
-                        <img id="productImage" src="#" alt="Termék képe" style="max-width:100%;" />
+                    <td>
+                        <img id="productImage" src="@product.ImageFileMedium" alt="Termék képe" style="max-width:100%;" />
                     </td>
                     <td>
                         @product.BerlesDij
-                    </td>*@
+                    </td>
                 </tr>
             }
         </tbody>

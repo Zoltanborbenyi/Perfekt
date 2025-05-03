@@ -3,44 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|c:\\users\\dnn_dev\\desktopmodules\\perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\views\\item\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\views\\item\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\components\\productmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\components\\productmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\components\\itemmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\components\\itemmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\views\\item\\additem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\views\\item\\additem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\providers\\dataproviders\\sqldataprovider\\00.00.01.sqldataprovider||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\providers\\dataproviders\\sqldataprovider\\00.00.01.sqldataprovider||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\views\\item\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\views\\item\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\components\\itemmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\components\\itemmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|c:\\users\\dnn_dev\\desktopmodules\\perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\api\\productapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\api\\productapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\components\\productmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\components\\productmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\perfekt.dnn.rentmanager\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4130D773-4930-4C21-9BCF-0C5244F585D0}|Perfekt.Dnn.RentManager\\Perfekt.Dnn.RentManager.csproj|solutionrelative:perfekt.dnn.rentmanager\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,130 +86,156 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
+              "Title": "ProductAPI.cs",
+              "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\API\\ProductAPI.cs",
+              "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\API\\ProductAPI.cs",
+              "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\API\\ProductAPI.cs",
+              "RelativeToolTip": "Perfekt.Dnn.RentManager\\API\\ProductAPI.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAqwCoAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T14:23:33.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Item.cs",
               "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Models\\Item.cs",
               "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\Models\\Item.cs",
               "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Models\\Item.cs",
               "RelativeToolTip": "Perfekt.Dnn.RentManager\\Models\\Item.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAuwBUAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACAAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T09:04:17.487Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Models\\Product.cs",
               "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\Models\\Product.cs",
               "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Models\\Product.cs",
               "RelativeToolTip": "Perfekt.Dnn.RentManager\\Models\\Product.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB4AAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T20:04:47.888Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Web.config",
+              "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\Web.config",
+              "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Web.config",
+              "RelativeToolTip": "Perfekt.Dnn.RentManager\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-04-29T14:14:41.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\Controllers\\ProductController.cs",
               "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Controllers\\ProductController.cs",
               "RelativeToolTip": "Perfekt.Dnn.RentManager\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAiwFAAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAgwEQAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T21:14:44.523Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 10,
               "Title": "ProductManager.cs",
               "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Components\\ProductManager.cs",
               "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\Components\\ProductManager.cs",
               "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Components\\ProductManager.cs",
               "RelativeToolTip": "Perfekt.Dnn.RentManager\\Components\\ProductManager.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAABsAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAUwDsAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T21:14:28.783Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "ItemController.cs",
               "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Controllers\\ItemController.cs",
               "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\Controllers\\ItemController.cs",
               "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Controllers\\ItemController.cs",
               "RelativeToolTip": "Perfekt.Dnn.RentManager\\Controllers\\ItemController.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAowHAAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAgwFQAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T08:36:17.913Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ItemManager.cs",
               "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Components\\ItemManager.cs",
               "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\Components\\ItemManager.cs",
               "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Components\\ItemManager.cs",
               "RelativeToolTip": "Perfekt.Dnn.RentManager\\Components\\ItemManager.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAswDgAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAEwAAAAAAAAAAADwvzgAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-27T08:59:37.201Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 11,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Views\\Product\\Index.cshtml",
               "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\Views\\Product\\Index.cshtml",
               "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Views\\Product\\Index.cshtml",
               "RelativeToolTip": "Perfekt.Dnn.RentManager\\Views\\Product\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB4AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-28T08:05:03.575Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Views\\Item\\Index.cshtml",
               "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\Views\\Item\\Index.cshtml",
               "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Views\\Item\\Index.cshtml",
               "RelativeToolTip": "Perfekt.Dnn.RentManager\\Views\\Item\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA0AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-27T08:48:32.188Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "Additem.cshtml",
               "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Views\\Item\\Additem.cshtml",
               "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\Views\\Item\\Additem.cshtml",
               "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Views\\Item\\Additem.cshtml",
               "RelativeToolTip": "Perfekt.Dnn.RentManager\\Views\\Item\\Additem.cshtml",
-              "ViewState": "AgIAACQAAAAAAAAAAAAYwMQAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEoAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-27T09:16:19.958Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "00.00.01.SqlDataProvider",
               "DocumentMoniker": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Providers\\DataProviders\\SqlDataProvider\\00.00.01.SqlDataProvider",
               "RelativeDocumentMoniker": "Perfekt.Dnn.RentManager\\Providers\\DataProviders\\SqlDataProvider\\00.00.01.SqlDataProvider",
               "ToolTip": "C:\\Users\\DNN_DEV\\DesktopModules\\Perfekt\\module-rentmanager\\Perfekt.Dnn.RentManager\\Providers\\DataProviders\\SqlDataProvider\\00.00.01.SqlDataProvider",
               "RelativeToolTip": "Perfekt.Dnn.RentManager\\Providers\\DataProviders\\SqlDataProvider\\00.00.01.SqlDataProvider",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACwAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAADgv0MAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-04-27T08:45:15.677Z",
               "EditorCaption": ""

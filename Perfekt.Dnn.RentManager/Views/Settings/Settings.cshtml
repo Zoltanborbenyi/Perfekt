@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage <Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.Settings>
 
 @using DotNetNuke.Web.Mvc.Helpers
@@ -19,25 +18,3 @@
     </div>
 </fieldset>
 
-=======
-﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage <Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.Settings>
-
-@using DotNetNuke.Web.Mvc.Helpers
-
-<h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead"><a href="" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a></h2>
-<fieldset>
-    <div class="dnnFormItem">
-        <div class="dnnLabel" style="position: relative;">
-            @Html.LabelFor(m => Model.Setting1, new { @class = "col-md-2 control-label" })
-        </div>
-        @Html.CheckBoxFor(m => Model.Setting1)
-    </div>
-    <div class="dnnFormItem">
-        <div class="dnnLabel" style="position: relative;">
-            @Html.LabelFor(m => Model.Setting2, new { @class = "col-md-2 control-label" })
-        </div>
-        @Html.TextBoxFor(m => Model.Setting2)
-    </div>
-</fieldset>
-
->>>>>>> 31121639048c6006417ddf5cbecf01d93a108438

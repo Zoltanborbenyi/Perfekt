@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿/************************************************************/
 /*****              SqlDataProvider                     *****/
 /*****                                                  *****/
@@ -21,6 +20,7 @@ CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Items
     VegDatum date NOT NULL,
     NapokSzama int NOT NULL,
     Osszeg decimal NOT NULL,
+    Berlo nvarchar(255) NOT NULL,
     ModuleId int
     )  ON [PRIMARY]
 GO
@@ -46,6 +46,7 @@ CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Products
     ImageFileMedium nvarchar(255),
     ProductName nvarchar(255),
     LongDescription nvarchar(MAX),
+    Berlo nvarchar(255),
     ModuleId int
     )  ON [PRIMARY]
 GO
@@ -62,16 +63,16 @@ GO
 INSERT INTO {databaseOwner}{objectQualifier}RentManager_Products 
     (ProductId, BerlesDij)
 VALUES 
-    ('PROD001', 5000.00),
-    ('PROD002', 7500.00),
-    ('PROD003', 3000.00),
-    ('PROD004', 4500.00),
-    ('PROD005', 6000.00),
-    ('PROD006', 9000.00),
-    ('PROD007', 3500.00),
-    ('PROD008', 5500.00),
-    ('PROD009', 7000.00),
-    ('PROD010', 8500.00)
+    ('UNB0001', 5000.00),
+    ('UNB0002', 7500.00),
+    ('UNB0003', 3000.00),
+    ('UNB0004', 4500.00),
+    ('UNB0005', 6000.00),
+    ('UNB0006', 9000.00),
+    ('UNB0007', 3500.00),
+    ('UNB0008', 5500.00),
+    ('UNB0009', 7000.00),
+    ('UNB0010', 8500.00)
 GO
 
 ALTER TABLE {databaseOwner}{objectQualifier}RentManager_Items
@@ -83,80 +84,4 @@ GO
 
 /************************************************************/
 /*****              SqlDataProvider                     *****/
-=======
-﻿/************************************************************/
-/*****              SqlDataProvider                     *****/
-/*****                                                  *****/
-/*****                                                  *****/
-/***** Note: To manually execute this script you must   *****/
-/*****       perform a search and replace operation     *****/
-/*****       for {databaseOwner} and {objectQualifier}  *****/
-/*****                                                  *****/
-/************************************************************/
-
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}RentManager_Items]') AND type in (N'U'))
-DROP TABLE {databaseOwner}[{objectQualifier}RentManager_Items]
-GO
-
-CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Items
-    (
-    Id int NOT NULL IDENTITY (1, 1),
-    ProductId nvarchar(255) NOT NULL,
-    KezdoDatum date NOT NULL,
-    VegDatum date NOT NULL,
-    NapokSzama int NOT NULL,
-    Osszeg decimal NOT NULL,
-    ModuleId int
-    )  ON [PRIMARY]
-GO
-
-
-ALTER TABLE {databaseOwner}{objectQualifier}RentManager_Items ADD CONSTRAINT
-    PK_{objectQualifier}RentManager_Items PRIMARY KEY CLUSTERED 
-    (
-    Id
-    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-
-GO
-
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}RentManager_Products]') AND type in (N'U'))
-DROP TABLE {databaseOwner}[{objectQualifier}RentManager_Products]
-GO
-
-CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Products
-    (
-    ProductId nvarchar(255) NOT NULL,
-    BerlesDij decimal NOT NULL,
-    ModuleId int
-    )  ON [PRIMARY]
-GO
-
-
-ALTER TABLE {databaseOwner}{objectQualifier}RentManager_Products ADD CONSTRAINT
-    PK_{objectQualifier}RentManager_Products PRIMARY KEY CLUSTERED 
-    (
-    ProductId
-    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-
-GO
-
-INSERT INTO {databaseOwner}{objectQualifier}RentManager_Products 
-    (ProductId, BerlesDij)
-VALUES 
-    ('PROD001', 5000.00),
-    ('PROD002', 7500.00),
-    ('PROD003', 3000.00),
-    ('PROD004', 4500.00),
-    ('PROD005', 6000.00),
-    ('PROD006', 9000.00),
-    ('PROD007', 3500.00),
-    ('PROD008', 5500.00),
-    ('PROD009', 7000.00),
-    ('PROD010', 8500.00)
-GO
-
-
-/************************************************************/
-/*****              SqlDataProvider                     *****/
->>>>>>> 31121639048c6006417ddf5cbecf01d93a108438
 /************************************************************/
