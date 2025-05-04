@@ -1,39 +1,42 @@
-﻿using Hotcakes.CommerceDTO.v1.Catalog;
+﻿// ProductPropertyKliensApp.Services/PropertyServices.cs
+using Hotcakes.CommerceDTO.v1.Catalog;
 using Hotcakes.CommerceDTO.v1.Client;
 using ProductPropertyKliensApp.API;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProductPropertyKliensApp.Services
 {
-    internal class PropertyServices
+    public class PropertyServices
     {
-        public List<ProductPropertyDTO> getPropertiesFromProducts(Api proxy, List<String> bvins, List<ProductPropertyDTO> properties)
+        private readonly IPropertyAPI _propertyApi;
+
+        /// <summary>
+        /// In production this defaults to the real PropertyAPI,
+        /// in tests you can pass a Mock<IPropertyAPI>.
+        /// </summary>
+        public PropertyServices(IPropertyAPI propertyApi = null)
         {
-            getPropertiesFromProductsCall(proxy, bvins, properties);
-            return properties;
+            _propertyApi = propertyApi ?? new PropertyAPI();
         }
 
-        private async void getPropertiesFromProductsCall(Api proxy, List<String> bvins, List<ProductPropertyDTO> properties)
+        public List<ProductPropertyDTO> GetPropertiesFromProducts(
+            Api proxy,
+            List<string> bvins)
         {
-            PropertyAPI propertyAPI = new PropertyAPI();
-            foreach (String bvin in bvins)
+            var properties = new List<ProductPropertyDTO>();
+
+            foreach (var bvin in bvins)
             {
-                List<ProductPropertyDTO> propertiesFromApi = await Task.Run(() => propertyAPI.GetPropertiesForProduct(proxy, bvin));
-                if (propertiesFromApi != null)
+                var props = _propertyApi.GetPropertiesForProduct(proxy, bvin);
+                if (props == null) continue;
+                foreach (var p in props)
                 {
-                    foreach (ProductPropertyDTO property in propertiesFromApi)
-                    {
-                        if (!properties.Contains(property))
-                        {
-                            properties.Add(property);
-                        }
-                    }
+                    if (!properties.Contains(p))
+                        properties.Add(p);
                 }
             }
+
+            return properties;
         }
     }
 }
