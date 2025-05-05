@@ -6,9 +6,15 @@
 <div id="Items-@Dnn.ModuleContext.ModuleId">
     <h2>Bérlés</h2>
 
-    <a href="@Url.Action("Additem", "Item", new { ProductId = Request.QueryString["ProductId"] })">
+    <a href="@Url.Action("Additem", "Item", new { ProductId = Request.QueryString["ProductId"], BerlesDij = Request.QueryString["BerlesDij"]})">
         Bérlés indítása
     </a>
+
+    <a href="/termek-leirasa/@Request.QueryString["ProductId"]">
+        Termék leírás
+    </a>
+
+    <a href="@Url.Action("Index","Product")">Vissza</a>
 
     <!-- Bérlések listája -->
     <h4>Aktuális bérlések</h4>
@@ -20,6 +26,7 @@
                 <th>Végzés</th>
                 <th>Napok</th>
                 <th>Összeg</th>
+                <th>Bérlő</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +38,7 @@
                     <td>@item.VegDatum.ToShortDateString()</td>
                     <td>@item.NapokSzama</td>
                     <td>@item.Osszeg.ToString("N0") Ft</td>
+                    <td>@item.Berlo</td>
                 </tr>
             }
         </tbody>

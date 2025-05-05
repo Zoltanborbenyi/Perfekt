@@ -10,29 +10,10 @@
         background-color: #f9f9f9 !important;
         cursor: not-allowed;
     }
-
-    /* Foglalt dátumok stílusa */
-    .occupied-date {
-        background-color: #ffdddd !important;
-        color: #cc0000 !important;
-        text-decoration: line-through;
-        cursor: not-allowed;
-    }
-
-        .occupied-date:hover::after,
-        .past-date:hover::after {
-            content: attr(title);
-            position: absolute;
-            background: #333;
-            color: #fff;
-            padding: 5px;
-            border-radius: 3px;
-            font-size: 12px;
-            z-index: 1000;
-        }
 </style>
 
 <form action="@Url.Action("Additem", "Item")" method="post">
+    <input type="hidden" id="BerlesDij" name="BerlesDij" value="@Request.QueryString["BerlesDij"]" />
     <div class="card mb-4">
         <div class="card-header">
             <h5>
@@ -72,15 +53,15 @@
         KOSÁRBA
     </button>
 
-    <a href="@Url.Action("Index","Product")">Vissza</a>
+    <a href="@Url.Action("Index", "Item", new { ProductId = Request.QueryString["ProductId"] })">Vissza</a>
 
 </form>
 <script>
     $(function () {
+        var dailyPrice = parseInt($('#BerlesDij').val());
         var occupiedRanges = [];
         var today = new Date();
         var productId = $('#ProductId').val();
-        @*var getOccupiedDatesUrl = '@Url.Action("GetOccupiedDates", "Item", new { ProductId = Request.QueryString["ProductId"] })';*@
         today.setHours(0, 0, 0, 0);
 
         // Dátumválasztó inicializálása
@@ -92,13 +73,6 @@
                 if (date < today) {
                     return [false, 'past-date', 'Múltbeli dátum nem választható'];
                 }
-
-                // Foglalt dátumok ellenőrzése
-                //for (var i = 0; i < occupiedRanges.length; i++) {
-                //    if (date >= occupiedRanges[i].start && date <= occupiedRanges[i].end) {
-                //        return [false, 'occupied-date', occupiedRanges[i].title];
-                //    }
-                //}
 
                 return [true, '', ''];
             },
@@ -112,28 +86,15 @@
                         $('#VegDatum').datepicker('setDate', endDate);
                     }
                 }
-                szamolNapokat();
+                szamolNapokat(dailyPrice);
             }
         });
 
-        @*$.getJSON('@Url.Action("GetOccupiedDates", "Item")', { productId: productId }, function (data) {
-            occupiedRanges = data.map(function (range) {
-                return {
-                    start: new Date(range.start),
-                    end: new Date(range.end),
-                    title: range.title || 'Foglalt időszak'
-                };
-            });
-            $('.datePicker').datepicker('refresh');
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            console.error("Hiba a foglalt dátumok betöltésekor:", textStatus, errorThrown);
-        });*@
-
         // Calculate days and sum
-        function szamolNapokat() {
+        function szamolNapokat(dailyPrice) {
             const kezdoDatumStr = $('#KezdoDatum').val();
             const vegDatumStr = $('#VegDatum').val();
-            const napiAr = 1000;
+            const napiAr = dailyPrice;
             const gomb = $('#KosarGomb');
 
             // Reset if empty
@@ -205,7 +166,5 @@
 
         // Initial calculation
         szamolNapokat();
-
-        /*loadOccupiedDates();*/
     });
 </script>

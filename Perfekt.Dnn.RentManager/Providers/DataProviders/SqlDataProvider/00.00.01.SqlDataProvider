@@ -45,8 +45,6 @@ CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Products
     BerlesDij decimal NOT NULL,
     ImageFileMedium nvarchar(255),
     ProductName nvarchar(255),
-    LongDescription nvarchar(MAX),
-    Berlo nvarchar(255),
     ModuleId int
     )  ON [PRIMARY]
 GO
@@ -66,13 +64,11 @@ VALUES
     ('UNB0001', 5000.00),
     ('UNB0002', 7500.00),
     ('UNB0003', 3000.00),
-    ('UNB0004', 4500.00),
-    ('UNB0005', 6000.00),
-    ('UNB0006', 9000.00),
+    ('UNB0005', 4500.00),
+    ('UNB0006', 2000.00),
     ('UNB0007', 3500.00),
-    ('UNB0008', 5500.00),
-    ('UNB0009', 7000.00),
-    ('UNB0010', 8500.00)
+    ('UNB0009', 5500.00),
+    ('UNB0010', 7000.00)
 GO
 
 ALTER TABLE {databaseOwner}{objectQualifier}RentManager_Items

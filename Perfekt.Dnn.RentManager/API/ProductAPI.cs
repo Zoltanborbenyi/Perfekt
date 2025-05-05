@@ -18,17 +18,17 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.API
 		{
 			try
 			{
-				if (proxy == null)
-				{
-					Exceptions.LogException(new ArgumentNullException(nameof(proxy)));
-					return null;
-				}
+				//if (proxy == null)
+				//{
+				//	Exceptions.LogException(new ArgumentNullException(nameof(proxy)));
+				//	return null;
+				//}
 
-				if (string.IsNullOrWhiteSpace(ProductId))
-				{
-					Exceptions.LogException(new ArgumentException("ProductId cannot be null or empty", nameof(ProductId)));
-					return null;
-				}
+				//if (string.IsNullOrWhiteSpace(ProductId))
+				//{
+				//	Exceptions.LogException(new ArgumentException("ProductId cannot be null or empty", nameof(ProductId)));
+				//	return null;
+				//}
 
 				ApiResponse<ProductDTO> response = proxy.ProductsFindBySku(ProductId);
 

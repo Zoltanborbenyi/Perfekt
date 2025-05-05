@@ -20,6 +20,10 @@ using Perfekt.Dnn.Perfekt.Dnn.RentManager.Models;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using Hotcakes.Commerce;
+using Hotcakes.Commerce.Catalog;
+using Hotcakes.Commerce.Data;
+using System.Collections.Generic;
 
 namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 {
@@ -79,44 +83,41 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 		[HttpPost]
 		public ActionResult AddItem(Item model)
 		{
+			DateTime kezdoDatum = DateTime.Parse(Request.Form["KezdoDatum"]);
+			DateTime vegDatum = DateTime.Parse(Request.Form["VegDatum"]);
+
 			model.ProductId = Request.Form["ProductId"].ToString();
-			model.KezdoDatum = DateTime.Parse(Request.Form["KezdoDatum"]);
-			model.VegDatum = DateTime.Parse(Request.Form["VegDatum"]);
+			model.KezdoDatum = kezdoDatum;
+			model.VegDatum = vegDatum;
 			model.NapokSzama = int.Parse(Request.Form["NapokSzama"]);
 			model.Osszeg = int.Parse(Request.Form["Osszeg"]);
-			model.Berlo = "teszt";
+			model.Berlo = User.UserID.ToString();
+
+			var letezoFoglalasok = ItemManager.Instance.GetItems(model.ProductId);
+
+			if (VanIdoUtkozes(kezdoDatum, vegDatum, letezoFoglalasok))
+			{
+				return View(); // vagy redirect vissza hibaüzenettel
+			}
 
 			ItemManager.Instance.CreateItem(model);
-			return Redirect(Url.Content($"/kosar?AddSku={model.ProductId}&AddSkuQty={model.NapokSzama}"));
+
+			return Redirect(Url.Content($"/kosar?AddSku={model.ProductId}&AddSkuQty={model.NapokSzama}&CouponCode=BERLES{model.ProductId}"));
 		}
 
-		//[HttpGet]
-		//public JsonResult GetOccupiedDates(string ProductId)
-		//{
-		//	try
-		//	{
-		//		if (string.IsNullOrEmpty(ProductId))
-		//		{
-		//			return Json(new { error = "Hiányzó termék azonosító" }, JsonRequestBehavior.AllowGet);
-		//		}
+		public bool VanIdoUtkozes(DateTime ujKezdo, DateTime ujVeg, IEnumerable<Item> letezoFoglalasok)
+		{
+			foreach (var foglalas in letezoFoglalasok)
+			{
+				if (ujKezdo <= foglalas.VegDatum && ujVeg >= foglalas.KezdoDatum)
+				{
+					// Ütközik
+					return true;
+				}
+			}
 
-		//		var today = DateTime.Today;
-		//		var occupiedDates = ItemManager.Instance.GetItems(ProductId)
-		//			.Where(x => x.VegDatum >= today) // Csak jövőbeli és mai foglalások
-		//			.Select(x => new
-		//			{
-		//				start = x.KezdoDatum.ToString("yyyy-MM-dd"),
-		//				end = x.VegDatum.ToString("yyyy-MM-dd"),
-		//				title = $"Foglalt: {x.KezdoDatum.ToShortDateString()} - {x.VegDatum.ToShortDateString()}"
-		//			})
-		//			.ToList();
-
-		//		return Json(occupiedDates, JsonRequestBehavior.AllowGet);
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		return Json(new { error = ex.Message }, JsonRequestBehavior.AllowGet);
-		//	}
-		//}
+			// Nincs ütközés
+			return false;
+		}
 	}
 }

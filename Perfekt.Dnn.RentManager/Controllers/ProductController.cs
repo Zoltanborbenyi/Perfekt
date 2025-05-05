@@ -92,9 +92,8 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 		//		if (string.IsNullOrEmpty(product.bvin))
 		//		{
 		//			product.ProductName = productDTO.ProductName;
-		//			product.ImageFileMedium = $"/Portals/0/Hotcakes/Data/products/{productDTO.Bvin}/{productDTO.ImageFileMedium}";
 		//			product.bvin = productDTO.Bvin;
-		//			product.LongDescription = productDTO.LongDescription;
+		//			product.ImageFileMedium = $"/Portals/0/Hotcakes/Data/products/{productDTO.Bvin}/medium/{productDTO.ImageFileMedium}";
 		//		}
 		//	}
 
