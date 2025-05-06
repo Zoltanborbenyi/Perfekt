@@ -35,6 +35,8 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 	public class ProductController : DnnController
 	{
 
+		Api proxy;
+
 		//public ActionResult Delete(int itemId)
 		//{
 		//	ItemManager.Instance.DeleteItem(itemId, ModuleContext.ModuleId);
@@ -65,39 +67,46 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 		//[ModuleAction(ControlKey = "Edit", TitleKey = "AddItem")]
 		public ActionResult Index()
 		{
-			//var products = GetProductsWithHccData();
-			var products = ProductManager.Instance.GetProducts();
+			var products = GetProductsWithHccData();
+			//var products = ProductManager.Instance.GetProducts();
 			return View(products);
 		}
 
 		//[HttpGet]
-		//public IEnumerable<Perfekt.Dnn.RentManager.Models.Product> GetProductsWithHccData()
-		//{
-		//	string apiUrl = ConfigurationManager.AppSettings["apiUrl"];
-		//	string apiKey = ConfigurationManager.AppSettings["apiKey"];
+		public IEnumerable<Perfekt.Dnn.RentManager.Models.Product> GetProductsWithHccData()
+		{
+			try
+			{
+				string apiUrl = "http://" + DotNetNuke.Entities.Portals.PortalSettings.Current.PortalAlias.HTTPAlias + "/";
+				string apiKey = "1-ad530e8b-0299-4748-91c1-28109518270e";
 
-		//	Api proxy = new Hotcakes.CommerceDTO.v1.Client.Api(apiUrl, apiKey);
+				proxy = new Hotcakes.CommerceDTO.v1.Client.Api(apiUrl, apiKey);
 
-		//	ProductAPI productAPI = new ProductAPI();
+				ProductAPI productAPI = new ProductAPI();
 
-		//	var products = ProductManager.Instance.GetProducts();
+				var products = ProductManager.Instance.GetProducts();
 
-		//	foreach (var product in products)
-		//	{
-		//		ProductDTO productDTO = productAPI.GetProductByProductId(proxy, product.ProductId);
+				foreach (var product in products)
+				{
+					ProductDTO productDTO = productAPI.GetProductByProductId(proxy, product.ProductId);
 
-		//		if (productDTO == null)
-		//			continue;
+					if (productDTO == null)
+						continue;
 
-		//		if (string.IsNullOrEmpty(product.bvin))
-		//		{
-		//			product.ProductName = productDTO.ProductName;
-		//			product.bvin = productDTO.Bvin;
-		//			product.ImageFileMedium = $"/Portals/0/Hotcakes/Data/products/{productDTO.Bvin}/medium/{productDTO.ImageFileMedium}";
-		//		}
-		//	}
+					if (string.IsNullOrEmpty(product.bvin))
+					{
+						product.ProductName = productDTO.ProductName;
+						product.bvin = productDTO.Bvin;
+						product.ImageFileMedium = $"/Portals/0/Hotcakes/Data/products/{productDTO.Bvin}/medium/{productDTO.ImageFileMedium}";
+					}
+				}
 
-		//	return products;
-		//}
+				return products;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
 	}
 }

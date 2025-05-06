@@ -19,9 +19,8 @@
             {
                 <tr>
                     <td>
-                        <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij })">
-                            @*@product.ProductName*@
-                            @product.ProductId
+                        <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName })">
+                            @product.ProductName
                         </a>
                     </td>
                     <td>
@@ -29,6 +28,7 @@
                     </td>
                     <td>
                         @product.BerlesDij
+                        Ft / nap
                     </td>
                 </tr>
             }

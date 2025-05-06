@@ -91,7 +91,11 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 			model.VegDatum = vegDatum;
 			model.NapokSzama = int.Parse(Request.Form["NapokSzama"]);
 			model.Osszeg = int.Parse(Request.Form["Osszeg"]);
-			model.Berlo = User.UserID.ToString();
+			if (string.IsNullOrEmpty(User.Username.ToString()))
+			{
+				return View();
+			}
+			model.Berlo = User.Username.ToString();
 
 			var letezoFoglalasok = ItemManager.Instance.GetItems(model.ProductId);
 

@@ -13,14 +13,15 @@
 </style>
 
 <form action="@Url.Action("Additem", "Item")" method="post">
-    <input type="hidden" id="BerlesDij" name="BerlesDij" value="@Request.QueryString["BerlesDij"]" />
     <div class="card mb-4">
         <div class="card-header">
             <h5>
-                <input type="text" id="ProductId" name="ProductId" value=@Request.QueryString["ProductId"] readonly class="form-control-sm">
+                <input type="text" id="ProductName" name="ProductName" value="@Request.QueryString["ProductName"]" readonly class="form-control-sm">
                 bérlése
             </h5>
         </div>
+
+        <input type="hidden" id="ProductId" name="ProductId" value=@Request.QueryString["ProductId"]>
 
         <div class="card-body">
             <div class="form-group">
@@ -43,6 +44,10 @@
             <input type="text" id="NapokSzama" name="NapokSzama" value="0" readonly class="form-control-sm">
         </div>
         <div>
+            Bérleti díj egy napra:
+            <input type="text" id="BerlesDij" name="BerlesDij" value="@Request.QueryString["BerlesDij"]" readonly class="form-control-sm"/>
+        </div>
+        <div>
             Összeg:
             <input type="text" id="Osszeg" name="Osszeg" value="0" readonly class="form-control-sm">
             Ft
@@ -53,7 +58,7 @@
         KOSÁRBA
     </button>
 
-    <a href="@Url.Action("Index", "Item", new { ProductId = Request.QueryString["ProductId"] })">Vissza</a>
+    <a href="@Url.Action("Index", "Item", new { ProductId = Request.QueryString["ProductId"], BerlesDij = Request.QueryString["BerlesDij"], ProductName = Request.QueryString["ProductName"]})">Vissza</a>
 
 </form>
 <script>
