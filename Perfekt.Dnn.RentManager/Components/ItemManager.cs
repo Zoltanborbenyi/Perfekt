@@ -24,6 +24,7 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 		//void DeleteItem(int itemId, int moduleId);
 		//void DeleteItem(Item t);
 		IEnumerable<Item> GetItems(string ProductId);
+		IEnumerable<Item> GetItems();
 		Item GetItem(int Id);
 		void UpdateItem(Item t);
 	}
@@ -66,6 +67,17 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 					// Szűrés ProductId alapján
 					return rep.Find("WHERE ProductId = @0", ProductId);
 				}
+				t = rep.Get();
+			}
+			return t;
+		}
+
+		public IEnumerable<Item> GetItems()
+		{
+			IEnumerable<Item> t;
+			using (IDataContext ctx = DataContext.Instance())
+			{
+				var rep = ctx.GetRepository<Item>();
 				t = rep.Get();
 			}
 			return t;

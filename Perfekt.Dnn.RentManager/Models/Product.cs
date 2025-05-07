@@ -32,6 +32,7 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Models
 		public string bvin { get; set; }
 		public string ImageFileMedium { get; set; }
 		public string ProductName { get; set; }
+		public string LongDescription { get; set; }
 		public int ModuleId { get; set; }
 	}
 }

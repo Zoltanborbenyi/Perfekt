@@ -79,6 +79,11 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 		{
 			return View(new Item());
 		}
+		public ActionResult Allitem()
+		{
+			var items = ItemManager.Instance.GetItems();
+			return View(items);
+		}
 
 		[HttpPost]
 		public ActionResult AddItem(Item model)
@@ -96,6 +101,7 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 				return View();
 			}
 			model.Berlo = User.Username.ToString();
+			model.Statusz = "Draft";
 
 			var letezoFoglalasok = ItemManager.Instance.GetItems(model.ProductId);
 
@@ -106,17 +112,20 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 
 			ItemManager.Instance.CreateItem(model);
 
-			return Redirect(Url.Content($"/kosar?AddSku={model.ProductId}&AddSkuQty={model.NapokSzama}&CouponCode=BERLES{model.ProductId}"));
+			return Redirect(Url.Content($"/kosar?AddSku={model.ProductId}B&AddSkuQty={model.NapokSzama}"));
 		}
 
 		public bool VanIdoUtkozes(DateTime ujKezdo, DateTime ujVeg, IEnumerable<Item> letezoFoglalasok)
 		{
 			foreach (var foglalas in letezoFoglalasok)
 			{
-				if (ujKezdo <= foglalas.VegDatum && ujVeg >= foglalas.KezdoDatum)
+				if (foglalas.Statusz == "Completed")
 				{
-					// Ütközik
-					return true;
+					if (ujKezdo <= foglalas.VegDatum && ujVeg >= foglalas.KezdoDatum)
+					{
+						// Ütközik
+						return true;
+					}
 				}
 			}
 

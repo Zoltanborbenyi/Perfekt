@@ -27,20 +27,19 @@
                 <th>Kezdés</th>
                 <th>Végzés</th>
                 <th>Napok</th>
-                <th>Összeg</th>
-                <th>Bérlő</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>@item.KezdoDatum.ToShortDateString()</td>
-                    <td>@item.VegDatum.ToShortDateString()</td>
-                    <td>@item.NapokSzama</td>
-                    <td>@item.Osszeg.ToString("N0") Ft</td>
-                    <td>@item.Berlo</td>
-                </tr>
+                if (item.Statusz == "Completed")
+                {
+                    <tr>
+                        <td>@item.KezdoDatum.ToShortDateString()</td>
+                        <td>@item.VegDatum.ToShortDateString()</td>
+                        <td>@item.NapokSzama</td>
+                    </tr>
+                }
             }
         </tbody>
     </table>

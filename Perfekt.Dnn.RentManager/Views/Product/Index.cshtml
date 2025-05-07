@@ -3,35 +3,133 @@
 @using System.Text.RegularExpressions
 @using DotNetNuke.Web.Mvc.Helpers
 @using Perfekt.Dnn.Perfekt.Dnn.RentManager.Models
+@using DotNetNuke.Entities.Users
+
+
 
 <div id="Products-@Dnn.ModuleContext.ModuleId">
-    <h2>Bérlés</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Termék</th>
-                <th>Kép</th>
-                <th>Bérlés Díja</th>
-            </tr>
-        </thead>
-        <tbody>
+
+    @{
+        var currentUser = UserController.Instance.GetCurrentUserInfo();
+        bool isLoggedIn = currentUser != null && currentUser.UserID != -1;
+    }
+
+    @if (isLoggedIn)
+    {
+        if (currentUser != null && currentUser.IsSuperUser)
+        {
+            <a href="@Url.Action("Allitem", "Item")">
+                Összes bérlés
+            </a>
+        }
+
+        var sorszam = 1;
+
+        <h2>Válaszd ki milyen kerékpárt szeretnél bérelni!</h2>
+        <div class="berles_main">
+            <!--ez lesz a szürke nagy doboz-->
             @foreach (var product in Model)
             {
-                <tr>
-                    <td>
-                        <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName })">
-                            @product.ProductName
-                        </a>
-                    </td>
-                    <td>
-                        <img id="productImage" src="@product.ImageFileMedium" alt="Termék képe" style="max-width:100%;" />
-                    </td>
-                    <td>
-                        @product.BerlesDij
-                        Ft / nap
-                    </td>
-                </tr>
+                if (sorszam % 2 == 0)
+                {
+                    <div id="berles_main_kerekpar_@sorszam" class="berles_main_kerekpar">
+                        <div id="berles_tartalom_@sorszam" class="berles_tartalom">
+                            <h1>@product.ProductName</h1>
+                            <p>@product.LongDescription</p>
+                            <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName })">
+                                @product.BerlesDij Ft/nap
+                            </a>
+                        </div>
+                        <div id="berles_kep_@sorszam" class="berles_kep">
+                            <img id="productImage" src="@product.ImageFileMedium" alt="Termék képe" style="transform: scaleX(-1);" />
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div id="berles_main_kerekpar_@sorszam" class="berles_main_kerekpar">
+                        <div id="berles_kep_@sorszam" class="berles_kep">
+                            <img id="productImage" src="@product.ImageFileMedium" alt="Termék képe" />
+                        </div>
+                        <div id="berles_tartalom_@sorszam" class="berles_tartalom">
+                            <h1>@product.ProductName</h1>
+                            <p>@product.LongDescription</p>
+                            <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName })">
+                                @product.BerlesDij Ft/nap
+                            </a>
+                        </div>
+                    </div>
+                }
+
+
+                sorszam += 1;
             }
-        </tbody>
-    </table>
+        </div>
+    }
+    else
+    {
+        <p>A bérléshez kérem jelentkezzen be!</p>
+        <a href="/Bejelentkezes">Bejelentkezés</a>
+        <a href="/Regisztracio">Bejelentkezés</a>
+    }
 </div>
+
+<style>
+    .berles_main{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+    
+    .berles_main_kerekpar{
+        display:flex;
+        flex-direction: row;
+        justify-content:flex-start;
+        align-items: center;
+    }
+
+    .berles_tartalom{
+        display:flex;
+        flex-direction:column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 55%;
+    }
+
+    .berles_kep{
+        width: 35vw;
+    }
+
+    .berles_kep img{
+        width: 35vw;
+    }
+
+    .berles_tartalom a {
+        width: auto;
+        min-width: 150px;
+        background: #A60909;
+        color: #FAF7EE;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease !important;
+        border-radius: 25px;
+    }
+
+    .berles_tartalom a:hover {
+        background: #faf7ee;
+        color: #a60909;
+        text-decoration: none !important;
+    }
+
+    .berles_tartalom p{
+        font-size: 12px;
+    }
+
+    .berles_tartalom h1{
+        font-size: 36px !important;
+    }
+</style>

@@ -1,0 +1,64 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.Item>>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+<div>
+    <a href="@Url.Action("Index","Product")">Vissza</a>
+
+    <h4>Aktuális bérlések</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Termék ID</th>
+                <th>Kezdés</th>
+                <th>Végzés</th>
+                <th>Napok</th>
+                <th>Összeg</th>
+                <th>Bérlő</th>
+                <th>Fizetés Státusz</th>
+                @*<th>Átvétel Státusz</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var szin = "";
+                var kulonbseglent = (item.KezdoDatum.Date - DateTime.Today).Days;
+                var kulonbsegfent = (item.VegDatum.Date - DateTime.Today).Days;
+
+                if ((kulonbseglent > 0 && kulonbseglent <= 7) || (kulonbsegfent > 0 && kulonbsegfent <= 7))
+                {
+                    szin = "background-color: orange;";
+
+                    if (kulonbseglent == 0 || kulonbsegfent == 0)
+                    {
+                        szin = "background-color: red;";
+                    }
+                }
+
+                <tr style="@szin">
+                    <td>@item.Id</td>
+                    <td>@item.ProductId</td>
+                    <td>@item.KezdoDatum.ToShortDateString()</td>
+                    <td>@item.VegDatum.ToShortDateString()</td>
+                    <td>@item.NapokSzama</td>
+                    <td>@item.Osszeg</td>
+                    <td>@item.Berlo</td>
+                    <td>@item.Statusz</td>
+                    @*<td>
+                        <select id="Atvetel" name="Atvetel">
+                            <option value="nemrendezett">Nem rendezett</option>
+                            <option value="lefoglalt">Lefoglalt</option>
+                            <option value="atvett">Átvett</option>
+                            <option value="visszahozott">
+                                Visszahozott
+                            </option>
+                        </select>
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

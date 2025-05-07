@@ -175,6 +175,7 @@
     <Content Include="Views\Settings\Settings.cshtml" />
     <Content Include="Views\Item\Additem.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Item\Allitem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

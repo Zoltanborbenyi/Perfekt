@@ -21,6 +21,7 @@ CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Items
     NapokSzama int NOT NULL,
     Osszeg decimal NOT NULL,
     Berlo nvarchar(255) NOT NULL,
+    Statusz nvarchar(255) NOT NULL,
     ModuleId int
     )  ON [PRIMARY]
 GO
@@ -45,6 +46,7 @@ CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Products
     BerlesDij decimal NOT NULL,
     ImageFileMedium nvarchar(255),
     ProductName nvarchar(255),
+    LongDescription nvarchar(max),
     ModuleId int
     )  ON [PRIMARY]
 GO

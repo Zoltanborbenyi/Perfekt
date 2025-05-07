@@ -98,6 +98,7 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 						product.ProductName = productDTO.ProductName;
 						product.bvin = productDTO.Bvin;
 						product.ImageFileMedium = $"/Portals/0/Hotcakes/Data/products/{productDTO.Bvin}/medium/{productDTO.ImageFileMedium}";
+						product.LongDescription = productDTO.LongDescription;
 					}
 				}
 
