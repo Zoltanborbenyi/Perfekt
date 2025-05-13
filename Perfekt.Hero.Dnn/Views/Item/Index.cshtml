@@ -1,0 +1,34 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Perfekt.Hero.Perfekt.Hero.Dnn.Models.Item>>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+@using DotNetNuke.Entities.Users
+
+<div class="rolunk_1" id="Items-@Dnn.ModuleContext.ModuleId">
+
+    @{
+        var currentUser = UserController.Instance.GetCurrentUserInfo();
+        bool isLoggedIn = currentUser != null && currentUser.UserID != -1;
+    }
+
+    <p id="rolunk_header_focim">TEKERJ VELÜNK</p>
+    <p id="rolunk_header_alcim">Válaszd ki a bringád, szerezz be mindent, és élvezd a tekerést!</p>
+    <div id="rolunk_header_gombok">
+        @if (isLoggedIn)
+        {
+             <a id="rolunk_header_kijelentkezes_gomb" name="rolunk_header_versenyek_gomb" href="http://rendfejl2000.northeurope.cloudapp.azure.com:8080//Logoff.aspx">
+                 KIJELENTKEZÉS
+             </a>
+        }
+        else
+        {
+             <a id="rolunk_header_kerekparok_gomb" name="rolunk_header_kerekparok_gomb" href="http://rendfejl2000.northeurope.cloudapp.azure.com:8080/Bejelentkezes">
+                BEJELENTKEZÉS
+             </a>
+             <a id="rolunk_header_versenyek_gomb" name="rolunk_header_versenyek_gomb" href="http://rendfejl2000.northeurope.cloudapp.azure.com:8080/Regisztracio">
+                 REGISZTRÁCIÓ
+             </a>
+        }
+    </div>
+    <p>Nézz szét weboldalunkon, és keress minket bátran bizalommal!</p>
+</div>

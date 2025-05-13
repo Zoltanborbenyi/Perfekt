@@ -9,6 +9,10 @@ using Hotcakes.CommerceDTO.v1.Catalog;
 using System.Web.Services.Description;
 using DotNetNuke.Services.Social.Messaging.Internal.Views;
 using DotNetNuke.Services.Exceptions;
+using DotNetNuke.Services.Log.EventLog;
+using System.Threading.Tasks;
+using Hotcakes.CommerceDTO.v1.Orders;
+using Hotcakes.Commerce.Orders;
 
 namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.API
 {
@@ -18,23 +22,11 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.API
 		{
 			try
 			{
-				//if (proxy == null)
-				//{
-				//	Exceptions.LogException(new ArgumentNullException(nameof(proxy)));
-				//	return null;
-				//}
-
-				//if (string.IsNullOrWhiteSpace(ProductId))
-				//{
-				//	Exceptions.LogException(new ArgumentException("ProductId cannot be null or empty", nameof(ProductId)));
-				//	return null;
-				//}
-
 				ApiResponse<ProductDTO> response = proxy.ProductsFindBySku(ProductId);
 
 				if (response.Errors.Any())
 				{
-					Exceptions.LogException(new Exception($"API returned errors for ProductId {ProductId}: {string.Join(", ", response.Errors)}"));
+					AddDebugLog($"API returned errors for ProductId {ProductId}: {string.Join(", ", response.Errors)}");
 					return null;
 				}
 
@@ -42,9 +34,58 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.API
 			}
 			catch (Exception ex)
 			{
-				Exceptions.LogException(new Exception($"Error retrieving product with ProductId {ProductId}", ex));
+				AddDebugLog($"Error retrieving product with ProductId {ProductId}\n{ex.Message}");
 				return null;
 			}
+		}
+		public ProductDTO CreateProduct(Api proxy, ProductDTO newProduct)
+		{
+			try
+			{
+				ApiResponse<ProductDTO> response = proxy.ProductsCreate(newProduct, null);
+				if (response.Errors.Any())
+				{
+					return null;
+				}
+				AddDebugLog($"Termék sikeresen létrehozva. BVIN: {response.Content.Bvin}");
+				return response.Content;
+			}
+			catch (Exception ex)
+			{
+				AddDebugLog(ex.Message);
+				return null;
+			}
+		}
+		public OrderDTO FindOrder(Api proxy, string orderId)
+		{
+			try
+			{
+				ApiResponse<OrderDTO> response = proxy.OrdersFind(orderId);
+				if (response.Errors.Any())
+				{
+					return null;
+				}
+				AddDebugLog($"Rendelések sikeresen lekérve");
+				return response.Content;
+			}
+			catch (Exception ex)
+			{
+				AddDebugLog(ex.Message);
+				return null;
+			}
+		}
+
+		private void AddDebugLog(string message)
+		{
+			var logInfo = new LogInfo
+			{
+				LogTypeKey = EventLogController.EventLogType.ADMIN_ALERT.ToString(),
+				BypassBuffering = true,
+				LogUserName = "Debug"
+			};
+
+			logInfo.AddProperty("Debug", message);
+			LogController.Instance.AddLog(logInfo);
 		}
 	}
 }

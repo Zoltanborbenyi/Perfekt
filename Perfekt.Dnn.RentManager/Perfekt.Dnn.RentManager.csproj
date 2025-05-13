@@ -120,9 +120,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Settings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Components\CartItemTracker.cs" />
     <Compile Include="Components\FeatureController.cs" />
     <Compile Include="Components\ItemManager.cs" />
     <Compile Include="Components\ProductManager.cs" />
+    <Compile Include="Components\RentalStatusScheduler.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Models\Item.cs" />

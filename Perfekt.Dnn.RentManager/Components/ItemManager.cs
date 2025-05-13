@@ -21,8 +21,8 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 	internal interface IItemManager
 	{
 		void CreateItem(Item t);
-		//void DeleteItem(int itemId, int moduleId);
-		//void DeleteItem(Item t);
+		void DeleteItem(int itemId);
+		void DeleteItem(Item t);
 		IEnumerable<Item> GetItems(string ProductId);
 		IEnumerable<Item> GetItems();
 		Item GetItem(int Id);
@@ -40,20 +40,20 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 			}
 		}
 
-		//public void DeleteItem(int itemId, int moduleId)
-		//{
-		//	var t = GetItem(itemId, moduleId);
-		//	DeleteItem(t);
-		//}
+		public void DeleteItem(int itemId)
+		{
+			var t = GetItem(itemId);
+			DeleteItem(t);
+		}
 
-		//public void DeleteItem(Item t)
-		//{
-		//	using (IDataContext ctx = DataContext.Instance())
-		//	{
-		//		var rep = ctx.GetRepository<Item>();
-		//		rep.Delete(t);
-		//	}
-		//}
+		public void DeleteItem(Item t)
+		{
+			using (IDataContext ctx = DataContext.Instance())
+			{
+				var rep = ctx.GetRepository<Item>();
+				rep.Delete(t);
+			}
+		}
 
 		public IEnumerable<Item> GetItems(string ProductId)
 		{

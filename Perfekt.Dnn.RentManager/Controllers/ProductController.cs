@@ -72,7 +72,6 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 			return View(products);
 		}
 
-		//[HttpGet]
 		public IEnumerable<Perfekt.Dnn.RentManager.Models.Product> GetProductsWithHccData()
 		{
 			try
@@ -97,7 +96,7 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 					{
 						product.ProductName = productDTO.ProductName;
 						product.bvin = productDTO.Bvin;
-						product.ImageFileMedium = $"/Portals/0/Hotcakes/Data/products/{productDTO.Bvin}/medium/{productDTO.ImageFileMedium}";
+						product.ImageFileMedium = productDTO.ImageFileMedium;
 						product.LongDescription = productDTO.LongDescription;
 					}
 				}

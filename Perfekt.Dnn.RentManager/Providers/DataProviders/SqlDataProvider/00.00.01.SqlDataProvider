@@ -21,7 +21,10 @@ CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Items
     NapokSzama int NOT NULL,
     Osszeg decimal NOT NULL,
     Berlo nvarchar(255) NOT NULL,
+    BerloId nvarchar(255) NOT NULL,
     Statusz nvarchar(255) NOT NULL,
+    ElemId nvarchar(255) NOT NULL,
+    KosarId nvarchar(255) NOT NULL,
     ModuleId int
     )  ON [PRIMARY]
 GO

@@ -35,7 +35,10 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Models
 		public int NapokSzama { get; set; }
 		public int Osszeg { get; set; }
 		public string Berlo { get; set; }
+		public string BerloId { get; set; }
 		public string Statusz { get; set; }
+		public string ElemId { get; set; }
+		public string KosarId { get; set; }
 		public int ModuleId { get; set; }
 	}
 }

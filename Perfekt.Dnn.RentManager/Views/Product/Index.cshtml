@@ -18,7 +18,7 @@
     {
         if (currentUser != null && currentUser.IsSuperUser)
         {
-            <a href="@Url.Action("Allitem", "Item")">
+            <a href="@Url.Action("Allitem", "Item", new {user = currentUser.IsSuperUser, userId = currentUser.UserID})">
                 Összes bérlés
             </a>
         }
@@ -35,13 +35,13 @@
                     <div id="berles_main_kerekpar_@sorszam" class="berles_main_kerekpar">
                         <div id="berles_tartalom_@sorszam" class="berles_tartalom">
                             <h1>@product.ProductName</h1>
-                            <p>@product.LongDescription</p>
-                            <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName })">
+                            <p>@Html.Raw(product.LongDescription)</p>
+                            <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.bvin })">
                                 @product.BerlesDij Ft/nap
                             </a>
                         </div>
                         <div id="berles_kep_@sorszam" class="berles_kep">
-                            <img id="productImage" src="@product.ImageFileMedium" alt="Termék képe" style="transform: scaleX(-1);" />
+                            <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.bvin/medium/@product.ImageFileMedium" alt="Termék képe" style="transform: scaleX(-1);" />
                         </div>
                     </div>
                 }
@@ -49,12 +49,12 @@
                 {
                     <div id="berles_main_kerekpar_@sorszam" class="berles_main_kerekpar">
                         <div id="berles_kep_@sorszam" class="berles_kep">
-                            <img id="productImage" src="@product.ImageFileMedium" alt="Termék képe" />
+                            <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.bvin/medium/@product.ImageFileMedium" alt="Termék képe" />
                         </div>
                         <div id="berles_tartalom_@sorszam" class="berles_tartalom">
                             <h1>@product.ProductName</h1>
-                            <p>@product.LongDescription</p>
-                            <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName })">
+                            <p>@Html.Raw(product.LongDescription)</p>
+                            <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.bvin })">
                                 @product.BerlesDij Ft/nap
                             </a>
                         </div>
@@ -68,68 +68,76 @@
     }
     else
     {
-        <p>A bérléshez kérem jelentkezzen be!</p>
-        <a href="/Bejelentkezes">Bejelentkezés</a>
-        <a href="/Regisztracio">Bejelentkezés</a>
+        <div class="rolunk_1">
+            <p>A bérléshez kérem jelentkezzen be!</p>
+            <div id="rolunk_header_gombok">
+                <a id="rolunk_header_kerekparok_gomb" name="rolunk_header_kerekparok_gomb" href="http://rendfejl2000.northeurope.cloudapp.azure.com:8080/Bejelentkezes">
+                    BEJELENTKEZÉS
+                </a>
+                <a id="rolunk_header_versenyek_gomb" name="rolunk_header_versenyek_gomb" href="http://rendfejl2000.northeurope.cloudapp.azure.com:8080/Regisztracio">
+                    REGISZTRÁCIÓ
+                </a>
+            </div>
+        </div>
     }
 </div>
 
-<style>
-    .berles_main{
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-    }
-    
-    .berles_main_kerekpar{
-        display:flex;
-        flex-direction: row;
-        justify-content:flex-start;
-        align-items: center;
-    }
+        <style>
+            .berles_main {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
 
-    .berles_tartalom{
-        display:flex;
-        flex-direction:column;
-        justify-content: flex-start;
-        align-items: center;
-        width: 55%;
-    }
+            .berles_main_kerekpar {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+            }
 
-    .berles_kep{
-        width: 35vw;
-    }
+            .berles_tartalom {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                width: 55%;
+            }
 
-    .berles_kep img{
-        width: 35vw;
-    }
+            .berles_kep {
+                width: 35vw;
+            }
 
-    .berles_tartalom a {
-        width: auto;
-        min-width: 150px;
-        background: #A60909;
-        color: #FAF7EE;
-        border: none;
-        padding: 12px 25px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease !important;
-        border-radius: 25px;
-    }
+                .berles_kep img {
+                    width: 35vw;
+                }
 
-    .berles_tartalom a:hover {
-        background: #faf7ee;
-        color: #a60909;
-        text-decoration: none !important;
-    }
+            .berles_tartalom a {
+                width: auto;
+                min-width: 150px;
+                background: #A60909;
+                color: #FAF7EE;
+                border: none;
+                padding: 12px 25px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease !important;
+                border-radius: 25px;
+            }
 
-    .berles_tartalom p{
-        font-size: 12px;
-    }
+                .berles_tartalom a:hover {
+                    background: #faf7ee;
+                    color: #a60909;
+                    text-decoration: none !important;
+                }
 
-    .berles_tartalom h1{
-        font-size: 36px !important;
-    }
-</style>
+            .berles_tartalom p {
+                font-size: 12px;
+            }
+
+            .berles_tartalom h1 {
+                font-size: 36px !important;
+            }
+        </style>

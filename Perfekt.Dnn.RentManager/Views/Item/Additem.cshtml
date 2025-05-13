@@ -13,6 +13,10 @@
 </style>
 
 <form action="@Url.Action("Additem", "Item")" method="post">
+    <input type="hidden" id="ImageFileMedium" name="ImageFileMedium" value="@Request.QueryString["ImageFileMedium"]">
+    <input type="hidden" id="Bvin" name="Bvin" value="@Request.QueryString["Bvin"]">
+    <input type="hidden" id="ProductId" name="ProductId" value="@Request.QueryString["ProductId"]">
+
     <div class="card mb-4">
         <div class="card-header">
             <h5>
@@ -20,9 +24,6 @@
                 bérlése
             </h5>
         </div>
-
-        <input type="hidden" id="ProductId" name="ProductId" value=@Request.QueryString["ProductId"]>
-
         <div class="card-body">
             <div class="form-group">
                 <label for="KezdoDatum">Kezdő dátum:</label>
@@ -45,7 +46,7 @@
         </div>
         <div>
             Bérleti díj egy napra:
-            <input type="text" id="BerlesDij" name="BerlesDij" value="@Request.QueryString["BerlesDij"]" readonly class="form-control-sm"/>
+            <input type="text" id="BerlesDij" name="BerlesDij" value="@Request.QueryString["BerlesDij"]" readonly class="form-control-sm" />
         </div>
         <div>
             Összeg:
@@ -58,7 +59,7 @@
         KOSÁRBA
     </button>
 
-    <a href="@Url.Action("Index", "Item", new { ProductId = Request.QueryString["ProductId"], BerlesDij = Request.QueryString["BerlesDij"], ProductName = Request.QueryString["ProductName"]})">Vissza</a>
+    <a href="@Url.Action("Index", "Item", new { ProductId = Request.QueryString["ProductId"], BerlesDij = Request.QueryString["BerlesDij"], ProductName = Request.QueryString["ProductName"], ImageFileMedium = Request.QueryString["ImageFileMedium"], Bvin = Request.QueryString["Bvin"] })">Vissza</a>
 
 </form>
 <script>
@@ -128,7 +129,6 @@
             if (vegDatum < kezdoDatum) {
                 resetCalculations();
 
-                gomb.attr('href', '#'); // HREF beállítása #
                 gomb.prop('disabled', true); // Gomb letiltása
                 return;
             } else {
@@ -137,7 +137,6 @@
                 $('#NapokSzama').val(napokSzama);
                 $('#Osszeg').val(napokSzama * napiAr);
 
-                gomb.attr('href', '/HotcakesStore/cart?AddSku=01&AddSkuQty=1'); // HREF beállítása #
                 gomb.prop('disabled', false); // Gomb feloldása
             }
         }

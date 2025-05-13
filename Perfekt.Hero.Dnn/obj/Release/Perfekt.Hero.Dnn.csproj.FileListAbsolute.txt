@@ -1,0 +1,10 @@
+C:\Users\DNN_DEV\DesktopModules\bin\Perfekt.Hero.Dnn.dll.config
+C:\Users\DNN_DEV\DesktopModules\bin\Perfekt.Hero.Dnn.dll
+C:\Users\DNN_DEV\DesktopModules\bin\Perfekt.Hero.Dnn.pdb
+C:\Users\DNN_DEV\DesktopModules\Perfekt2\module-hero\Perfekt.Hero.Dnn\obj\Release\Perfekt.Hero.Dnn.csproj.AssemblyReference.cache
+C:\Users\DNN_DEV\DesktopModules\Perfekt2\module-hero\Perfekt.Hero.Dnn\obj\Release\Perfekt.Hero.Perfekt.Hero.Dnn.App_LocalResources.Settings.resources
+C:\Users\DNN_DEV\DesktopModules\Perfekt2\module-hero\Perfekt.Hero.Dnn\obj\Release\Perfekt.Hero.Dnn.csproj.GenerateResource.cache
+C:\Users\DNN_DEV\DesktopModules\Perfekt2\module-hero\Perfekt.Hero.Dnn\obj\Release\Perfekt.Hero.Dnn.csproj.CoreCompileInputs.cache
+C:\Users\DNN_DEV\DesktopModules\Perfekt2\module-hero\Perfekt.Hero.Dnn\obj\Release\Perfekt..91EF056C.Up2Date
+C:\Users\DNN_DEV\DesktopModules\Perfekt2\module-hero\Perfekt.Hero.Dnn\obj\Release\Perfekt.Hero.Dnn.dll
+C:\Users\DNN_DEV\DesktopModules\Perfekt2\module-hero\Perfekt.Hero.Dnn\obj\Release\Perfekt.Hero.Dnn.pdb
