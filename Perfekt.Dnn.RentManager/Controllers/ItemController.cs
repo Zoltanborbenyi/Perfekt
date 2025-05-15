@@ -215,17 +215,30 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 		{
 			foreach (var foglalas in letezoFoglalasok)
 			{
-				if (foglalas.Statusz == "Completed" || foglalas.BerloId == berloId)
+				if (foglalas.Statusz == "Completed")
 				{
 					if (ujKezdo.Date <= foglalas.VegDatum.Date && ujVeg.Date >= foglalas.KezdoDatum.Date)
 					{
 						// Ütközik
+						ViewBag.VanUtkozes = true;
+						return true;
+					}
+				}
+
+				if (foglalas.BerloId == berloId)
+				{
+					if (ujKezdo.Date <= foglalas.VegDatum.Date && ujVeg.Date >= foglalas.KezdoDatum.Date)
+					{
+						// Ütközik
+						ViewBag.VanFelhasznalo = true;
 						return true;
 					}
 				}
 			}
 
 			// Nincs ütközés
+			ViewBag.VanUtkozes = false;
+			ViewBag.VanFelhasznalo = false;
 			return false;
 		}
 

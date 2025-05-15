@@ -15,6 +15,32 @@
     <input type="hidden" id="BerlesDij" name="BerlesDij" value="@Request.QueryString["BerlesDij"]">
     <input type="hidden" id="Osszeg" name="Osszeg" value="0">
 
+    @if (ViewBag.VanUtkozes != null && (bool)ViewBag.VanUtkozes)
+    {
+        <div id="utkozesUzenet" style="background-color: #ffe0e0; padding: 20px; border: 1px solid red; border-radius: 8px; margin: 20px 0;">
+            <p>Az időpont ütközik egy meglévő foglalással!</p>
+            <a href="javascript:void(0);" onclick="document.getElementById('utkozesUzenet').style.display='none'" style="padding: 8px 16px; background-color: #007bff; color: white; border-radius: 5px; text-decoration: none;">OK</a>
+        </div>
+    }
+
+    @if (ViewBag.VanFelhasznalo != null && (bool)ViewBag.VanFelhasznalo)
+    {
+        <div id="felhasznaloUzenet" style="background-color: #ffe0e0; padding: 20px; border: 1px solid red; border-radius: 8px; margin: 20px 0;">
+            <p>Ez az időpont ezzel a termékkel már benne van a kosarában!</p>
+            <a href="javascript:void(0);" onclick="document.getElementById('felhasznaloUzenet').style.display='none'" style="padding: 8px 16px; background-color: #007bff; color: white; border-radius: 5px; text-decoration: none;">OK</a>
+        </div>
+    }
+
+    <div id="kitoltesUzenet" style="display:none; background-color: #ffe0e0; padding: 20px; border: 1px solid red; border-radius: 8px; margin: 20px 0;">
+        <p>Kérjük, töltse ki mindkét dátummezőt!</p>
+        <a href="javascript:void(0);" onclick="document.getElementById('kitoltesUzenet').style.display='none'" style="padding: 8px 16px; background-color: #007bff; color: white; border-radius: 5px; text-decoration: none;">OK</a>
+    </div>
+
+    <div id="sorrendUzenet" style="display: none; background-color: #ffe0e0; padding: 20px; border: 1px solid red; border-radius: 8px; margin: 20px 0;">
+        <p>A végdátum nem lehet korábbi, mint a kezdődátum!</p>
+        <a href="javascript:void(0);" onclick="document.getElementById('sorrendUzenet').style.display='none'" style="padding: 8px 16px; background-color: #007bff; color: white; border-radius: 5px; text-decoration: none;">OK</a>
+    </div>
+
     <div class="berles_3">
         <div class="card mb-4">
             <div class="card-header">
@@ -151,14 +177,14 @@
 
             // Validate empty fields
             if (!kezdoDatum || !vegDatum) {
-                alert('Kérjük, töltse ki mindkét dátummezőt!');
+                document.getElementById('kitoltesUzenet').style.display = 'block';
                 e.preventDefault();
                 return false;
             }
 
             // Validate date order
             if (new Date(kezdoDatum) > new Date(vegDatum)) {
-                alert('A végdátum nem lehet korábbi, mint a kezdődátum!');
+                document.getElementById('sorrendUzenet').style.display = 'block';
                 e.preventDefault();
                 return false;
             }
