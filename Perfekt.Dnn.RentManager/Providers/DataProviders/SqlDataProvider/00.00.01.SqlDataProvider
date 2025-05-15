@@ -15,6 +15,7 @@ GO
 CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Items
     (
     Id int NOT NULL IDENTITY (1, 1),
+    Bvin nvarchar(255) NOT NULL,
     ProductId nvarchar(255) NOT NULL,
     KezdoDatum date NOT NULL,
     VegDatum date NOT NULL,

@@ -4,63 +4,53 @@
 @using DotNetNuke.Web.Mvc.Helpers
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css" />
-<style>
-    .past-date {
-        color: #ccc !important;
-        background-color: #f9f9f9 !important;
-        cursor: not-allowed;
-    }
-</style>
 
 <form action="@Url.Action("Additem", "Item")" method="post">
     <input type="hidden" id="ImageFileMedium" name="ImageFileMedium" value="@Request.QueryString["ImageFileMedium"]">
     <input type="hidden" id="Bvin" name="Bvin" value="@Request.QueryString["Bvin"]">
     <input type="hidden" id="ProductId" name="ProductId" value="@Request.QueryString["ProductId"]">
+    <input type="hidden" id="ProductName" name="ProductName" value="@Request.QueryString["ProductName"]">
 
-    <div class="card mb-4">
-        <div class="card-header">
-            <h5>
-                <input type="text" id="ProductName" name="ProductName" value="@Request.QueryString["ProductName"]" readonly class="form-control-sm">
-                bérlése
-            </h5>
+    <input type="hidden" id="NapokSzama" name="NapokSzama" value="0">
+    <input type="hidden" id="BerlesDij" name="BerlesDij" value="@Request.QueryString["BerlesDij"]">
+    <input type="hidden" id="Osszeg" name="Osszeg" value="0">
+
+    <div class="berles_3">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>
+                    @Request.QueryString["ProductName"] bérlése
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="KezdoDatum">Kezdő dátum:</label>
+                    <input type="text" name="KezdoDatum" id="KezdoDatum" class="datePicker form-control"
+                           autocomplete="off" />
+                </div>
+
+                <div class="form-group">
+                    <label for="VegDatum">Záró dátum:</label>
+                    <input type="text" name="VegDatum" id="VegDatum" class="datePicker form-control"
+                           autocomplete="off" />
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="KezdoDatum">Kezdő dátum:</label>
-                <input type="text" name="KezdoDatum" id="KezdoDatum" class="datePicker form-control"
-                       autocomplete="off" />
-            </div>
 
-            <div class="form-group">
-                <label for="VegDatum">Záró dátum:</label>
-                <input type="text" name="VegDatum" id="VegDatum" class="datePicker form-control"
-                       autocomplete="off" />
-            </div>
+        <div class="calculation-results">
+            <p>Napok száma: <span>0</span></p>
+            <p>Bérleti díj egy napra: <span>@Request.QueryString["BerlesDij"]</span> Ft/nap</p>
+            <p>Összeg: <span>0</span> Ft</p>
+        </div>
+
+        <div class="berles_gombok_2">
+            <button id="kosarGomb" type="submit" class="btn btn-primary">
+                KOSÁRBA
+            </button>
+
+            <a href="@Url.Action("Index", "Item", new { ProductId = Request.QueryString["ProductId"], BerlesDij = Request.QueryString["BerlesDij"], ProductName = Request.QueryString["ProductName"], ImageFileMedium = Request.QueryString["ImageFileMedium"], Bvin = Request.QueryString["Bvin"] })">Vissza</a>
         </div>
     </div>
-
-    <div class="calculation-results">
-        <div>
-            Napok száma:
-            <input type="text" id="NapokSzama" name="NapokSzama" value="0" readonly class="form-control-sm">
-        </div>
-        <div>
-            Bérleti díj egy napra:
-            <input type="text" id="BerlesDij" name="BerlesDij" value="@Request.QueryString["BerlesDij"]" readonly class="form-control-sm" />
-        </div>
-        <div>
-            Összeg:
-            <input type="text" id="Osszeg" name="Osszeg" value="0" readonly class="form-control-sm">
-            Ft
-        </div>
-    </div>
-
-    <button id="kosarGomb" type="submit" class="btn btn-primary">
-        KOSÁRBA
-    </button>
-
-    <a href="@Url.Action("Index", "Item", new { ProductId = Request.QueryString["ProductId"], BerlesDij = Request.QueryString["BerlesDij"], ProductName = Request.QueryString["ProductName"], ImageFileMedium = Request.QueryString["ImageFileMedium"], Bvin = Request.QueryString["Bvin"] })">Vissza</a>
-
 </form>
 <script>
     $(function () {
@@ -134,8 +124,13 @@
             } else {
                 // Calculate days difference
                 const napokSzama = Math.floor((vegDatum - kezdoDatum) / (1000 * 60 * 60 * 24)) + 1;
+                const osszeg = napokSzama * napiAr;
+
                 $('#NapokSzama').val(napokSzama);
                 $('#Osszeg').val(napokSzama * napiAr);
+
+                $('.calculation-results p:nth-child(1) span').text(napokSzama.toString());
+                $('.calculation-results p:nth-child(3) span').text(osszeg.toString());
 
                 gomb.prop('disabled', false); // Gomb feloldása
             }
@@ -144,6 +139,9 @@
         function resetCalculations() {
             $('#NapokSzama').val('0');
             $('#Osszeg').val('0');
+
+            $('.calculation-results p:nth-child(1) span').text('0');
+            $('.calculation-results p:nth-child(3) span').text('0');
         }
 
         // Form submission handler
@@ -172,3 +170,40 @@
         szamolNapokat();
     });
 </script>
+
+<style>
+    .past-date {
+        color: #ccc !important;
+        background-color: #f9f9f9 !important;
+        cursor: not-allowed;
+    }
+    .berles_gombok_2{
+        display: flex;
+        flex-direction:row;
+    }
+
+    .berles_gombok_2 a,
+    .berles_gombok_2 button 
+    {
+        width: 20%;
+        min-width: 150px;
+        background: #A60909;
+        color: #FAF7EE;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease !important;
+        border-radius: 25px;
+        text-align: center;
+    }
+
+    .berles_gombok_2 a:hover,
+    .berles_gombok_2 button:hover{
+        background: #faf7ee;
+        color: #a60909;
+        text-decoration: none !important;
+    }
+
+</style>

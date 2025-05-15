@@ -111,6 +111,13 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 			string imagePath = Path.Combine("C:\\DNN", "Portals", "0", "Hotcakes", "Data", "products", bvin, "medium", kep);
 			byte[] imageBytes = System.IO.File.ReadAllBytes(imagePath);
 
+			var letezoFoglalasok = ItemManager.Instance.GetItems(model.ProductId);
+
+			if (VanIdoUtkozes(kezdoDatum, vegDatum, letezoFoglalasok, berloId))
+			{
+				return View("Additem", model); // vagy redirect vissza hibaüzenettel
+			}
+
 			var newProduct = Letrehozas(osszeg,nev,kep,imageBytes);
 
 			AddDebugLog(newProduct.Bvin.ToString());
@@ -128,7 +135,7 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 				return View("Additem", model);
 			}
 
-			RendelesMentes(model, productId, kezdoDatum, vegDatum, napokSzama, id["ElemId"], id["KosarId"],osszeg,berloId);
+			RendelesMentes(model, productId, kezdoDatum, vegDatum, napokSzama, id["ElemId"], id["KosarId"],osszeg,berloId,newProduct.Bvin);
 
 			//meghívjuk a kosarat és belelépünk, hogy lássuk a betett elemet
 			string kosarUrl = "http://" + DotNetNuke.Entities.Portals.PortalSettings.Current.PortalAlias.HTTPAlias + "/kosar/";
@@ -187,9 +194,9 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 					{ "ElemId", lineItemId }
 				};
 		}
-		public ActionResult RendelesMentes(Item model, string productId, DateTime kezdoDatum, DateTime vegDatum, int napokSzama, string elemId, string kosarId, int osszeg, string berloId)
+		public ActionResult RendelesMentes(Item model, string productId, DateTime kezdoDatum, DateTime vegDatum, int napokSzama, string elemId, string kosarId, int osszeg, string berloId,string bvin)
 		{
-
+			model.Bvin = bvin;
 			model.ProductId = productId;
 			model.KezdoDatum = kezdoDatum;
 			model.VegDatum = vegDatum;
@@ -201,13 +208,6 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 			model.ElemId = elemId;
 			model.KosarId = kosarId;
 
-			var letezoFoglalasok = ItemManager.Instance.GetItems(model.ProductId);
-
-			if (VanIdoUtkozes(kezdoDatum, vegDatum, letezoFoglalasok,berloId))
-			{
-				return View("Additem",model); // vagy redirect vissza hibaüzenettel
-			}
-
 			ItemManager.Instance.CreateItem(model);
 			return null;
 		}
@@ -217,7 +217,7 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 			{
 				if (foglalas.Statusz == "Completed" || foglalas.BerloId == berloId)
 				{
-					if (ujKezdo <= foglalas.VegDatum && ujVeg >= foglalas.KezdoDatum)
+					if (ujKezdo.Date <= foglalas.VegDatum.Date && ujVeg.Date >= foglalas.KezdoDatum.Date)
 					{
 						// Ütközik
 						return true;

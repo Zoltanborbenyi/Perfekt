@@ -13,6 +13,7 @@
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.ComponentModel.DataAnnotations;
 using DotNetNuke.Entities.Content;
+using Hotcakes.Commerce.Marketing.PromotionQualifications;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Caching;
@@ -29,6 +30,7 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Models
 	public class Item
 	{
 		public int Id { get; set; } = -1;
+		public string Bvin { get; set; }
 		public string ProductId { get; set; }
 		public DateTime KezdoDatum { get; set; }
 		public DateTime VegDatum { get; set; }

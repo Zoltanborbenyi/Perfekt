@@ -74,6 +74,42 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.API
 				return null;
 			}
 		}
+		public List<OrderSnapshotDTO> FindOrders(Api proxy)
+		{
+			try
+			{
+				ApiResponse<List<OrderSnapshotDTO>> response = proxy.OrdersFindAll();
+				if (response.Errors.Any())
+				{
+					return null;
+				}
+				AddDebugLog($"Rendelések sikeresen lekérve");
+				return response.Content;
+			}
+			catch (Exception ex)
+			{
+				AddDebugLog(ex.Message);
+				return null;
+			}
+		}
+		public bool DeleteProduct(Api proxy, string bvin)
+		{
+			try
+			{
+				ApiResponse<bool> response = proxy.ProductsDelete(bvin);
+				if (response.Errors.Any())
+				{
+					return false;
+				}
+				AddDebugLog($"Rendelések sikeresen lekérve");
+				return response.Content;
+			}
+			catch (Exception ex)
+			{
+				AddDebugLog(ex.Message);
+				return false;
+			}
+		}
 
 		private void AddDebugLog(string message)
 		{

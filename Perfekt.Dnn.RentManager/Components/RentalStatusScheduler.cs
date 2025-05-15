@@ -5,45 +5,44 @@ using Hotcakes.Commerce;
 using System;
 using System.Linq;
 using DotNetNuke.Entities.Users;
+using DotNetNuke.Entities.Portals;
+using static Perfekt.Dnn.Perfekt.Dnn.RentManager.Components.CartItemTracker;
 
 namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 {
 	public class RentalStatusScheduler : SchedulerClient
 	{
-		public RentalStatusScheduler(ScheduleHistoryItem item) : base()
+		public RentalStatusScheduler(ScheduleHistoryItem oItem) : base()
 		{
-			ScheduleHistoryItem = item;
+			this.ScheduleHistoryItem = oItem;
 		}
 
 		public override void DoWork()
 		{
 			try
 			{
-				var HccApp = HotcakesApplication.Current;
+				//Perform required items for logging
+				this.Progressing();
 
-				CartItemTracker cartItemTracker = new CartItemTracker();
-				cartItemTracker.TrackItemStatus(HccApp);				
+				var hccApp = HotcakesApplication.Current;
+				if (hccApp == null)
+				{
+					throw new NullReferenceException("HotcakesApplication.Current is null - commerce not initialized");
+				}
 
-				ScheduleHistoryItem.Succeeded = true;
-				AddDebugLog("RentalStatusScheduler completed successfully.");
+				var cartItemTracker = new CartItemTracker(hccApp);
+				cartItemTracker.TrackItemStatus();
+
+				//Show success
+				this.ScheduleHistoryItem.Succeeded = true;
 			}
 			catch (Exception ex)
 			{
-				ScheduleHistoryItem.Succeeded = false;
-				AddDebugLog($"RentalStatusScheduler failed: {ex.Message}");
+				this.ScheduleHistoryItem.Succeeded = false;
+				this.ScheduleHistoryItem.AddLogNote("Exception= " + ex.ToString());
+				this.Errored(ref ex);
+				DotNetNuke.Services.Exceptions.Exceptions.LogException(ex);
 			}
-		}
-		private void AddDebugLog(string message)
-		{
-			var logInfo = new LogInfo
-			{
-				LogTypeKey = EventLogController.EventLogType.ADMIN_ALERT.ToString(),
-				BypassBuffering = true,
-				LogUserName = "Debug"
-			};
-
-			logInfo.AddProperty("Debug", message);
-			LogController.Instance.AddLog(logInfo);
 		}
 	}
 }

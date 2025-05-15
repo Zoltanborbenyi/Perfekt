@@ -3,45 +3,109 @@
 @using System.Text.RegularExpressions
 @using DotNetNuke.Web.Mvc.Helpers
 
-<div id="Items-@Dnn.ModuleContext.ModuleId">
-    <h2>
-        <input type="text" id="ProductName" name="ProductName" value="@Request.QueryString["ProductName"]" readonly class="form-control-sm">
-        bérlése
-    </h2>
+<div id="Items-@Dnn.ModuleContext.ModuleId" class="berles_2">
+    
+    <input type="hidden" id="ProductName" name="ProductName" value="@Request.QueryString["ProductName"]">
 
-    <a href="@Url.Action("Additem", "Item", new { ProductId = Request.QueryString["ProductId"], BerlesDij = Request.QueryString["BerlesDij"], ProductName = Request.QueryString["ProductName"], ImageFileMedium = Request.QueryString["ImageFileMedium"], Bvin = Request.QueryString["Bvin"] })">
-        Bérlés indítása
-    </a>
+    <div class="berles_inditas">
+        <h2>
+            @Request.QueryString["ProductName"].ToString() bérlése
+        </h2>
 
-    <a href="/termek-leirasa/@Request.QueryString["ProductId"]">
-        Termék leírás
-    </a>
+        <div class="berles_gombok">
+            <a href="@Url.Action("Additem", "Item", new { ProductId = Request.QueryString["ProductId"], BerlesDij = Request.QueryString["BerlesDij"], ProductName = Request.QueryString["ProductName"], ImageFileMedium = Request.QueryString["ImageFileMedium"], Bvin = Request.QueryString["Bvin"] })">
+                Bérlés indítása
+            </a>
 
-    <a href="@Url.Action("Index","Product")">Vissza</a>
+            <a href="/termek-leirasa/@Request.QueryString["ProductId"]">
+                Termék leírás
+            </a>
 
-    <!-- Bérlések listája -->
-    <h4>Aktuális bérlések</h4>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Kezdés</th>
-                <th>Végzés</th>
-                <th>Napok</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                if (item.Statusz == "Completed")
+            <a href="@Url.Action("Index","Product")">Vissza</a>
+        </div>
+    </div>
+
+    <div class="aktualis_berles">
+        <!-- Bérlések listája -->
+        <h4>Aktuális bérlések</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Kezdés</th>
+                    <th>Végzés</th>
+                    <th>Napok</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>@item.KezdoDatum.ToShortDateString()</td>
-                        <td>@item.VegDatum.ToShortDateString()</td>
-                        <td>@item.NapokSzama</td>
-                    </tr>
+                    if (item.Statusz == "Completed")
+                    {
+                        <tr>
+                            <td>@item.KezdoDatum.ToShortDateString()</td>
+                            <td>@item.VegDatum.ToShortDateString()</td>
+                            <td>@item.NapokSzama</td>
+                        </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+<style>
+    .berles_2{
+        display:flex;
+        justify-content:center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .berles_inditas h2{
+        text-align:center;
+    }
+
+    .berles_inditas{
+        display:flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .berles_gombok {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .aktualis_berles{
+        padding-top: 30px;
+        width: 90%;
+    }
+
+    .berles_inditas a {
+        width: 20%;
+        min-width: 150px;
+        background: #A60909;
+        color: #FAF7EE;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease !important;
+        border-radius: 25px;
+        text-align:center;
+    }
+
+    .berles_inditas a:hover {
+        background: #faf7ee;
+        color: #a60909;
+        text-decoration: none !important;
+    }
+
+
+
+</style>
+
 

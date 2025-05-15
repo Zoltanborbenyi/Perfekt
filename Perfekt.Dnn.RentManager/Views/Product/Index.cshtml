@@ -16,7 +16,7 @@
 
     @if (isLoggedIn)
     {
-        if (currentUser != null && currentUser.IsSuperUser)
+        if (currentUser != null)
         {
             <a href="@Url.Action("Allitem", "Item", new {user = currentUser.IsSuperUser, userId = currentUser.UserID})">
                 Összes bérlés
@@ -26,44 +26,46 @@
         var sorszam = 1;
 
         <h2>Válaszd ki milyen kerékpárt szeretnél bérelni!</h2>
-        <div class="berles_main">
-            <!--ez lesz a szürke nagy doboz-->
-            @foreach (var product in Model)
-            {
-                if (sorszam % 2 == 0)
+        <div class="berles_hatter">
+            <div class="berles_main">
+                <!--ez lesz a szürke nagy doboz-->
+                @foreach (var product in Model)
                 {
-                    <div id="berles_main_kerekpar_@sorszam" class="berles_main_kerekpar">
-                        <div id="berles_tartalom_@sorszam" class="berles_tartalom">
-                            <h1>@product.ProductName</h1>
-                            <p>@Html.Raw(product.LongDescription)</p>
-                            <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.bvin })">
-                                @product.BerlesDij Ft/nap
-                            </a>
+                    if (sorszam % 2 == 0)
+                    {
+                        <div id="berles_main_kerekpar_@sorszam" class="berles_main_kerekpar">
+                            <div id="berles_tartalom_@sorszam" class="berles_tartalom">
+                                <h1>@product.ProductName</h1>
+                                <p>@Html.Raw(product.LongDescription)</p>
+                                <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.bvin })">
+                                    @product.BerlesDij Ft/nap
+                                </a>
+                            </div>
+                            <div id="berles_kep_@sorszam" class="berles_kep">
+                                <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.bvin/medium/@product.ImageFileMedium" alt="Termék képe" style="transform: scaleX(-1);" />
+                            </div>
                         </div>
-                        <div id="berles_kep_@sorszam" class="berles_kep">
-                            <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.bvin/medium/@product.ImageFileMedium" alt="Termék képe" style="transform: scaleX(-1);" />
+                    }
+                    else
+                    {
+                        <div id="berles_main_kerekpar_@sorszam" class="berles_main_kerekpar">
+                            <div id="berles_kep_@sorszam" class="berles_kep">
+                                <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.bvin/medium/@product.ImageFileMedium" alt="Termék képe" />
+                            </div>
+                            <div id="berles_tartalom_@sorszam" class="berles_tartalom">
+                                <h1>@product.ProductName</h1>
+                                <p>@Html.Raw(product.LongDescription)</p>
+                                <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.bvin })">
+                                    @product.BerlesDij Ft/nap
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                }
-                else
-                {
-                    <div id="berles_main_kerekpar_@sorszam" class="berles_main_kerekpar">
-                        <div id="berles_kep_@sorszam" class="berles_kep">
-                            <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.bvin/medium/@product.ImageFileMedium" alt="Termék képe" />
-                        </div>
-                        <div id="berles_tartalom_@sorszam" class="berles_tartalom">
-                            <h1>@product.ProductName</h1>
-                            <p>@Html.Raw(product.LongDescription)</p>
-                            <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.bvin })">
-                                @product.BerlesDij Ft/nap
-                            </a>
-                        </div>
-                    </div>
-                }
+                    }
 
 
-                sorszam += 1;
-            }
+                    sorszam += 1;
+                }
+            </div>
         </div>
     }
     else
