@@ -18,7 +18,7 @@
     {
         if (currentUser != null)
         {
-            <a href="@Url.Action("Allitem", "Item", new {user = currentUser.IsSuperUser, userId = currentUser.UserID})">
+            <a href="@Url.Action("Allitem", "Item")">
                 Összes bérlés
             </a>
         }
@@ -37,12 +37,12 @@
                             <div id="berles_tartalom_@sorszam" class="berles_tartalom">
                                 <h1>@product.ProductName</h1>
                                 <p>@Html.Raw(product.LongDescription)</p>
-                                <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.bvin })">
+                                <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.Bvin })">
                                     @product.BerlesDij Ft/nap
                                 </a>
                             </div>
                             <div id="berles_kep_@sorszam" class="berles_kep">
-                                <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.bvin/medium/@product.ImageFileMedium" alt="Termék képe" style="transform: scaleX(-1);" />
+                                <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.Bvin/medium/@product.ImageFileMedium" alt="Termék képe" style="transform: scaleX(-1);" />
                             </div>
                         </div>
                     }
@@ -50,12 +50,12 @@
                     {
                         <div id="berles_main_kerekpar_@sorszam" class="berles_main_kerekpar">
                             <div id="berles_kep_@sorszam" class="berles_kep">
-                                <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.bvin/medium/@product.ImageFileMedium" alt="Termék képe" />
+                                <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.Bvin/medium/@product.ImageFileMedium" alt="Termék képe" />
                             </div>
                             <div id="berles_tartalom_@sorszam" class="berles_tartalom">
                                 <h1>@product.ProductName</h1>
                                 <p>@Html.Raw(product.LongDescription)</p>
-                                <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.bvin })">
+                                <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.Bvin })">
                                     @product.BerlesDij Ft/nap
                                 </a>
                             </div>

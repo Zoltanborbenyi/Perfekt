@@ -14,9 +14,9 @@ GO
 
 CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Items
     (
-    Id int NOT NULL IDENTITY (1, 1),
     Bvin nvarchar(255) NOT NULL,
     ProductId nvarchar(255) NOT NULL,
+    ProductName nvarchar(255) NOT NULL,
     KezdoDatum date NOT NULL,
     VegDatum date NOT NULL,
     NapokSzama int NOT NULL,
@@ -34,7 +34,7 @@ GO
 ALTER TABLE {databaseOwner}{objectQualifier}RentManager_Items ADD CONSTRAINT
     PK_{objectQualifier}RentManager_Items PRIMARY KEY CLUSTERED 
     (
-    Id
+    Bvin
     ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 
 GO
@@ -46,7 +46,7 @@ GO
 CREATE TABLE {databaseOwner}{objectQualifier}RentManager_Products
     (
     ProductId nvarchar(255) NOT NULL,
-    bvin nvarchar(255),
+    Bvin nvarchar(255),
     BerlesDij decimal NOT NULL,
     ImageFileMedium nvarchar(255),
     ProductName nvarchar(255),

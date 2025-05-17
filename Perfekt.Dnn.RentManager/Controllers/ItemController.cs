@@ -35,6 +35,7 @@ using Hotcakes.CommerceDTO.v1.Client;
 using Hotcakes.Commerce.Utilities;
 using Hotcakes.CommerceDTO.v1;
 using System.IO;
+using Hotcakes.CommerceDTO.v1.Orders;
 
 namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 {
@@ -47,26 +48,26 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 		//	return RedirectToDefaultRoute();
 		//}
 
-		public ActionResult Edit(int Id = -1)
-		{
-			var item = (Id == -1)
-				 ? new Item { }
-				 : ItemManager.Instance.GetItem(Id);
+		//public ActionResult Edit(int Id = -1)
+		//{
+		//	var item = (Id == -1)
+		//		 ? new Item { }
+		//		 : ItemManager.Instance.GetItem(Id);
 
-			return View(item);
-		}
+		//	return View(item);
+		//}
 
-		[HttpPost]
-		[DotNetNuke.Web.Mvc.Framework.ActionFilters.ValidateAntiForgeryToken]
-		public ActionResult Edit(Item item)
-		{
-			if (item.Id == -1)
-			{
-				ItemManager.Instance.CreateItem(item);
-			}
+		//[HttpPost]
+		//[DotNetNuke.Web.Mvc.Framework.ActionFilters.ValidateAntiForgeryToken]
+		//public ActionResult Edit(Item item)
+		//{
+		//	if (item.Id == -1)
+		//	{
+		//		ItemManager.Instance.CreateItem(item);
+		//	}
 
-			return RedirectToDefaultRoute();
-		}
+		//	return RedirectToDefaultRoute();
+		//}
 
 		//[ModuleAction(ControlKey = "Edit", TitleKey = "AddItem")]
 		public ActionResult Index(string ProductId)
@@ -102,7 +103,8 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 			DateTime vegDatum = DateTime.Parse(Request.Form["VegDatum"]);
 			string productId = Request.Form["ProductId"].ToString();
 			int napokSzama = int.Parse(Request.Form["NapokSzama"]);
-			string nev = $"{Request.Form["ProductName"].ToString()} BÉRLÉSE {kezdoDatum:yyyy-MM-dd} - {vegDatum:yyyy-MM-dd}";
+			string nev = Request.Form["ProductName"].ToString();
+			string ujNev = $"{nev} BÉRLÉSE {kezdoDatum:yyyy-MM-dd} - {vegDatum:yyyy-MM-dd}";
 			int osszeg = int.Parse(Request.Form["Osszeg"]);
 			string kep = Request.Form["ImageFileMedium"].ToString();
 			string bvin = Request.Form["Bvin"].ToString();
@@ -118,7 +120,7 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 				return View("Additem", model); // vagy redirect vissza hibaüzenettel
 			}
 
-			var newProduct = Letrehozas(osszeg,nev,kep,imageBytes);
+			var newProduct = Letrehozas(osszeg,ujNev,kep,imageBytes);
 
 			AddDebugLog(newProduct.Bvin.ToString());
 
@@ -128,14 +130,14 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 				return View("Additem",model);
 			}
 
-			Dictionary<string, string> id = KosarbaRakas((newProduct.Bvin).ToUpper(), nev);
+			Dictionary<string, string> id = KosarbaRakas((newProduct.Bvin).ToUpper(), ujNev);
 			if (id == null)
 			{
 				AddDebugLog("Hiba történt a kosárhoz adáskor");
 				return View("Additem", model);
 			}
 
-			RendelesMentes(model, productId, kezdoDatum, vegDatum, napokSzama, id["ElemId"], id["KosarId"],osszeg,berloId,newProduct.Bvin);
+			RendelesMentes(model, productId, nev, kezdoDatum, vegDatum, napokSzama, id["ElemId"], id["KosarId"],osszeg,berloId,newProduct.Bvin);
 
 			//meghívjuk a kosarat és belelépünk, hogy lássuk a betett elemet
 			string kosarUrl = "http://" + DotNetNuke.Entities.Portals.PortalSettings.Current.PortalAlias.HTTPAlias + "/kosar/";
@@ -194,10 +196,11 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 					{ "ElemId", lineItemId }
 				};
 		}
-		public ActionResult RendelesMentes(Item model, string productId, DateTime kezdoDatum, DateTime vegDatum, int napokSzama, string elemId, string kosarId, int osszeg, string berloId,string bvin)
+		public ActionResult RendelesMentes(Item model, string productId, string productName, DateTime kezdoDatum, DateTime vegDatum, int napokSzama, string elemId, string kosarId, int osszeg, string berloId,string bvin)
 		{
 			model.Bvin = bvin;
 			model.ProductId = productId;
+			model.ProductName = productName;
 			model.KezdoDatum = kezdoDatum;
 			model.VegDatum = vegDatum;
 			model.NapokSzama = napokSzama;
@@ -213,6 +216,12 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 		}
 		public bool VanIdoUtkozes(DateTime ujKezdo, DateTime ujVeg, IEnumerable<Item> letezoFoglalasok, string berloId)
 		{
+			var HccApp = HotcakesApplication.Current;
+
+			Order order = HccApp.OrderServices.CurrentShoppingCart();
+
+			bool szabad = order != null;
+
 			foreach (var foglalas in letezoFoglalasok)
 			{
 				if (foglalas.Statusz == "Completed")
@@ -224,14 +233,16 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 						return true;
 					}
 				}
-
-				if (foglalas.BerloId == berloId)
+				if (szabad)
 				{
-					if (ujKezdo.Date <= foglalas.VegDatum.Date && ujVeg.Date >= foglalas.KezdoDatum.Date)
+					if (foglalas.BerloId == berloId && IsInOrder(foglalas, order))
 					{
-						// Ütközik
-						ViewBag.VanFelhasznalo = true;
-						return true;
+						if (ujKezdo.Date <= foglalas.VegDatum.Date && ujVeg.Date >= foglalas.KezdoDatum.Date)
+						{
+							// Ütközik
+							ViewBag.VanFelhasznalo = true;
+							return true;
+						}
 					}
 				}
 			}
@@ -240,6 +251,10 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 			ViewBag.VanUtkozes = false;
 			ViewBag.VanFelhasznalo = false;
 			return false;
+		}
+		private bool IsInOrder(Item item, Order order)
+		{
+			return order.Items.Any(li => li.Id.ToString() == item.ElemId);
 		}
 
 		public ProductDTO Letrehozas(int osszeg, string nev, string kep, byte[] imageBytes)

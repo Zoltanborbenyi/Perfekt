@@ -28,8 +28,8 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Models
 	public class Product
 	{
 		public string ProductId { get; set; }
+		public string Bvin { get; set; }
 		public decimal BerlesDij {  get; set; }
-		public string bvin { get; set; }
 		public string ImageFileMedium { get; set; }
 		public string ProductName { get; set; }
 		public string LongDescription { get; set; }

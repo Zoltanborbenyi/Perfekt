@@ -2,18 +2,28 @@
 
 @using System.Text.RegularExpressions
 @using DotNetNuke.Web.Mvc.Helpers
+@using DotNetNuke.Entities.Users
 
 <div>
     <a href="@Url.Action("Index","Product")">Vissza</a>
 
     <h4>Aktuális bérlések</h4>
     <table class="table">
-        @if (Request.QueryString["user"].IsBool())
+        @{
+            var currentUser = UserController.Instance.GetCurrentUserInfo();
+            bool isLoggedIn = currentUser != null && currentUser.UserID != -1;
+
+            bool superE = currentUser.IsSuperUser;
+
+            var sorszam = 1;
+        }
+
+        @if (superE)
         {
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Termék ID</th>
+                    <th>Termék</th>
                     <th>Kezdés</th>
                     <th>Végzés</th>
                     <th>Napok</th>
@@ -42,8 +52,8 @@
                     }
 
                     <tr style="@szin">
-                        <td>@item.Id</td>
-                        <td>@item.ProductId</td>
+                        <td>@sorszam</td>
+                        <td>@item.ProductName</td>
                         <td>@item.KezdoDatum.ToShortDateString()</td>
                         <td>@item.VegDatum.ToShortDateString()</td>
                         <td>@item.NapokSzama</td>
@@ -53,6 +63,8 @@
                         <td>@item.ElemId</td>
                         <td>@item.KosarId</td>
                     </tr>
+
+                    sorszam += 1;
                 }
             </tbody>
         }
@@ -61,11 +73,12 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Termék ID</th>
+                    <th>Termék</th>
                     <th>Kezdés</th>
                     <th>Végzés</th>
                     <th>Napok</th>
                     <th>Összeg</th>
+                    <th>Fizetés Státusz</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,17 +97,20 @@
                             szin = "background-color: red;";
                         }
                     }
-                    if (item.BerloId == Request.QueryString["berloId"].ToString())
+                    if (item.BerloId == currentUser.UserID.ToString())
                     {
                         <tr style="@szin">
-                            <td>@item.Id</td>
-                            <td>@item.ProductId</td>
+                            <td>@sorszam</td>
+                            <td>@item.ProductName</td>
                             <td>@item.KezdoDatum.ToShortDateString()</td>
                             <td>@item.VegDatum.ToShortDateString()</td>
                             <td>@item.NapokSzama</td>
                             <td>@item.Osszeg</td>
+                            <td>@item.Statusz</td>
                         </tr>
                     }
+
+                    sorszam += 1;
                 }
             </tbody>
         }

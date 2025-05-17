@@ -14,6 +14,7 @@ using Perfekt.Dnn.Perfekt.Dnn.RentManager.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 {
@@ -21,10 +22,13 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 	{
 		private readonly HotcakesApplication hccApp;
 		private readonly Api proxy;
+		private readonly ProductAPI productAPI;
 
 		public CartItemTracker(HotcakesApplication _hccApp)
 		{
 			hccApp = _hccApp;
+
+			productAPI = new ProductAPI();
 
 			// Például a CartItemTracker konstruktorában vagy más metódusban:
 			int portalId = 0; // állítsd be, vagy vedd át paraméterként, ha tudod
@@ -43,15 +47,22 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 
 		public void TrackItemStatus()
 		{
-			var draftItems = ItemManager.Instance.GetItems()
+			var currentDraftItems = ItemManager.Instance.GetItems()
 				.Where(i => i.Statusz == RentalStatus.Draft)
 				.ToList();
 
-			foreach (var item in draftItems)
+			foreach (var item in currentDraftItems)
 			{
 				try
 				{
-					ProcessDraftItem(item);
+					var freshItem = ItemManager.Instance.GetItem(item.Bvin);
+					if (freshItem.Statusz != RentalStatus.Draft)
+					{
+						AddDebugLog($"Item {item.ElemId} is no longer in Draft status (current: {freshItem.Statusz}). Skipping.");
+						continue;
+					}
+
+					ProcessDraftItem(freshItem);
 				}
 				catch (Exception ex)
 				{
@@ -62,8 +73,6 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 
 		private void ProcessDraftItem(Item item)
 		{
-			ProductAPI productAPI = new ProductAPI();
-
 			var matchingOrder = productAPI.FindOrder(proxy, item.KosarId);
 
 			if (matchingOrder != null && !matchingOrder.IsPlaced)
@@ -81,9 +90,47 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 			// 2. Check if in completed order
 			if (matchingOrder != null && IsInOrder(item, matchingOrder) && matchingOrder.IsPlaced == true)
 			{
-				UpdateRentalStatus(item.ProductId, item.ElemId);
+				var allDraftItems = ItemManager.Instance.GetItems()
+									.Where(i => i.Statusz == RentalStatus.Draft && i.Bvin != item.Bvin) // Kizárjuk az aktuális elemet
+									.ToList();
+
+				foreach (var foglalas in allDraftItems)
+				{
+					if (foglalas.ProductName == item.ProductName)
+					{
+						var otherOrder = productAPI.FindOrder(proxy, foglalas.KosarId);
+
+						if (item.KezdoDatum.Date <= foglalas.VegDatum.Date && item.VegDatum.Date >= foglalas.KezdoDatum.Date)
+						{
+							if (matchingOrder.LastUpdatedUtc < otherOrder.LastUpdatedUtc)
+							{
+								// Ütközik
+								UpdateRentalStatus(foglalas.ProductId, foglalas.ElemId, false);
+								productAPI.DeleteProduct(proxy, foglalas.Bvin);
+							}
+
+							if (matchingOrder.LastUpdatedUtc > otherOrder.LastUpdatedUtc)
+							{
+								if (otherOrder.IsPlaced)
+								{
+									UpdateRentalStatus(item.ProductId, item.ElemId, false);
+									productAPI.DeleteProduct(proxy, item.Bvin);
+									return;
+								}
+								else
+								{
+									UpdateRentalStatus(foglalas.ProductId, foglalas.ElemId, false);
+									productAPI.DeleteProduct(proxy, foglalas.Bvin);
+								}
+							}
+						}
+					}
+				}
+
+				UpdateRentalStatus(item.ProductId, item.ElemId, true);
 				productAPI.DeleteProduct(proxy, item.Bvin);
 				AddDebugLog($"Item {item.ElemId} found in completed order. Status updated.");
+
 				return;
 			}
 
@@ -115,15 +162,25 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 		{
 			return order.Items.Any(li => li.Id.ToString() == item.ElemId);
 		}
-		private void UpdateRentalStatus(string productId, string lineItemId)
+
+		private void UpdateRentalStatus(string productId, string lineItemId, bool elsoE)
 		{
 			var rental = ItemManager.Instance.GetItems(productId)
 				.FirstOrDefault(i => i.ElemId == lineItemId);
 
 			if (rental != null)
 			{
-				rental.Statusz = RentalStatus.Completed;
-				ItemManager.Instance.UpdateItem(rental);
+				if (elsoE)
+				{
+					rental.Statusz = RentalStatus.Completed;
+					ItemManager.Instance.UpdateItem(rental);
+				}
+				else
+				{
+					rental.Statusz = RentalStatus.Canceled;
+					ItemManager.Instance.UpdateItem(rental);
+				}
+
 			}
 		}
 
@@ -134,7 +191,7 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 
 			if (rental != null)
 			{
-				ItemManager.Instance.DeleteItem(rental.Id);
+				ItemManager.Instance.DeleteItem(rental.Bvin);
 			}
 		}
 		private void AddDebugLog(string message)
@@ -155,6 +212,7 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Components
 		{
 			public const string Draft = "Draft";
 			public const string Completed = "Completed";
+			public const string Canceled = "Canceled";
 		}
 	}
 }

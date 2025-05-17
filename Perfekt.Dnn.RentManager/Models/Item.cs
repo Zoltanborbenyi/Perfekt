@@ -22,16 +22,16 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Models
 {
 	[TableName("RentManager_Items")]
 	//setup the primary key for table
-	[PrimaryKey("Id", AutoIncrement = true)]
+	[PrimaryKey("Bvin", AutoIncrement = false)]
 	//configure caching using PetaPoco
 	[Cacheable("Items", CacheItemPriority.Default, 20)]
 	//scope the objects to the ModuleId of a module on a page (or copy of a module on a page)
 	[Scope("ModuleId")]
 	public class Item
 	{
-		public int Id { get; set; } = -1;
 		public string Bvin { get; set; }
 		public string ProductId { get; set; }
+		public string ProductName { get; set; }
 		public DateTime KezdoDatum { get; set; }
 		public DateTime VegDatum { get; set; }
 		public int NapokSzama { get; set; }

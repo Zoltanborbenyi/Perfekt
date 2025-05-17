@@ -43,26 +43,26 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 		//	return RedirectToDefaultRoute();
 		//}
 
-		public ActionResult Edit(int Id = -1)
-		{
-			var item = (Id == -1)
-				 ? new Item { }
-				 : ItemManager.Instance.GetItem(Id);
+		//public ActionResult Edit(int Id = -1)
+		//{
+		//	var item = (Id == -1)
+		//		 ? new Item { }
+		//		 : ItemManager.Instance.GetItem(Id);
 
-			return View(item);
-		}
+		//	return View(item);
+		//}
 
-		[HttpPost]
-		[DotNetNuke.Web.Mvc.Framework.ActionFilters.ValidateAntiForgeryToken]
-		public ActionResult Edit(Item item)
-		{
-			if (item.Id == -1)
-			{
-				ItemManager.Instance.CreateItem(item);
-			}
+		//[HttpPost]
+		//[DotNetNuke.Web.Mvc.Framework.ActionFilters.ValidateAntiForgeryToken]
+		//public ActionResult Edit(Item item)
+		//{
+		//	if (item.Id == -1)
+		//	{
+		//		ItemManager.Instance.CreateItem(item);
+		//	}
 
-			return RedirectToDefaultRoute();
-		}
+		//	return RedirectToDefaultRoute();
+		//}
 
 		//[ModuleAction(ControlKey = "Edit", TitleKey = "AddItem")]
 		public ActionResult Index()
@@ -92,10 +92,10 @@ namespace Perfekt.Dnn.Perfekt.Dnn.RentManager.Controllers
 					if (productDTO == null)
 						continue;
 
-					if (string.IsNullOrEmpty(product.bvin))
+					if (string.IsNullOrEmpty(product.Bvin))
 					{
 						product.ProductName = productDTO.ProductName;
-						product.bvin = productDTO.Bvin;
+						product.Bvin = productDTO.Bvin;
 						product.ImageFileMedium = productDTO.ImageFileMedium;
 						product.LongDescription = productDTO.LongDescription;
 					}
