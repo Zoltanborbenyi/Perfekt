@@ -4,6 +4,7 @@
 @using DotNetNuke.Web.Mvc.Helpers
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="module.css" />
 
 <form action="@Url.Action("Additem", "Item")" method="post">
     <input type="hidden" id="ImageFileMedium" name="ImageFileMedium" value="@Request.QueryString["ImageFileMedium"]">
@@ -17,28 +18,28 @@
 
     @if (ViewBag.VanUtkozes != null && (bool)ViewBag.VanUtkozes)
     {
-        <div id="utkozesUzenet" style="background-color: #ffe0e0; padding: 20px; border: 1px solid red; border-radius: 8px; margin: 20px 0;">
+        <div id="utkozesUzenet" class="alert-box alert-box-fixed">
             <p>Az időpont ütközik egy meglévő foglalással!</p>
-            <a href="javascript:void(0);" onclick="document.getElementById('utkozesUzenet').style.display='none'" style="padding: 8px 16px; background-color: #007bff; color: white; border-radius: 5px; text-decoration: none;">OK</a>
+            <a href="javascript:void(0);" onclick="document.getElementById('utkozesUzenet').style.display='none'">OK</a>
         </div>
     }
 
     @if (ViewBag.VanFelhasznalo != null && (bool)ViewBag.VanFelhasznalo)
     {
-        <div id="felhasznaloUzenet" style="background-color: #ffe0e0; padding: 20px; border: 1px solid red; border-radius: 8px; margin: 20px 0;">
+        <div id="felhasznaloUzenet" class="alert-box">
             <p>Ez az időpont ezzel a termékkel már benne van a kosarában!</p>
-            <a href="javascript:void(0);" onclick="document.getElementById('felhasznaloUzenet').style.display='none'" style="padding: 8px 16px; background-color: #007bff; color: white; border-radius: 5px; text-decoration: none;">OK</a>
+            <a href="javascript:void(0);" onclick="document.getElementById('felhasznaloUzenet').style.display='none'">OK</a>
         </div>
     }
 
-    <div id="kitoltesUzenet" style="display:none; background-color: #ffe0e0; padding: 20px; border: 1px solid red; border-radius: 8px; margin: 20px 0;">
+    <div id="kitoltesUzenet" class="alert-box">
         <p>Kérjük, töltse ki mindkét dátummezőt!</p>
-        <a href="javascript:void(0);" onclick="document.getElementById('kitoltesUzenet').style.display='none'" style="padding: 8px 16px; background-color: #007bff; color: white; border-radius: 5px; text-decoration: none;">OK</a>
+        <a href="javascript:void(0);" onclick="document.getElementById('kitoltesUzenet').style.display='none'">OK</a>
     </div>
 
-    <div id="sorrendUzenet" style="display: none; background-color: #ffe0e0; padding: 20px; border: 1px solid red; border-radius: 8px; margin: 20px 0;">
+    <div id="sorrendUzenet" class="alert-box">
         <p>A végdátum nem lehet korábbi, mint a kezdődátum!</p>
-        <a href="javascript:void(0);" onclick="document.getElementById('sorrendUzenet').style.display='none'" style="padding: 8px 16px; background-color: #007bff; color: white; border-radius: 5px; text-decoration: none;">OK</a>
+        <a href="javascript:void(0);" onclick="document.getElementById('sorrendUzenet').style.display='none'">OK</a>
     </div>
 
     <div class="berles_3">
@@ -99,15 +100,15 @@
                 return [true, '', ''];
             },
             onSelect: function (selectedDate) {
-                // Kezdődátum kiválasztásakor automatikusan állítsuk a végdátumot
-                if (this.id === 'KezdoDatum') {
-                    var startDate = $(this).datepicker('getDate');
-                    if (startDate) {
-                        var endDate = new Date(startDate);
-                        endDate.setDate(endDate.getDate() + 1);
-                        $('#VegDatum').datepicker('setDate', endDate);
-                    }
-                }
+            //    // Kezdődátum kiválasztásakor automatikusan állítsuk a végdátumot
+            //    if (this.id === 'KezdoDatum') {
+            //        var startDate = $(this).datepicker('getDate');
+            //        if (startDate) {
+            //            var endDate = new Date(startDate);
+            //            endDate.setDate(endDate.getDate() + 1);
+            //            $('#VegDatum').datepicker('setDate', endDate);
+            //        }
+            //    }
                 szamolNapokat(dailyPrice);
             }
         });
@@ -177,14 +178,14 @@
 
             // Validate empty fields
             if (!kezdoDatum || !vegDatum) {
-                document.getElementById('kitoltesUzenet').style.display = 'block';
+                document.getElementById('kitoltesUzenet').style.display = 'flex';
                 e.preventDefault();
                 return false;
             }
 
             // Validate date order
             if (new Date(kezdoDatum) > new Date(vegDatum)) {
-                document.getElementById('sorrendUzenet').style.display = 'block';
+                document.getElementById('sorrendUzenet').style.display = 'flex';
                 e.preventDefault();
                 return false;
             }
@@ -196,40 +197,3 @@
         szamolNapokat();
     });
 </script>
-
-<style>
-    .past-date {
-        color: #ccc !important;
-        background-color: #f9f9f9 !important;
-        cursor: not-allowed;
-    }
-    .berles_gombok_2{
-        display: flex;
-        flex-direction:row;
-    }
-
-    .berles_gombok_2 a,
-    .berles_gombok_2 button 
-    {
-        width: 20%;
-        min-width: 150px;
-        background: #A60909;
-        color: #FAF7EE;
-        border: none;
-        padding: 12px 25px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease !important;
-        border-radius: 25px;
-        text-align: center;
-    }
-
-    .berles_gombok_2 a:hover,
-    .berles_gombok_2 button:hover{
-        background: #faf7ee;
-        color: #a60909;
-        text-decoration: none !important;
-    }
-
-</style>

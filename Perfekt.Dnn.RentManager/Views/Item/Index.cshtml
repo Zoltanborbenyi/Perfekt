@@ -3,6 +3,8 @@
 @using System.Text.RegularExpressions
 @using DotNetNuke.Web.Mvc.Helpers
 
+<link rel="stylesheet" href="module.css" />
+
 <div id="Items-@Dnn.ModuleContext.ModuleId" class="berles_2">
     
     <input type="hidden" id="ProductName" name="ProductName" value="@Request.QueryString["ProductName"]">
@@ -52,60 +54,3 @@
         </table>
     </div>
 </div>
-
-<style>
-    .berles_2{
-        display:flex;
-        justify-content:center;
-        align-items: center;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .berles_inditas h2{
-        text-align:center;
-    }
-
-    .berles_inditas{
-        display:flex;
-        flex-direction: column;
-        width: 90%;
-    }
-
-    .berles_gombok {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
-
-    .aktualis_berles{
-        padding-top: 30px;
-        width: 90%;
-    }
-
-    .berles_inditas a {
-        width: 20%;
-        min-width: 150px;
-        background: #A60909;
-        color: #FAF7EE;
-        border: none;
-        padding: 12px 25px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease !important;
-        border-radius: 25px;
-        text-align:center;
-    }
-
-    .berles_inditas a:hover {
-        background: #faf7ee;
-        color: #a60909;
-        text-decoration: none !important;
-    }
-
-
-
-</style>
-
-

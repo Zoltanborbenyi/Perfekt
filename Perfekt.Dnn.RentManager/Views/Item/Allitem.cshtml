@@ -4,8 +4,12 @@
 @using DotNetNuke.Web.Mvc.Helpers
 @using DotNetNuke.Entities.Users
 
+<link rel="stylesheet" href="module.css" />
+
 <div>
-    <a href="@Url.Action("Index","Product")">Vissza</a>
+    <div class="osszes-berles-container">
+        <a href="@Url.Action("Index","Product")">Lépjen vissza a bérelhető termékekhez</a>
+    </div>
 
     <h4>Aktuális bérlések</h4>
     <table class="table">
@@ -30,7 +34,7 @@
                     <th>Összeg</th>
                     <th>Bérlő</th>
                     <th>Fizetés Státusz</th>
-                    <th>Elem ID</th>
+                    <th>Termék ID</th>
                     <th>Kosár ID</th>
                 </tr>
             </thead>
@@ -41,13 +45,16 @@
                     var kulonbseglent = (item.KezdoDatum.Date - DateTime.Today).Days;
                     var kulonbsegfent = (item.VegDatum.Date - DateTime.Today).Days;
 
-                    if ((kulonbseglent > 0 && kulonbseglent <= 7) || (kulonbsegfent > 0 && kulonbsegfent <= 7))
+                    if (item.Statusz == "Completed")
                     {
-                        szin = "background-color: orange;";
-
-                        if (kulonbseglent == 0 || kulonbsegfent == 0)
+                        if ((kulonbseglent > 0 && kulonbseglent <= 7) || (kulonbsegfent > 0 && kulonbsegfent <= 7))
                         {
-                            szin = "background-color: red;";
+                            szin = "background-color: orange;";
+
+                            if (kulonbseglent == 0 || kulonbsegfent == 0)
+                            {
+                                szin = "background-color: red;";
+                            }
                         }
                     }
 
@@ -60,7 +67,7 @@
                         <td>@item.Osszeg</td>
                         <td>@item.Berlo</td>
                         <td>@item.Statusz</td>
-                        <td>@item.ElemId</td>
+                        <td>@item.ProductId</td>
                         <td>@item.KosarId</td>
                     </tr>
 
@@ -84,21 +91,26 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    var szin = "";
-                    var kulonbseglent = (item.KezdoDatum.Date - DateTime.Today).Days;
-                    var kulonbsegfent = (item.VegDatum.Date - DateTime.Today).Days;
-
-                    if ((kulonbseglent > 0 && kulonbseglent <= 7) || (kulonbsegfent > 0 && kulonbsegfent <= 7))
-                    {
-                        szin = "background-color: orange;";
-
-                        if (kulonbseglent == 0 || kulonbsegfent == 0)
-                        {
-                            szin = "background-color: red;";
-                        }
-                    }
                     if (item.BerloId == currentUser.UserID.ToString())
                     {
+                        var szin = "";
+                        var kulonbseglent = Math.Abs((item.KezdoDatum.Date - DateTime.Today).Days);
+                        var kulonbsegfent = Math.Abs((item.VegDatum.Date - DateTime.Today).Days);
+
+                        if (item.Statusz == "Completed")
+                        {
+                            if ((kulonbseglent > 0 && kulonbseglent <= 7) || (kulonbsegfent > 0 && kulonbsegfent <= 7))
+                            {
+                                szin = "background-color: orange;";
+
+                                if (kulonbseglent == 0 || kulonbsegfent == 0)
+                                {
+                                    szin = "background-color: red;";
+                                }
+                            }
+                        }
+
+
                         <tr style="@szin">
                             <td>@sorszam</td>
                             <td>@item.ProductName</td>
@@ -108,9 +120,9 @@
                             <td>@item.Osszeg</td>
                             <td>@item.Statusz</td>
                         </tr>
-                    }
 
-                    sorszam += 1;
+                        sorszam += 1;
+                    }
                 }
             </tbody>
         }

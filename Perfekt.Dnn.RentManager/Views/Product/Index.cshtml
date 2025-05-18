@@ -5,7 +5,7 @@
 @using Perfekt.Dnn.Perfekt.Dnn.RentManager.Models
 @using DotNetNuke.Entities.Users
 
-
+<link rel="stylesheet" href="module.css" />
 
 <div id="Products-@Dnn.ModuleContext.ModuleId">
 
@@ -18,9 +18,11 @@
     {
         if (currentUser != null)
         {
-            <a href="@Url.Action("Allitem", "Item")">
-                Összes bérlés
-            </a>
+            <div class="osszes-berles-container">
+                <a href="@Url.Action("Allitem", "Item")">
+                    Összes bérlés megtekintése
+                </a>
+            </div>
         }
 
         var sorszam = 1;
@@ -70,76 +72,17 @@
     }
     else
     {
-        <div class="rolunk_1">
-            <p>A bérléshez kérem jelentkezzen be!</p>
-            <div id="rolunk_header_gombok">
-                <a id="rolunk_header_kerekparok_gomb" name="rolunk_header_kerekparok_gomb" href="http://rendfejl2000.northeurope.cloudapp.azure.com:8080/Bejelentkezes">
-                    BEJELENTKEZÉS
-                </a>
-                <a id="rolunk_header_versenyek_gomb" name="rolunk_header_versenyek_gomb" href="http://rendfejl2000.northeurope.cloudapp.azure.com:8080/Regisztracio">
-                    REGISZTRÁCIÓ
-                </a>
-            </div>
+    <div class="rolunk_1">
+        <p id="rolunk_header_focim">TEKERJ VELÜNK</p>
+        <p id="rolunk_header_alcim">A bérléshez kérem jelentkezzen be!</p>
+        <div id="rolunk_header_gombok">
+            <a id="rolunk_header_kerekparok_gomb" name="rolunk_header_kerekparok_gomb" href="http://rendfejl2000.northeurope.cloudapp.azure.com:8080/Bejelentkezes">
+                BEJELENTKEZÉS
+            </a>
+            <a id="rolunk_header_versenyek_gomb" name="rolunk_header_versenyek_gomb" href="http://rendfejl2000.northeurope.cloudapp.azure.com:8080/Regisztracio">
+                REGISZTRÁCIÓ
+            </a>
         </div>
+    </div>
     }
 </div>
-
-        <style>
-            .berles_main {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .berles_main_kerekpar {
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
-                align-items: center;
-            }
-
-            .berles_tartalom {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                width: 55%;
-            }
-
-            .berles_kep {
-                width: 35vw;
-            }
-
-                .berles_kep img {
-                    width: 35vw;
-                }
-
-            .berles_tartalom a {
-                width: auto;
-                min-width: 150px;
-                background: #A60909;
-                color: #FAF7EE;
-                border: none;
-                padding: 12px 25px;
-                font-size: 16px;
-                font-weight: bold;
-                cursor: pointer;
-                transition: all 0.3s ease !important;
-                border-radius: 25px;
-            }
-
-                .berles_tartalom a:hover {
-                    background: #faf7ee;
-                    color: #a60909;
-                    text-decoration: none !important;
-                }
-
-            .berles_tartalom p {
-                font-size: 12px;
-            }
-
-            .berles_tartalom h1 {
-                font-size: 36px !important;
-            }
-        </style>
