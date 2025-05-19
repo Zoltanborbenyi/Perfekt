@@ -236,6 +236,7 @@ label {
     min-width: 50%;
     max-width: 90%;
 }
+#validUzenet,
 #kitoltesUzenet,
 #sorrendUzenet {
     top: 50%;
@@ -255,6 +256,7 @@ label {
     max-width: 90%;
 }
 
+    #validUzenet p,
     #utkozesUzenet p,
     #felhasznaloUzenet p,
     #kitoltesUzenet p,
@@ -263,6 +265,7 @@ label {
         font-weight: 500;
     }
 
+    #validUzenet a,
     #utkozesUzenet a,
     #felhasznaloUzenet a,
     #kitoltesUzenet a,
@@ -277,6 +280,7 @@ label {
         transition: background-color 0.2s ease;
     }
 
+        #validUzenet a:hover,
         #utkozesUzenet a:hover,
         #felhasznaloUzenet a:hover,
         #kitoltesUzenet a:hover,

@@ -42,6 +42,11 @@
         <a href="javascript:void(0);" onclick="document.getElementById('sorrendUzenet').style.display='none'">OK</a>
     </div>
 
+    <div id="validUzenet" class="alert-box">
+        <p>Érvénytelen dátumot adott meg!</p>
+        <a href="javascript:void(0);" onclick="document.getElementById('validUzenet').style.display='none'">OK</a>
+    </div>
+
     <div class="berles_3">
         <div class="card mb-4">
             <div class="card-header">
@@ -171,6 +176,11 @@
             $('.calculation-results p:nth-child(3) span').text('0');
         }
 
+        function isValidDate(dateString) {
+            const date = new Date(dateString);
+            return !isNaN(date.getTime());
+        }
+
         // Form submission handler
         $('form').on('submit', function (e) {
             const kezdoDatum = $('#KezdoDatum').val();
@@ -186,6 +196,12 @@
             // Validate date order
             if (new Date(kezdoDatum) > new Date(vegDatum)) {
                 document.getElementById('sorrendUzenet').style.display = 'flex';
+                e.preventDefault();
+                return false;
+            }
+
+            if (!isValidDate(kezdoDatum) || !isValidDate(vegDatum)) {
+                document.getElementById('validUzenet').style.display = 'flex';
                 e.preventDefault();
                 return false;
             }
