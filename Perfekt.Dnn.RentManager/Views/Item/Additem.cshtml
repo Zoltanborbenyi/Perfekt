@@ -1,0 +1,215 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.Item>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="module.css" />
+
+<form action="@Url.Action("Additem", "Item")" method="post">
+    <input type="hidden" id="ImageFileMedium" name="ImageFileMedium" value="@Request.QueryString["ImageFileMedium"]">
+    <input type="hidden" id="Bvin" name="Bvin" value="@Request.QueryString["Bvin"]">
+    <input type="hidden" id="ProductId" name="ProductId" value="@Request.QueryString["ProductId"]">
+    <input type="hidden" id="ProductName" name="ProductName" value="@Request.QueryString["ProductName"]">
+
+    <input type="hidden" id="NapokSzama" name="NapokSzama" value="0">
+    <input type="hidden" id="BerlesDij" name="BerlesDij" value="@Request.QueryString["BerlesDij"]">
+    <input type="hidden" id="Osszeg" name="Osszeg" value="0">
+
+    @if (ViewBag.VanUtkozes != null && (bool)ViewBag.VanUtkozes)
+    {
+        <div id="utkozesUzenet" class="alert-box alert-box-fixed">
+            <p>Az időpont ütközik egy meglévő foglalással!</p>
+            <a href="javascript:void(0);" onclick="document.getElementById('utkozesUzenet').style.display='none'">OK</a>
+        </div>
+    }
+
+    @if (ViewBag.VanFelhasznalo != null && (bool)ViewBag.VanFelhasznalo)
+    {
+        <div id="felhasznaloUzenet" class="alert-box">
+            <p>Ez az időpont ezzel a termékkel már benne van a kosarában!</p>
+            <a href="javascript:void(0);" onclick="document.getElementById('felhasznaloUzenet').style.display='none'">OK</a>
+        </div>
+    }
+
+    <div id="kitoltesUzenet" class="alert-box">
+        <p>Kérjük, töltse ki mindkét dátummezőt!</p>
+        <a href="javascript:void(0);" onclick="document.getElementById('kitoltesUzenet').style.display='none'">OK</a>
+    </div>
+
+    <div id="sorrendUzenet" class="alert-box">
+        <p>A végdátum nem lehet korábbi, mint a kezdődátum!</p>
+        <a href="javascript:void(0);" onclick="document.getElementById('sorrendUzenet').style.display='none'">OK</a>
+    </div>
+
+    <div id="validUzenet" class="alert-box">
+        <p>Érvénytelen dátumot adott meg!</p>
+        <a href="javascript:void(0);" onclick="document.getElementById('validUzenet').style.display='none'">OK</a>
+    </div>
+
+    <div class="berles_3">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>
+                    @Request.QueryString["ProductName"] bérlése
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="KezdoDatum">Kezdő dátum:</label>
+                    <input type="text" name="KezdoDatum" id="KezdoDatum" class="datePicker form-control"
+                           autocomplete="off" />
+                </div>
+
+                <div class="form-group">
+                    <label for="VegDatum">Záró dátum:</label>
+                    <input type="text" name="VegDatum" id="VegDatum" class="datePicker form-control"
+                           autocomplete="off" />
+                </div>
+            </div>
+        </div>
+
+        <div class="calculation-results">
+            <p>Napok száma: <span>0</span></p>
+            <p>Bérleti díj egy napra: <span>@Request.QueryString["BerlesDij"]</span> Ft/nap</p>
+            <p>Összeg: <span>0</span> Ft</p>
+        </div>
+
+        <div class="berles_gombok_2">
+            <button id="kosarGomb" type="submit" class="btn btn-primary">
+                KOSÁRBA
+            </button>
+
+            <a href="@Url.Action("Index", "Item", new { ProductId = Request.QueryString["ProductId"], BerlesDij = Request.QueryString["BerlesDij"], ProductName = Request.QueryString["ProductName"], ImageFileMedium = Request.QueryString["ImageFileMedium"], Bvin = Request.QueryString["Bvin"] })">Vissza</a>
+        </div>
+    </div>
+</form>
+<script>
+    $(function () {
+        var dailyPrice = parseInt($('#BerlesDij').val());
+        var occupiedRanges = [];
+        var today = new Date();
+        var productId = $('#ProductId').val();
+        today.setHours(0, 0, 0, 0);
+
+        // Dátumválasztó inicializálása
+        $('.datePicker').datepicker({
+            dateFormat: 'yy-mm-dd',
+            minDate: today, // Korábbi dátumok letiltása
+            beforeShowDay: function (date) {
+                // Korábbi dátumok letiltása
+                if (date < today) {
+                    return [false, 'past-date', 'Múltbeli dátum nem választható'];
+                }
+
+                return [true, '', ''];
+            },
+            onSelect: function (selectedDate) {
+            //    // Kezdődátum kiválasztásakor automatikusan állítsuk a végdátumot
+            //    if (this.id === 'KezdoDatum') {
+            //        var startDate = $(this).datepicker('getDate');
+            //        if (startDate) {
+            //            var endDate = new Date(startDate);
+            //            endDate.setDate(endDate.getDate() + 1);
+            //            $('#VegDatum').datepicker('setDate', endDate);
+            //        }
+            //    }
+                szamolNapokat(dailyPrice);
+            }
+        });
+
+        // Calculate days and sum
+        function szamolNapokat(dailyPrice) {
+            const kezdoDatumStr = $('#KezdoDatum').val();
+            const vegDatumStr = $('#VegDatum').val();
+            const napiAr = dailyPrice;
+            const gomb = $('#KosarGomb');
+
+            // Reset if empty
+            if (!kezdoDatumStr || !vegDatumStr) {
+                resetCalculations();
+
+                gomb.attr('href', '#'); // HREF beállítása #
+                gomb.prop('disabled', true); // Gomb letiltása
+                return;
+            }
+
+            // Convert to Date objects
+            const kezdoDatum = new Date(kezdoDatumStr);
+            const vegDatum = new Date(vegDatumStr);
+
+            // Validate dates
+            if (isNaN(kezdoDatum.getTime()) || isNaN(vegDatum.getTime())) {
+                resetCalculations();
+
+                gomb.attr('href', '#'); // HREF beállítása #
+                gomb.prop('disabled', true); // Gomb letiltása
+                return;
+            }
+
+            // Check date order
+            if (vegDatum < kezdoDatum) {
+                resetCalculations();
+
+                gomb.prop('disabled', true); // Gomb letiltása
+                return;
+            } else {
+                // Calculate days difference
+                const napokSzama = Math.floor((vegDatum - kezdoDatum) / (1000 * 60 * 60 * 24)) + 1;
+                const osszeg = napokSzama * napiAr;
+
+                $('#NapokSzama').val(napokSzama);
+                $('#Osszeg').val(napokSzama * napiAr);
+
+                $('.calculation-results p:nth-child(1) span').text(napokSzama.toString());
+                $('.calculation-results p:nth-child(3) span').text(osszeg.toString());
+
+                gomb.prop('disabled', false); // Gomb feloldása
+            }
+        }
+
+        function resetCalculations() {
+            $('#NapokSzama').val('0');
+            $('#Osszeg').val('0');
+
+            $('.calculation-results p:nth-child(1) span').text('0');
+            $('.calculation-results p:nth-child(3) span').text('0');
+        }
+
+        function isValidDate(dateString) {
+            const date = new Date(dateString);
+            return !isNaN(date.getTime());
+        }
+
+        // Form submission handler
+        $('form').on('submit', function (e) {
+            const kezdoDatum = $('#KezdoDatum').val();
+            const vegDatum = $('#VegDatum').val();
+
+            // Validate empty fields
+            if (!kezdoDatum || !vegDatum) {
+                document.getElementById('kitoltesUzenet').style.display = 'flex';
+                e.preventDefault();
+                return false;
+            }
+
+            // Validate date order
+            if (new Date(kezdoDatum) > new Date(vegDatum)) {
+                document.getElementById('sorrendUzenet').style.display = 'flex';
+                e.preventDefault();
+                return false;
+            }
+
+            if (!isValidDate(kezdoDatum) || !isValidDate(vegDatum)) {
+                document.getElementById('validUzenet').style.display = 'flex';
+                e.preventDefault();
+                return false;
+            }
+
+            return true;
+        });
+
+        // Initial calculation
+        szamolNapokat();
+    });
+</script>

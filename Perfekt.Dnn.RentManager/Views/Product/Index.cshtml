@@ -1,0 +1,88 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Perfekt.Dnn.Perfekt.Dnn.RentManager.Models.Product>>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+@using Perfekt.Dnn.Perfekt.Dnn.RentManager.Models
+@using DotNetNuke.Entities.Users
+
+<link rel="stylesheet" href="module.css" />
+
+<div id="Products-@Dnn.ModuleContext.ModuleId">
+
+    @{
+        var currentUser = UserController.Instance.GetCurrentUserInfo();
+        bool isLoggedIn = currentUser != null && currentUser.UserID != -1;
+    }
+
+    @if (isLoggedIn)
+    {
+        if (currentUser != null)
+        {
+            <div class="osszes-berles-container">
+                <a href="@Url.Action("Allitem", "Item")">
+                    Összes bérlés megtekintése
+                </a>
+            </div>
+        }
+
+        var sorszam = 1;
+
+        <h2>Válaszd ki milyen kerékpárt szeretnél bérelni!</h2>
+        <div class="berles_hatter">
+            <div class="berles_main">
+                <!--ez lesz a szürke nagy doboz-->
+                @foreach (var product in Model)
+                {
+                    if (sorszam % 2 == 0)
+                    {
+                        <div id="berles_main_kerekpar_@sorszam" class="berles_main_kerekpar">
+                            <div id="berles_tartalom_@sorszam" class="berles_tartalom">
+                                <h1>@product.ProductName</h1>
+                                <p>@Html.Raw(product.LongDescription)</p>
+                                <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.Bvin })">
+                                    @product.BerlesDij Ft/nap
+                                </a>
+                            </div>
+                            <div id="berles_kep_@sorszam" class="berles_kep">
+                                <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.Bvin/medium/@product.ImageFileMedium" alt="Termék képe" style="transform: scaleX(-1);" />
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div id="berles_main_kerekpar_@sorszam" class="berles_main_kerekpar">
+                            <div id="berles_kep_@sorszam" class="berles_kep">
+                                <img id="productImage" src="/Portals/0/Hotcakes/Data/products/@product.Bvin/medium/@product.ImageFileMedium" alt="Termék képe" />
+                            </div>
+                            <div id="berles_tartalom_@sorszam" class="berles_tartalom">
+                                <h1>@product.ProductName</h1>
+                                <p>@Html.Raw(product.LongDescription)</p>
+                                <a href="@Url.Action("Index", "Item", new { ProductId = product.ProductId, BerlesDij = product.BerlesDij, ProductName = product.ProductName, ImageFileMedium = product.ImageFileMedium, Bvin = product.Bvin })">
+                                    @product.BerlesDij Ft/nap
+                                </a>
+                            </div>
+                        </div>
+                    }
+
+
+                    sorszam += 1;
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+    <div class="rolunk_1">
+        <p id="rolunk_header_focim">TEKERJ VELÜNK</p>
+        <p id="rolunk_header_alcim">A bérléshez kérem jelentkezzen be!</p>
+        <div id="rolunk_header_gombok">
+            <a id="rolunk_header_kerekparok_gomb" name="rolunk_header_kerekparok_gomb" href="http://rendfejl2000.northeurope.cloudapp.azure.com:8080/Bejelentkezes">
+                BEJELENTKEZÉS
+            </a>
+            <a id="rolunk_header_versenyek_gomb" name="rolunk_header_versenyek_gomb" href="http://rendfejl2000.northeurope.cloudapp.azure.com:8080/Regisztracio">
+                REGISZTRÁCIÓ
+            </a>
+        </div>
+    </div>
+    }
+</div>
